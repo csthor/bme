@@ -15,7 +15,7 @@
   --text-secondary: #6B7280;
   --text-muted: #9CA3AF;
   --border: #ECECF3;
-  --radius: 24px;
+  --radius: 20px;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
   --shadow: 0 4px 20px rgba(0,0,0,0.06);
   --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
@@ -132,13 +132,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =====================
-   Card hover effects
+   Card hover effects (Glassmorphism)
    ===================== */
 .card-hover {
   transition: var(--transition);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
 }
+
 .card-hover:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.01);
   box-shadow: var(--shadow-xl);
 }
 
@@ -173,7 +179,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   :root {
-    --radius: 20px;
+    --radius: 16px;
   }
   
   h1 {
@@ -235,5 +241,19 @@ h1, h2, h3, h4, h5, h6 {
 @media print {
   header, footer {
     display: none;
+  }
+}
+
+/* =====================
+   Mobile responsive fixes
+   ===================== */
+@media (max-width: 640px) {
+  .grid {
+    gap: 1rem;
+  }
+  
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }

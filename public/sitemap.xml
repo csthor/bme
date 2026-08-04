@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Sitemap - Kupon4UK</title>
+</head>
+<body>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+      <loc>https://kupon4uk.ru/</loc>
+      <priority>1.0</priority>
+      <changefreq>daily</changefreq>
+    </url>
+    <url>
+      <loc>https://kupon4uk.ru/stores</loc>
+      <priority>0.8</priority>
+      <changefreq>daily</changefreq>
+    </url>
+    <url>
+      <loc>https://kupon4uk.ru/categories</loc>
+      <priority>0.8</priority>
+      <changefreq>daily</changefreq>
+    </url>
+    <url>
+      <loc>https://kupon4uk.ru/blog</loc>
+      <priority>0.6</priority>
+      <changefreq>weekly</changefreq>
+    </url>
+    <url>
+      <loc>https://kupon4uk.ru/about</loc>
+      <priority>0.5</priority>
+      <changefreq>monthly</changefreq>
+    </url>
+  </urlset>
+</body>
+</html>
