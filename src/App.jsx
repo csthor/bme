@@ -4,9 +4,10 @@ import './App.css';
 function App() {
   const [info, setInfo] = useState(null);
   const [cpuUsage, setCpuUsage] = useState(0);
-  const [bgTheme, setBgTheme] = useState('green');
+  const [bgTheme, setBgTheme] = useState('gradient-1');
   const [seo, setSeo] = useState(null);
   const [promoCodes, setPromoCodes] = useState([]);
+  const [copiedIndex, setCopiedIndex] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -23,7 +24,8 @@ function App() {
       const res = await fetch('/api/cpu');
       const data = await res.json();
       setCpuUsage(data.cpu);
-      setBgTheme(data.cpu < 40 ? 'green' : 'orange');
+      const themes = ['gradient-1', 'gradient-2', 'gradient-3'];
+      setBgTheme(themes[Math.floor(Math.random() * themes.length)]);
     } catch (err) {
       console.error('Error fetching CPU:', err);
     }
@@ -40,11 +42,12 @@ function App() {
       setSeo(seoData);
 
       const allCodes = [
-        { code: infoData.promoCode, discount: infoData.promoDiscount, desc: infoData.seoTitle },
+        { code: infoData.promoCode, discount: infoData.promoDiscount, desc: infoData.seoTitle, isMain: true },
         ...(seoData.additionalPromoCodes || []).map(c => ({
           code: c.code,
           discount: c.discount,
-          desc: c.desc
+          desc: c.desc,
+          isMain: false
         }))
       ];
       setPromoCodes(allCodes);
@@ -53,19 +56,28 @@ function App() {
     }
   };
 
+  const copyToClipboard = async (code, index) => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopiedIndex(index);
+      setTimeout(() => setCopiedIndex(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
   useEffect(() => {
     fetchData();
     fetchCpu();
     fetchSeo();
     const infoInterval = setInterval(fetchData, 30000);
-    const cpuInterval = setInterval(fetchCpu, 2000);
+    const cpuInterval = setInterval(fetchCpu, 5000);
     return () => {
       clearInterval(infoInterval);
       clearInterval(cpuInterval);
     };
   }, []);
 
-  // Update document meta tags
   useEffect(() => {
     if (seo) {
       document.title = seo.title;
@@ -89,7 +101,6 @@ function App() {
       updateMeta('twitter:title', seo.ogTitle);
       updateMeta('twitter:description', seo.ogDescription);
 
-      // Canonical
       let canonical = document.querySelector('link[rel="canonical"]');
       if (!canonical) {
         canonical = document.createElement('link');
@@ -97,29 +108,22 @@ function App() {
         document.head.appendChild(canonical);
       }
       canonical.href = seo.canonicalUrl;
-
-      // JSON-LD Schema
-      let schemaScript = document.getElementById('schema-json-ld');
-      if (!schemaScript) {
-        schemaScript = document.createElement('script');
-        schemaScript.id = 'schema-json-ld';
-        schemaScript.type = 'application/ld+json';
-        document.head.appendChild(schemaScript);
-      }
-      // Will be updated separately via /api/schema
     }
   }, [seo]);
 
-  // Update JSON-LD
   useEffect(() => {
     const fetchSchema = async () => {
       try {
         const res = await fetch('/api/schema');
         const schema = await res.json();
-        const script = document.getElementById('schema-json-ld');
-        if (script) {
-          script.textContent = JSON.stringify(schema, null, 2);
+        let script = document.getElementById('schema-json-ld');
+        if (!script) {
+          script = document.createElement('script');
+          script.id = 'schema-json-ld';
+          script.type = 'application/ld+json';
+          document.head.appendChild(script);
         }
+        script.textContent = JSON.stringify(schema, null, 2);
       } catch (err) {
         console.error('Error fetching schema:', err);
       }
@@ -128,74 +132,72 @@ function App() {
   }, []);
 
   return (
-    <div className={`app bg-${bgTheme}`}>
-      <div className="overlay"></div>
+    <div className={`app ${bgTheme}`}>
+      <div className="bg-animation"></div>
       <div className="content">
-        <h1 className="title">{info?.seoTitle || '🎁 Промокоды, Скидки и Купоны'}</h1>
+        {/* Header */}
+        <header className="header">
+          <div className="logo">
+            <span className="logo-icon">🎁</span>
+            <h1 className="title">{seo?.h1 || 'Промокоды, Скидки и Купоны'}</h1>
+          </div>
+          <p className="subtitle">{seo?.description?.substring(0, 100)}...</p>
+        </header>
 
-        <div className="card date-card">
-          <div className="card-label">Дата</div>
-          <div className="card-value">{info?.date}</div>
-        </div>
-
-        <div className="card time-card">
-          <div className="card-label">Время</div>
-          <div className="card-value">{info?.time}</div>
-        </div>
-
-        {info?.promoCode && (
-          <div className="card promo-banner">
-            <div className="card-label">🔥 Ваш промокод на скидку</div>
-            <div className="promo-code">{info.promoCode}</div>
-            <div className="promo-discount">-{info.promoDiscount}%</div>
+        {/* Featured Promo (Main) */}
+        {promoCodes.find(c => c.isMain) && (
+          <div className="featured-promo">
+            <div className="featured-badge">⭐ Лучший промокод дня</div>
+            <div className="featured-code-block">
+              <div className="featured-label">{info?.seoTitle}</div>
+              <button
+                className="featured-code-btn"
+                onClick={() => copyToClipboard(promoCodes.find(c => c.isMain)?.code, -1)}
+              >
+                <span className="code-text">{promoCodes.find(c => c.isMain)?.code}</span>
+                <span className={`copy-icon ${copiedIndex === -1 ? 'copied' : ''}`}>
+                  {copiedIndex === -1 ? '✓' : '📋'}
+                </span>
+              </button>
+              <div className="featured-discount">
+                Скидка до {promoCodes.find(c => c.isMain)?.discount}%
+              </div>
+            </div>
           </div>
         )}
 
-        <div className="cards-row">
-          <div className="card random-card">
-            <div className="card-label">Случайное число</div>
-            <div className="card-value">{info?.randomNum ?? '—'}</div>
-          </div>
-
-          <div className="card ip-card">
-            <div className="card-label">IP адрес</div>
-            <div className="card-value">{info?.ip ?? '—'}</div>
-          </div>
-        </div>
-
-        <div className="card cpu-card">
-          <div className="card-label">Загрузка CPU</div>
-          <div className="card-value cpu-value">
-            {cpuUsage.toFixed(1)}%
-          </div>
-          <div className="cpu-bar-container">
-            <div
-              className={`cpu-bar ${bgTheme}`}
-              style={{ width: `${cpuUsage}%` }}
-            ></div>
-          </div>
-        </div>
-
-        {/* SEO Promo Codes Section */}
-        {seo && (
-          <div className="seo-section">
-            <h2 className="seo-heading">{seo.h2 || 'Лучшие Актуальные Предложения'}</h2>
-
-            {promoCodes.length > 0 && (
-              <div className="promo-grid">
-                {promoCodes.map((code, idx) => (
-                  <div key={idx} className="promo-item">
-                    <div className="promo-item-code">{code.code}</div>
-                    <div className="promo-item-desc">{code.desc}</div>
-                    {code.discount > 0 && (
-                      <div className="promo-item-discount">Скидка {code.discount}%</div>
-                    )}
+        {/* Promo Grid */}
+        {promoCodes.length > 0 && (
+          <div className="promo-section">
+            <h2 className="section-title">{seo?.h2 || 'Все промокоды'}</h2>
+            <div className="promo-grid">
+              {promoCodes.map((code, idx) => (
+                <button
+                  key={idx}
+                  className={`promo-card ${code.isMain ? 'featured' : ''}`}
+                  onClick={() => copyToClipboard(code.code, idx)}
+                >
+                  <div className="promo-card-header">
+                    <span className="promo-discount-badge">
+                      {code.discount > 0 ? `-${code.discount}%` : 'FREE'}
+                    </span>
+                    {code.discount === 0 && <span className="promo-free-badge">🚚</span>}
                   </div>
-                ))}
-              </div>
-            )}
+                  <div className="promo-card-code">{code.code}</div>
+                  <div className="promo-card-desc">{code.desc}</div>
+                  <div className={`copy-status ${copiedIndex === idx ? 'show' : ''}`}>
+                    {copiedIndex === idx ? '✓ Скопировано!' : 'Нажмите для копирования'}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
-            {seo.seoContent && seo.seoContent.map((block, idx) => (
+        {/* SEO Content */}
+        {seo?.seoContent && (
+          <div className="seo-section">
+            {seo.seoContent.map((block, idx) => (
               <div key={idx} className="seo-block">
                 <h3 className="seo-block-heading">{block.heading}</h3>
                 <p className="seo-block-text">{block.text}</p>
@@ -203,6 +205,11 @@ function App() {
             ))}
           </div>
         )}
+
+        {/* Footer */}
+        <footer className="footer">
+          <p>© 2026 Kupon4UK — Все права защищены</p>
+        </footer>
       </div>
     </div>
   );

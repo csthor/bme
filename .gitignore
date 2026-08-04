@@ -5,3 +5,4 @@ ssl/
 .env
 .DS_Store
 Thumbs.db
+.env

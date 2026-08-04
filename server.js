@@ -11,12 +11,137 @@ const app = express();
 const PORT = 3000;
 const SEO_DATA_FILE = join(__dirname, 'seo-data.json');
 
-// --- Admin credentials (change in production) ---
-const ADMIN_USER = 'admin';
-const ADMIN_PASS = 'kzR8vL#mP2qW';
+// --- Admin credentials (load from .env) ---
+const ADMIN_USER = process.env.ADMIN_USER;
+const ADMIN_PASS = process.env.ADMIN_PASS;
+
+if (!ADMIN_USER || !ADMIN_PASS) {
+  console.error('❌ ОШИБКА: Переменные окружения ADMIN_USER и ADMIN_PASS должны быть установлены в .env');
+  console.error('   Пример: ADMIN_USER=admin ADMIN_PASS=your_secure_password');
+  process.exit(1);
+}
 
 // --- Session storage ---
 const sessions = new Map();
+
+// --- Security: Brute-force protection ---
+const loginAttempts = new Map(); // IP -> { count, firstAttempt, lockedUntil }
+const MAX_LOGIN_ATTEMPTS = 5;
+const LOCKOUT_DURATION = 30 * 60 * 1000; // 30 minutes
+const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
+
+// --- Security: Suspicious User-Agents (scanners, AI crawlers, vulnerability scanners) ---
+const SUSPICIOUS_UA_PATTERNS = [
+  // AI/LLM crawlers
+  /chatgpt/i, /gptbot/i, /gemini/i, /claude/i, /perplexity/i,
+  /cohere/i, /llama/i, /bingbot/i, /slurp/i, /duckduckbot/i,
+  // Vulnerability scanners
+  /sqlmap/i, /nikto/i, /nmap/i, /masscan/i, /zgrab/i,
+  /nuclei/i, /subfinder/i, /sublist3r/i, /dirbuster/i,
+  /gobuster/i, /wfuzz/i, /hydra/i, /burpsuite/i,
+  /w3af/i, /acunetix/i, /nessus/i, /openvas/i,
+  /qualys/i, /appscan/i, /arachni/i, /skipfish/i,
+  // Generic scanners
+  /scanner/i, /vulnerability/i, /exploit/i, /hack/i,
+  /python-requests/i, /curl/i, /wget/i,
+  /httpie/i, /axios/i, /node-fetch/i,
+  // Headless browsers for scraping
+  /headless/i, /puppeteer/i, /selenium/i, /playwright/i,
+  /phantomjs/i, /crawl/i, /spider/i, /bot/i, /scraper/i
+];
+
+// --- Security: Rate limiting ---
+const requestHistory = new Map(); // IP -> [{ timestamp }]
+const RATE_LIMIT_MAX = 100; // requests per window
+const RATE_LIMIT_BAN = 300 * 1000; // ban duration for rate limit violation
+
+function getClientIP(req) {
+  return req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
+         req.connection?.remoteAddress ||
+         req.socket?.remoteAddress ||
+         '127.0.0.1';
+}
+
+function isIPLockedOut(ip) {
+  const attempt = loginAttempts.get(ip);
+  if (!attempt) return false;
+
+  // Check if locked out
+  if (attempt.lockedUntil && Date.now() < attempt.lockedUntil) {
+    return true;
+  }
+
+  // Clear expired lockout
+  if (attempt.lockedUntil && Date.now() >= attempt.lockedUntil) {
+    loginAttempts.delete(ip);
+  }
+
+  return false;
+}
+
+function recordLoginAttempt(ip, success) {
+  let attempt = loginAttempts.get(ip);
+  if (!attempt) {
+    attempt = { count: 0, firstAttempt: Date.now(), lockedUntil: null };
+    loginAttempts.set(ip, attempt);
+  }
+
+  if (success) {
+    // Reset on successful login
+    loginAttempts.delete(ip);
+    return;
+  }
+
+  attempt.count++;
+
+  // Exponential backoff: add delay based on attempt count
+  if (attempt.count >= MAX_LOGIN_ATTEMPTS) {
+    attempt.lockedUntil = Date.now() + LOCKOUT_DURATION;
+    console.warn(`🚫 IP ${ip} locked out after ${attempt.count} failed attempts`);
+  }
+}
+
+function isUserAgentSuspicious(ua) {
+  if (!ua) return true; // No User-Agent is suspicious
+  return SUSPICIOUS_UA_PATTERNS.some(pattern => pattern.test(ua));
+}
+
+function isRateLimited(ip) {
+  const history = requestHistory.get(ip);
+  if (!history) return false;
+
+  const now = Date.now();
+  // Remove old entries outside window
+  while (history.length > 0 && now - history[0].timestamp > RATE_LIMIT_WINDOW) {
+    history.shift();
+  }
+
+  if (history.length >= RATE_LIMIT_MAX) {
+    return true;
+  }
+
+  history.push({ timestamp: now });
+  requestHistory.set(ip, history);
+  return false;
+}
+
+// Clean up old sessions every hour
+setInterval(() => {
+  const now = Date.now();
+  for (const [sessionId, session] of sessions.entries()) {
+    if (session.expires < now) {
+      sessions.delete(sessionId);
+    }
+  }
+
+  // Clean old rate limit history
+  for (const [ip, history] of requestHistory.entries()) {
+    const valid = history.filter(h => now - h.timestamp < RATE_LIMIT_WINDOW);
+    if (valid.length === 0) {
+      requestHistory.delete(ip);
+    }
+  }
+}, 60 * 60 * 1000); // Every hour
 
 function generateSessionId() {
   return crypto.randomBytes(32).toString('hex');
@@ -60,6 +185,38 @@ app.use((req, res, next) => {
     });
   }
   req.cookies = cookies;
+  next();
+});
+
+// --- Security Middleware ---
+
+// Check suspicious User-Agent before processing
+app.use((req, res, next) => {
+  const ua = req.headers['user-agent'];
+  
+  if (isUserAgentSuspicious(ua)) {
+    console.log(`🔒 Blocked suspicious request from ${getClientIP(req)}: ${ua || 'none'}`);
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+  
+  // Check rate limiting
+  const ip = getClientIP(req);
+  if (isRateLimited(ip)) {
+    console.warn(`⚠️ Rate limit exceeded for IP: ${ip}`);
+    return res.status(429).json({ error: 'Too many requests' });
+  }
+  
+  next();
+});
+
+// Add security headers to all responses
+app.use((req, res, next) => {
+  res.set('X-Content-Type-Options', 'nosniff');
+  res.set('X-Frame-Options', 'DENY');
+  res.set('X-XSS-Protection', '1; mode=block');
+  res.set('Referrer-Policy', 'no-referrer');
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.set('Pragma', 'no-cache');
   next();
 });
 
@@ -154,16 +311,40 @@ setInterval(getCpuUsage, 2000);
 // --- Auth API Routes ---
 
 app.post('/api/auth/login', (req, res) => {
+  const ip = getClientIP(req);
+  
+  // Check if IP is locked out
+  if (isIPLockedOut(ip)) {
+    const attempt = loginAttempts.get(ip);
+    const remaining = Math.ceil((attempt.lockedUntil - Date.now()) / 1000);
+    return res.status(423).json({ 
+      error: 'Слишком много попыток. Попробуйте через ' + Math.ceil(remaining / 60) + ' мин.' 
+    });
+  }
+  
   const { username, password } = req.body;
+  
   if (username === ADMIN_USER && password === ADMIN_PASS) {
+    recordLoginAttempt(ip, true);
     const sessionId = createSession();
     res.cookie('sessionId', sessionId, {
       httpOnly: true,
-      secure: false, // set to true in production with HTTPS
+      secure: true, // enforce HTTPS
+      sameSite: 'strict',
       maxAge: 24 * 60 * 60 * 1000 // 24 hours
     });
     res.json({ success: true, sessionId });
   } else {
+    recordLoginAttempt(ip, false);
+    const attempt = loginAttempts.get(ip);
+    
+    if (attempt?.count >= MAX_LOGIN_ATTEMPTS && attempt.lockedUntil) {
+      const remaining = Math.ceil((attempt.lockedUntil - Date.now()) / 1000);
+      return res.status(423).json({ 
+        error: 'Слишком много попыток. Попробуйте через ' + Math.ceil(remaining / 60) + ' мин.' 
+      });
+    }
+    
     res.status(401).json({ error: 'Неверный логин или пароль' });
   }
 });
@@ -320,7 +501,7 @@ app.listen(PORT, () => {
   console.log('🔐 АДМИН-ПАНЕЛЬ АВТОРИЗАЦИЯ');
   console.log('='.repeat(50));
   console.log(`Логин: ${ADMIN_USER}`);
-  console.log(`Пароль: ${ADMIN_PASS}`);
+  console.log(`Пароль: *** (из ADMIN_PASS)`);
   console.log('='.repeat(50));
   console.log(`Основной сайт: http://kupon4uk.ru`);
   console.log(`Админ-панель: http://kupon4uk.ru:5433/admin`);

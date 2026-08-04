@@ -1,14 +1,14 @@
-version: '3.8'
-
 services:
   web:
     build: .
     ports:
-      - "80:80"        # HTTP - редирект на HTTPS
-      - "443:443"      # HTTPS - основной сайт (SSL)
-      - "5433:5433"    # HTTPS - административная панель
+      - "80:80"
+      - "443:443"
+      - "5433:5433"
     environment:
       - NODE_ENV=production
+      - ADMIN_USER=${ADMIN_USER}
+      - ADMIN_PASS=
     restart: unless-stopped
     volumes:
       - ./seo-data.json:/app/seo-data.json:rw
