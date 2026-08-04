@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # Express application - доступен на localhost:3000
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+    # Прямой доступ к Express для разработчиков
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./seo-data.json:/app/seo-data.json:rw
+
+  # Nginx reverse proxy - доступ на localhost:80
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"       # HTTP - основной сайт на localhost
+      - "5433:5433"   # Административная панель
+    volumes:
+      - ./nginx.local.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app
+    restart: unless-stopped

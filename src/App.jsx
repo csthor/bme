@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -133,9 +132,6 @@ function App() {
       <div className="overlay"></div>
       <div className="content">
         <h1 className="title">{info?.seoTitle || '🎁 Промокоды, Скидки и Купоны'}</h1>
-
-        {/* Admin Link */}
-        <Link to="/admin" className="admin-link">⚙️ Админ-панель</Link>
 
         <div className="card date-card">
           <div className="card-label">Дата</div>

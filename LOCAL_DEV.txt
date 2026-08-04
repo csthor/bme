@@ -1,0 +1,38 @@
+# ========================================
+# Kupon4UK — Сценарии запуска на localhost
+# ========================================
+
+# === ВАРИАНТ 1: Vite Dev Server + Express (самый простой) ===
+# Терминал 1: Запуск сервера Express
+npm run server
+# Терминал 2: Запуск Vite Dev Server (с проксированием API)
+npm run dev
+# Доступ: http://localhost:5173
+
+# === ВАРИАНТ 2: Docker Compose (полный окружение) ===
+# Запуск с Docker (Nginx + Express на localhost)
+npm run docker:local          # foreground
+npm run docker:local:detached # detached (в фоне)
+npm run docker:local:stop     # остановка
+
+# Доступ: http://localhost/         (основной сайт)
+# Доступ: http://localhost:5433/    (админ-панель)
+
+# === ВАРИАНТ 3: Production Docker ===
+npm run docker:prod           # production на Docker
+npm run docker:prod:detached  # detached
+npm run docker:prod:stop      # остановка
+
+# ========================================
+# Примечания:
+# ========================================
+# 1. Nginx в Docker использует upstream "app:3000" — 
+#    это имя Docker Compose сервиса, работает только внутри Docker network
+#
+# 2. Для локальной разработки на localhost:
+#    - Вариант 1: Vite dev server проксирует /api → localhost:3000
+#    - Вариант 2: Nginx локальный проксирует /api → localhost:3000
+#
+# 3. Админ-панель доступна по:
+#    - http://localhost:5173/admin (вариант 1)
+#    - http://localhost:5433/admin  (вариант 2)

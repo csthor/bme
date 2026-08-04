@@ -1,0 +1,84 @@
+# ========================================
+# SSL-сертификаты для Kupon4UK
+# ========================================
+
+## Текущий статус: Self-Signed сертификат
+
+В проекте сгенерирован self-signed SSL-сертификат при сборке Docker-образа.
+Сертификат валиден 365 дней.
+
+⚠️  Self-signed сертификаты НЕ доверяются браузерами.
+    При посещении сайта появится предупреждение безопасности.
+
+## Для продакшена: Let's Encrypt (Бесплатно)
+
+### Вариант 1: Certbot (рекомендуется)
+
+1. Установите Certbot на сервер:
+   ```bash
+   # Ubuntu/Debian
+   sudo apt update
+   sudo apt install certbot
+   
+   # CentOS/RHEL
+   sudo yum install certbot
+   ```
+
+2. Остановите Docker-контейнер (порт 80 должен быть свободен):
+   ```bash
+   docker compose down
+   ```
+
+3. Запустите Certbot standalone:
+   ```bash
+   sudo certbot certonly --standalone -d kupon4uk.ru -d www.kupon4uk.ru
+   ```
+
+4. Скопируйте сертификаты в проект:
+   ```bash
+   mkdir -p ssl
+   sudo cp /etc/letsencrypt/live/kupon4uk.ru/fullchain.pem ssl/kupon4uk.ru.crt
+   sudo cp /etc/letsencrypt/live/kupon4uk.ru/privkey.pem ssl/kupon4uk.ru.key
+   ```
+
+5. Обновите nginx.conf — замените пути:
+   ```nginx
+   ssl_certificate /app/ssl/kupon4uk.ru.crt;
+   ssl_certificate_key /app/ssl/kupon4uk.ru.key;
+   ```
+
+6. Запустите Docker:
+   ```bash
+   docker compose up -d
+   ```
+
+### Вариант 2: DNS-challenge (если нет доступа к порту 80)
+
+```bash
+sudo certbot certonly --dns-cloudflare \
+  --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini \
+  -d kupon4uk.ru -d www.kupon4uk.ru
+```
+
+### Автоматическое обновление сертификатов
+
+Добавьте в crontab (`crontab -e`):
+```bash
+0 3 * * 1 certbot renew --quiet && docker compose restart nginx
+```
+
+## Структура файлов
+
+```
+├── ssl/                    # Папка для SSL-сертификатов (не коммитить!)
+│   ├── kupon4uk.ru.crt    # Сертификат (fullchain)
+│   └── kupon4uk.ru.key    # Приватный ключ
+├── .dockerignore           # ssl/ исключён из git
+└── Dockerfile              # Генерирует self-signed при сборке
+```
+
+## Безопасность
+
+- Приватный ключ (.key) НЕ должен попадать в публичные репозитории
+- .env файл с путями к сертификатам исключён из git
+- Для production используйте Let's Encrypt или коммерческий SSL

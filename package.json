@@ -8,7 +8,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "server": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "docker:build": "docker build -t kupon4uk .",
+    "docker:run": "docker compose up -d",
+    "docker:stop": "docker compose down",
+    "docker:full": "npm run build && docker build -t kupon4uk . && docker compose up -d"
   },
   "dependencies": {
     "express": "^4.18.2",

@@ -322,5 +322,6 @@ app.listen(PORT, () => {
   console.log(`Логин: ${ADMIN_USER}`);
   console.log(`Пароль: ${ADMIN_PASS}`);
   console.log('='.repeat(50));
-  console.log('Админ-панель доступна по адресу: http://localhost:3000/admin');
+  console.log(`Основной сайт: http://kupon4uk.ru`);
+  console.log(`Админ-панель: http://kupon4uk.ru:5433/admin`);
 });
