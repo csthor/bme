@@ -1,10 +1,32 @@
 version: '3.8'
 
 services:
-  web:
+  # Express application (internal only)
+  app:
     build: .
-    ports:
-      - "3000:3000"
     environment:
       - NODE_ENV=production
     restart: unless-stopped
+    networks:
+      - app-network
+
+  # Nginx reverse proxy (external ports: 80, 443, 5433)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"       # HTTP - основной сайт
+      - "443:443"     # HTTPS - основной сайт (требуются SSL сертификаты)
+      - "5433:5433"   # Административная панель (доступ только изнутри/localhost)
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      # Для HTTPS раскомментируйте и добавьте SSL сертификаты:
+      # - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
