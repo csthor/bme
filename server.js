@@ -1,8 +1,12 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 import crypto from 'crypto';
+
+// Load environment variables from .env
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = join(__filename, '..');

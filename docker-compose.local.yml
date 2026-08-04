@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     environment:
       - NODE_ENV=development
+      - ADMIN_USER=${ADMIN_USER}
+      - ADMIN_PASS=${ADMIN_PASS}
     restart: unless-stopped
     # Прямой доступ к Express для разработчиков
     ports:

@@ -15,7 +15,10 @@
     "docker:full": "npm run build && docker build -t kupon4uk . && docker compose up -d"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "framer-motion": "^12.43.0",
+    "lucide-react": "^1.28.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1"
