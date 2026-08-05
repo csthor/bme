@@ -1,172 +1,128 @@
-import { motion } from 'framer-motion';
-import { Sparkles, CheckCircle, Clock, ArrowRight } from 'lucide-react';
-
-const features = [
-  { icon: CheckCircle, text: 'Проверенные купоны', color: '#6C4DFF' },
-  { icon: Sparkles, text: 'Более 10000 предложений', color: '#FF7A00' },
-  { icon: Clock, text: 'Обновления каждый день', color: '#8B5CF6' },
-  { icon: ArrowRight, text: 'Экономия денег', color: '#10B981' },
-];
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, Shield, Zap, TrendingUp, Star, ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const stats = [
+    { value: '12,000+', label: 'Промокодов', icon: Zap, color: '#6C4DFF' },
+    { value: '500+', label: 'Магазинов', icon: Shield, color: '#10B981' },
+    { value: '85%', label: 'Работают', icon: TrendingUp, color: '#F59E0B' },
+    { value: '2M+', label: 'Экономии', icon: Star, color: '#EF4444' },
+  ];
+
   return (
-    <section className="pt-8 sm:pt-16 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden" aria-label="Главный баннер">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left content */}
+    <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-20 px-4 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-violet-50 via-white to-orange-50 opacity-70" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-violet-200 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-200 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2" />
+
+      <div className="relative max-w-7xl mx-auto">
+        {/* Hero Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-4xl mx-auto"
+        >
+          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-violet-100 text-violet-700 rounded-full text-sm font-semibold mb-6"
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#111827] leading-[1.1] mb-6"
-            >
-              Промокоды,
-              <br />
-              <span className="bg-gradient-to-r from-[#6C4DFF] to-[#8B5CF6] bg-clip-text text-transparent">скидки</span>
-              <br />
-              и купоны
-              <br />
-              для вашего
-              <br />
-              шопинга
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-base sm:text-lg text-[#6B7280] mb-8 sm:mb-10 max-w-lg leading-relaxed"
-            >
-              Тысячи актуальных промокодов от популярных магазинов.
-            </motion.p>
-
-            {/* Features */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10"
-            >
-              {features.map((f, i) => {
-                const Icon = f.icon;
-                return (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2.5 px-4 py-3 bg-white rounded-2xl border border-[#ECECF3] shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <Icon className="w-5 h-5 flex-shrink-0" style={{ color: f.color }} />
-                    <span className="text-sm font-medium text-[#111827]">{f.text}</span>
-                  </div>
-                );
-              })}
-            </motion.div>
+            <Zap className="w-4 h-4" />
+            Обновлено сегодня — 156 новых промокодов
           </motion.div>
 
-          {/* Right - 3D Illustration */}
+          {/* Main heading */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+            Экономьте до 70% на
+            <br />
+            <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-orange-500 bg-clip-text text-transparent">
+              каждой покупке
+            </span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-lg sm:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Тысячи проверенных промокодов от 500+ магазинов. Работает сегодня — экономит всегда.
+          </p>
+
+          {/* Search */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
-            className="relative hidden lg:block"
-            aria-hidden="true"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4 }}
+            className="max-w-2xl mx-auto mb-12"
           >
-            <div className="relative w-full aspect-square max-w-xl mx-auto">
-              {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#6C4DFF]/10 via-[#8B5CF6]/10 to-[#FF7A00]/10 rounded-full blur-3xl" />
-
-              {/* Main floating card - Gift box */}
-              <motion.div
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 bg-gradient-to-br from-[#6C4DFF] to-[#8B5CF6] rounded-3xl shadow-2xl shadow-[#6C4DFF]/30 flex items-center justify-center"
-              >
-                <span className="text-7xl sm:text-8xl">🎁</span>
-                <div className="absolute -top-2 -right-2 w-20 h-20 bg-[#FF7A00] rounded-2xl flex items-center justify-center shadow-lg shadow-[#FF7A00]/30">
-                  <span className="text-white text-xl font-bold">-50%</span>
-                </div>
-              </motion.div>
-
-              {/* Floating packages */}
-              <motion.div
-                animate={{ y: [0, 12, 0], rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-                className="absolute top-6 right-12 bg-white rounded-2xl shadow-xl shadow-black/10 p-4 border border-[#ECECF3]"
-              >
-                <span className="text-4xl">📦</span>
-                <div className="text-xs text-[#6B7280] mt-1 text-center">Доставка</div>
-              </motion.div>
-
-              {/* Shopping cart */}
-              <motion.div
-                animate={{ y: [0, -18, 0], rotate: [0, -8, 8, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-                className="absolute bottom-20 -left-4 bg-white rounded-2xl shadow-xl shadow-black/10 p-4 border border-[#ECECF3]"
-              >
-                <span className="text-4xl">🛒</span>
-                <div className="text-xs text-[#6B7280] mt-1 text-center">В корзину</div>
-              </motion.div>
-
-              {/* Percentage badges */}
-              <motion.div
-                animate={{ y: [0, -10, 0], x: [0, 8, -8, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                className="absolute top-1/4 -left-8 bg-white rounded-2xl shadow-xl shadow-black/10 px-4 py-3 border border-[#ECECF3]"
-              >
-                <div className="text-2xl font-bold text-[#FF7A00]">-70%</div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-                className="absolute bottom-8 right-8 bg-gradient-to-br from-[#6C4DFF] to-[#8B5CF6] rounded-2xl shadow-xl shadow-[#6C4DFF]/30 px-4 py-3"
-              >
-                <div className="text-xl font-bold text-white">-30%</div>
-              </motion.div>
-
-              {/* Discount tags */}
-              <motion.div
-                animate={{ y: [0, -20, 0], rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
-                className="absolute top-12 left-8 bg-white rounded-2xl shadow-xl shadow-black/10 px-4 py-3 border border-[#ECECF3]"
-              >
-                <span className="text-3xl">🏷️</span>
-              </motion.div>
-
-              {/* Sparkles */}
-              {[...Array(8)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{ opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                  className="absolute text-sm"
-                  style={{
-                    top: `${15 + Math.random() * 70}%`,
-                    left: `${5 + Math.random() * 90}%`,
-                  }}
-                >
-                  ✨
-                </motion.div>
-              ))}
-
-              {/* Gradient orbs */}
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-[#FF7A00] to-[#F59E0B] rounded-full opacity-20 blur-xl"
+            <div className="relative group">
+              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-violet-500 transition-colors" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Найдите магазин или промокод..."
+                className="w-full pl-14 pr-6 py-5 bg-white border-2 border-slate-200 rounded-2xl text-base shadow-lg shadow-slate-200/50 focus:border-violet-500 focus:shadow-xl focus:shadow-violet-200/30 transition-all outline-none"
               />
-              <motion.div
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute top-1/4 left-1/4 w-16 h-16 bg-gradient-to-br from-[#6C4DFF] to-[#8B5CF6] rounded-full opacity-20 blur-xl"
-              />
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                <kbd className="hidden sm:inline-flex items-center px-3 py-1.5 bg-slate-100 border border-slate-300 rounded-lg text-xs text-slate-600">
+                  ⌘K
+                </kbd>
+              </div>
             </div>
           </motion.div>
-        </div>
+
+          {/* Stats Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.6 }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto"
+          >
+            {stats.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.7 + i * 0.1 }}
+                  className="bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl p-4 hover:shadow-lg hover:border-slate-300 transition-all"
+                >
+                  <Icon className="w-6 h-6 mb-2" style={{ color: stat.color }} />
+                  <div className="text-2xl font-bold text-slate-900">{stat.value}</div>
+                  <div className="text-sm text-slate-600">{stat.label}</div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isVisible ? { opacity: 1 } : {}}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-0 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex flex-col items-center gap-2 text-slate-400"
+          >
+            <span className="text-sm">Листайте вниз</span>
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -2,6 +2,16 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { categories as catData } from '../data/categories';
 
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.06 } }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', damping: 22, stiffness: 300 } }
+};
+
 export default function CategoryCarousel({ onCategorySelect }) {
   const [selected, setSelected] = useState('all');
 
@@ -11,54 +21,53 @@ export default function CategoryCarousel({ onCategorySelect }) {
   };
 
   return (
-    <section id="categories" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8" aria-label="Категории">
+    <section id="categories" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8" aria-label="Категории">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-8"
+          className="text-center mb-10"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] mb-2">Категории</h2>
-          <p className="text-[#6B7280]">Найдите скидки для любого случая</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] dark:text-[#F1F5F9] mb-3 tracking-tight">
+            Категории
+          </h2>
+          <p className="text-[#475569] dark:text-[#94A3B8] text-[15px] max-w-md mx-auto">
+            Найдите скидки для любого случая
+          </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={container}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="overflow-x-auto pb-4 scrollbar-hide"
+          className="flex gap-2.5 flex-wrap justify-center"
         >
-          <div className="flex gap-3 min-w-max px-1 justify-center flex-wrap">
-            {catData.map((cat, i) => {
-              const isSelected = selected === cat.id;
-              return (
-                <motion.button
-                  key={cat.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  whileHover={{ scale: 1.05, y: -4 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => handleSelect(cat.id)}
-                  className={`flex flex-col items-center gap-2.5 px-5 py-4 rounded-2xl transition-all duration-300 min-w-[100px] sm:min-w-[110px] ${
-                    isSelected
-                      ? 'bg-[#6C4DFF] text-white shadow-xl shadow-[#6C4DFF]/30'
-                      : 'bg-white text-[#111827] border border-[#ECECF3] hover:border-[#6C4DFF]/50 hover:shadow-lg hover:shadow-[#6C4DFF]/5'
-                  }`}
-                  aria-pressed={isSelected}
-                >
-                  <span className="text-2xl sm:text-3xl">{cat.icon}</span>
-                  <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">{cat.name}</span>
-                  <span className={`text-xs ${isSelected ? 'text-white/70' : 'text-[#9CA3AF]'}`}>
-                    {cat.count}
-                  </span>
-                </motion.button>
-              );
-            })}
-          </div>
+          {catData.map((cat) => {
+            const isSelected = selected === cat.id;
+            return (
+              <motion.button
+                key={cat.id}
+                variants={item}
+                whileHover={{ scale: 1.05, y: -4 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleSelect(cat.id)}
+                className={`flex flex-col items-center gap-2 px-5 py-4 rounded-2xl transition-all duration-300 min-w-[90px] sm:min-w-[100px] ${
+                  isSelected
+                    ? 'bg-[#7C5CFF] text-white shadow-lg shadow-[#7C5CFF]/25'
+                    : 'bg-white/70 dark:bg-[#131728]/70 backdrop-blur-sm text-[#0F172A] dark:text-[#F1F5F9] border border-[#E5E7EB] dark:border-[#1E293B] hover:border-[#7C5CFF]/40 hover:shadow-md'
+                }`}
+                aria-pressed={isSelected}
+              >
+                <span className="text-2xl sm:text-3xl">{cat.icon}</span>
+                <span className="text-[12px] sm:text-[13px] font-semibold whitespace-nowrap">{cat.name}</span>
+                <span className={`text-[11px] ${isSelected ? 'text-white/70' : 'text-[#94A3B8]'}`}>
+                  {cat.count}
+                </span>
+              </motion.button>
+            );
+          })}
         </motion.div>
       </div>
     </section>

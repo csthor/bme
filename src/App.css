@@ -1,29 +1,28 @@
-/* ============================================
-   Kupon4UK - Premium Coupon Aggregator
-   Modern, minimal, premium design
-   ============================================ */
+@import "tailwindcss";
 
-/* CSS Variables */
 :root {
-  --primary: #6C4DFF;
-  --primary-light: #8B5CF6;
-  --primary-dark: #5B3FE6;
-  --accent: #FF7A00;
+  --primary: #7C5CFF;
+  --primary-dark: #5E3EEB;
   --bg: #FAFAFC;
-  --white: #FFFFFF;
-  --text: #111827;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
-  --border: #ECECF3;
-  --radius: 20px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-  --shadow: 0 4px 20px rgba(0,0,0,0.06);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
-  --shadow-xl: 0 20px 60px rgba(0,0,0,0.12);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --bg-elevated: #FFFFFF;
+  --text: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border: #E5E7EB;
+  --success: #10B981;
 }
 
-/* Reset & Base */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0B0F1A;
+    --bg-elevated: #131728;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --border: #1E293B;
+  }
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -32,8 +31,6 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -41,72 +38,23 @@ body {
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  border-radius: 9999px;
 }
 
-/* Selection */
-::selection {
-  background: var(--primary);
-  color: white;
-}
-
-/* Hide scrollbar for carousel */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* =====================
-   Header
-   ===================== */
-header {
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-}
-
-/* =====================
-   Animations
-   ===================== */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(108, 77, 255, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(108, 77, 255, 0.5); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* =====================
-   Buttons
-   ===================== */
 button, [role="button"] {
   cursor: pointer;
   border: none;
@@ -115,145 +63,17 @@ button, [role="button"] {
 }
 
 button:focus-visible,
-input:focus-visible,
-a:focus-visible {
+input:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
-  border-radius: inherit;
 }
 
-/* =====================
-   Typography
-   ===================== */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-/* =====================
-   Card hover effects (Glassmorphism)
-   ===================== */
-.card-hover {
-  transition: var(--transition);
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-}
-
-.card-hover:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: var(--shadow-xl);
-}
-
-/* =====================
-   Glassmorphism
-   ===================== */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* =====================
-   Gradient text
-   ===================== */
-.gradient-text {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* =====================
-   Responsive
-   ===================== */
-@media (max-width: 1024px) {
-  header .max-w-7xl {
-    padding: 0 1.5rem;
-  }
 }
 
 @media (max-width: 768px) {
-  :root {
-    --radius: 16px;
-  }
-  
-  h1 {
-    font-size: 2.5rem !important;
-  }
-  
-  h2 {
-    font-size: 2rem !important;
-  }
-}
-
-/* =====================
-   Loading skeleton
-   ===================== */
-.skeleton {
-  background: linear-gradient(90deg, var(--border) 25%, #f0f0f5 50%, var(--border) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s ease-in-out infinite;
-  border-radius: 8px;
-}
-
-/* =====================
-   Utility classes
-   ===================== */
-.container {
-  max-width: 7rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.gap-responsive {
-  gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .gap-responsive {
-    gap: 2rem;
-  }
-}
-
-/* =====================
-   Focus & Accessibility
-   ===================== */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* =====================
-   Print styles
-   ===================== */
-@media print {
-  header, footer {
-    display: none;
-  }
-}
-
-/* =====================
-   Mobile responsive fixes
-   ===================== */
-@media (max-width: 640px) {
-  .grid {
-    gap: 1rem;
-  }
-  
-  section {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
+  h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.5rem !important; }
 }

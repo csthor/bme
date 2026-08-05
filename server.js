@@ -47,7 +47,6 @@ const SUSPICIOUS_UA_PATTERNS = [
   /qualys/i, /appscan/i, /arachni/i, /skipfish/i,
   // Generic scanners
   /scanner/i, /vulnerability/i, /exploit/i, /hack/i,
-  /python-requests/i, /curl/i, /wget/i,
   /httpie/i, /axios/i, /node-fetch/i,
   // Headless browsers for scraping
   /headless/i, /puppeteer/i, /selenium/i, /playwright/i,
