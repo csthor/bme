@@ -14,7 +14,6 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3.6.0
         env:
-          ACTIONS_RUNTIME_URL: https://actions.githubusercontent.com
           ACTIONS_RUNTIME_TOKEN: ${{ secrets.GHTOKEN }}
       - name: Checkout code
         uses: actions/checkout@v4
