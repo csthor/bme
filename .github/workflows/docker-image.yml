@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+      - "5433:5433"
+    environment:
+      - NODE_ENV=production
+      - ADMIN_USER=${ADMIN_USER}
+      - ADMIN_PASS=${ADMIN_PASS}
+    restart: unless-stopped
+    volumes:
+      - ./ssl:/etc/nginx/ssl:ro
+      - ./seo-data.json:/app/seo-data.json:rw
