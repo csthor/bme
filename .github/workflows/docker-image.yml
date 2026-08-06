@@ -1,11 +1,12 @@
 name: Docker Image CI
-
 on:
   push:
     branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
-
+env:
+  IMAGE_NAME: toptuji/kupon4uk
+  VERSION_PREFIX: D-00-01-
 jobs:
   build_job:
     runs-on: ubuntu-latest
@@ -23,8 +24,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ secrets.DOCKERUSER }}
+          password: ${{ secrets.DOCKERPWD }}
 
       - name: Build and Push Docker image
         uses: docker/build-push-action@v5
@@ -34,5 +35,5 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            toptuji/kupon4uk:D-00-01-${{ github.run_number }}
-            toptuji/kupon4uk:latest
+            ${{ env.IMAGE_NAME }}:${{ env.VERSION_PREFIX }}-${{ github.run_number }}
+            ${{ env.IMAGE_NAME }}:latest
