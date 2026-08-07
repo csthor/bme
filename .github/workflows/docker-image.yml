@@ -1,9 +1,9 @@
 name: Docker Image CI
 on:
   push:
-    branches: [ "develop" ]
+    branches: ["develop"]
   pull_request:
-    branches: [ "develop" ]
+    branches: ["develop"]
 env:
   IMAGE_NAME: toptuji/kupon4uk
   VERSION_PREFIX: D-00-01-
@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
@@ -33,3 +33,13 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:${{ env.VERSION_PREFIX }}-${{ github.run_number }}
             ${{ env.IMAGE_NAME }}:latest
+      - name: Deploy on remote
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSHUSERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          port: ${{ secrets.SSHPORT }}
+          script: |
+            whoami
+            ls -al
