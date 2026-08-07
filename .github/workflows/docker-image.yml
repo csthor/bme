@@ -42,5 +42,5 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.SSHPORT }}
           script: |
-            sed -i "s|^\s*image:.*|image: ${{ env.IMAGE_NAME }}:${{ env.VERSION_PREFIX }}-${{ github.run_number }}|" /opt/kupon4UK/docker-compose.yml.test
+            sed -i "s|^\s*image:.*|image: ${{ env.IMAGE_NAME }}:${{ env.VERSION_PREFIX }}-${{ github.run_number }}|" /opt/kupon4UK/docker-compose.yml
             cd /opt/kupon4UK/ && docker compose restart
