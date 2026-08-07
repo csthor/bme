@@ -6,7 +6,7 @@ on:
     branches: ["develop"]
 env:
   IMAGE_NAME: toptuji/kupon4uk
-  VERSION_PREFIX: D-00-01-
+  VERSION_PREFIX: D-00-01
 jobs:
   build_job:
     runs-on: ubuntu-latest
@@ -16,18 +16,19 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
-
+        with: 
+          context: --file Dockerfile
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERUSER }}
-          password: ${{ secrets.DOCKERPWD }}
+          password: ${{ secrets.DOCKERTOKENRW }}
 
       - name: Build and Push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./docker-compose.yml
+          file: ./Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
