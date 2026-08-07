@@ -1,6 +1,7 @@
 services:
   web:
     build: .
+    dockerfile: Dockerfile
     ports:
       - "80:80"
       - "443:443"
