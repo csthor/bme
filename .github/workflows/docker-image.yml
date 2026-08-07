@@ -6,7 +6,7 @@ on:
     branches: [ "develop" ]
 env:
   IMAGE_NAME: toptuji/kupon4uk
-  VERSION_PREFIX: D-00-01-
+  VERSION_PREFIX: D-00-01
 jobs:
   build_job:
     runs-on: ubuntu-latest
