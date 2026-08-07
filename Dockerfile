@@ -18,6 +18,8 @@ RUN npm run build
 # ============================================
 FROM nginx:alpine
 
+WORKDIR /app
+
 # Install Node.js and OpenSSL
 RUN apk add --no-cache nodejs npm openssl
 

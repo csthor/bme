@@ -58,10 +58,6 @@ export default function Header() {
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center gap-3">
-              <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-violet-600 transition-colors">
-                <Search className="w-4 h-4" />
-                <span>Поиск</span>
-              </button>
               <button className="px-5 py-2.5 bg-violet-600 text-white text-sm font-semibold rounded-xl hover:bg-violet-700 transition-colors shadow-md">
                 Войти
               </button>

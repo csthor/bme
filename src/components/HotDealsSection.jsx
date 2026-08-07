@@ -45,40 +45,39 @@ export default function HotDealsSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
         >
           {hotDeals.map((deal, i) => (
             <motion.div
               key={deal.id}
               variants={item}
-              whileHover={{ y: -6 }}
-              className="relative rounded-2xl overflow-hidden cursor-pointer group shadow-lg hover:shadow-2xl transition-all duration-300"
-              style={{ minHeight: '200px' }}
+              whileHover={{ y: -4 }}
+              className="relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-xl transition-all duration-300"
+              style={{ minHeight: '140px' }}
             >
               {/* Background */}
               <div className="absolute inset-0" style={{ background: deal.color }} />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
               
               {/* Content */}
-              <div className="relative p-6 h-full flex flex-col justify-between text-white">
+              <div className="relative p-4 h-full flex flex-col justify-between text-white">
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="px-3 py-1.5 bg-white/20 backdrop-blur-sm rounded-lg text-xs font-bold">
+                  <div className="flex items-center gap-1.5 mb-2 flex-wrap">
+                    <div className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-md text-[10px] font-bold">
                       {deal.store}
                     </div>
                     {deal.discount > 0 && (
-                      <div className="px-3 py-1.5 bg-white/20 backdrop-blur-sm rounded-lg text-xs font-bold">
+                      <div className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-md text-[10px] font-bold">
                         До -{deal.discount}%
                       </div>
                     )}
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">{deal.title}</h3>
-                  <p className="text-white/80 text-sm leading-relaxed">{deal.description}</p>
+                  <h3 className="text-lg font-bold mb-1 line-clamp-2">{deal.title}</h3>
                 </div>
                 
-                <button className="mt-4 flex items-center gap-2 px-5 py-2.5 bg-white text-slate-900 rounded-xl font-semibold text-sm hover:bg-white/90 transition-colors w-fit">
+                <button className="mt-2 flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-900 rounded-lg font-semibold text-xs hover:bg-white/90 transition-colors w-fit">
                   Подробнее
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-3 h-3" />
                 </button>
               </div>
             </motion.div>
