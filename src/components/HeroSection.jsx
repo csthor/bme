@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, CheckCircle, Clock, Star, ArrowRight } from 'lucide-react';
+import { Sparkles, CheckCircle, Clock, Star, ArrowRight, Gift, ShoppingCart } from 'lucide-react';
 
 const features = [
   { icon: CheckCircle, text: 'Проверенные купоны', color: '#6C4DFF' },
@@ -140,7 +140,7 @@ export default function HeroSection() {
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                 className="absolute bottom-16 left-4 bg-white rounded-2xl shadow-xl shadow-black/10 p-4 border border-[#ECECF3]"
               >
-                <div className="text-3xl mb-1">🎁</div>
+                <Gift className="w-8 h-8 mb-1 text-[#6C4DFF]" aria-hidden="true" />
                 <div className="text-xs font-medium text-[#111827]">Подарки</div>
               </motion.div>
 
@@ -150,7 +150,7 @@ export default function HeroSection() {
                 transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                 className="absolute bottom-8 right-16 bg-white rounded-2xl shadow-xl shadow-black/10 p-4 border border-[#ECECF3]"
               >
-                <div className="text-3xl mb-1">🛒</div>
+                <ShoppingCart className="w-8 h-8 mb-1 text-[#6C4DFF]" aria-hidden="true" />
                 <div className="text-xs font-medium text-[#111827]">В корзину</div>
               </motion.div>
 
@@ -175,7 +175,7 @@ export default function HeroSection() {
                     left: `${10 + Math.random() * 80}%`,
                   }}
                 >
-                  ✨
+                  <Sparkles className="w-4 h-4 text-[#6C4DFF]" aria-hidden="true" />
                 </motion.div>
               ))}
             </div>

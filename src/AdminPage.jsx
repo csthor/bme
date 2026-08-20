@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Admin.css';
+import { Settings, Save, LogOut, FileText, Ticket, Eye, Lightbulb } from 'lucide-react';
 
 function AdminPage() {
   const [activeTab, setActiveTab] = useState('seo');
@@ -140,16 +141,16 @@ function AdminPage() {
   return (
     <div className="admin-page">
       <div className="admin-header">
-        <h1>⚙️ Админ-панель SEO</h1>
+        <h1 className="flex items-center gap-2"><Settings className="w-5 h-5" aria-hidden="true" /> Админ-панель SEO</h1>
         <div className="admin-header-actions">
           <button
             className={`btn-save ${saved ? 'saved' : ''}`}
             onClick={handleSave}
             disabled={loading}
           >
-            {loading ? 'Сохранение...' : saved ? '✓ Сохранено!' : '💾 Сохранить'}
+            {loading ? 'Сохранение...' : saved ? 'Сохранено' : <><Save className="w-4 h-4 inline mr-1" aria-hidden="true" />Сохранить</>}
           </button>
-          <button className="btn-logout" onClick={handleLogout}>🚪 Выйти</button>
+          <button className="btn-logout" onClick={handleLogout}><LogOut className="w-4 h-4 inline mr-1" aria-hidden="true" />Выйти</button>
         </div>
       </div>
 
@@ -159,25 +160,25 @@ function AdminPage() {
             className={`tab ${activeTab === 'seo' ? 'active' : ''}`}
             onClick={() => setActiveTab('seo')}
           >
-            📝 SEO Мета-данные
+            <FileText className="w-4 h-4 inline mr-1" aria-hidden="true" /> SEO Мета-данные
           </button>
           <button
             className={`tab ${activeTab === 'promo' ? 'active' : ''}`}
             onClick={() => setActiveTab('promo')}
           >
-            🎟️ Промокоды
+            <Ticket className="w-4 h-4 inline mr-1" aria-hidden="true" /> Промокоды
           </button>
           <button
             className={`tab ${activeTab === 'content' ? 'active' : ''}`}
             onClick={() => setActiveTab('content')}
           >
-            📄 SEO Контент
+            <FileText className="w-4 h-4 inline mr-1" aria-hidden="true" /> SEO Контент
           </button>
           <button
             className={`tab ${activeTab === 'preview' ? 'active' : ''}`}
             onClick={() => setActiveTab('preview')}
           >
-            👁️ Предпросмотр
+            <Eye className="w-4 h-4 inline mr-1" aria-hidden="true" /> Предпросмотр
           </button>
         </nav>
 
@@ -404,7 +405,7 @@ function AdminPage() {
               </div>
 
               <div className="seo-tips">
-                <h3>💡 Советы по SEO</h3>
+                <h3><Lightbulb className="w-4 h-4 inline mr-1" aria-hidden="true" /> Советы по SEO</h3>
                 <ul>
                   <li>Title должен содержать ключевые слова: <strong>промокод, скидка, купон</strong></li>
                   <li>Description должен быть уникальным и содержать призыв к действию</li>

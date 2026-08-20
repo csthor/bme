@@ -1,4 +1,4 @@
-// Категории с иконками
+// Категории используют имена бесплатных Lucide-иконок.
 export const categories = [
   { id: 'all', name: 'Все', icon: 'grid', count: 1247 },
   { id: 'electronics', name: 'Электроника', icon: 'smartphone', count: 342 },
@@ -13,16 +13,8 @@ export const categories = [
 ];
 
 const categoryIcons = {
-  grid: '📦',
-  smartphone: '📱',
-  shirt: '👕',
-  sparkles: '✨',
-  home: '🏠',
-  car: '🚗',
-  plane: '✈️',
-  dumbbell: '💪',
-  book: '📚',
-  heart: '❤️'
+  grid: 'Grid2X2', smartphone: 'Smartphone', shirt: 'Shirt', sparkles: 'Sparkles',
+  home: 'House', car: 'Car', plane: 'Plane', dumbbell: 'Dumbbell', book: 'BookOpen', heart: 'Heart'
 };
 
 export { categoryIcons };

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import {
   Mail, MapPin, Phone,
-  Store, TrendingUp, HelpCircle, FileText, Heart
+  Store, TrendingUp, HelpCircle, FileText, Heart, Sparkles, Smartphone, MessageCircle, Camera
 } from 'lucide-react';
 
 const footerLinks = {
@@ -20,7 +20,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-4 lg:col-span-1 mb-4 lg:mb-0">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-[#6C4DFF] to-[#8B5CF6] rounded-xl flex items-center justify-center">
-                <span className="text-white text-lg">✨</span>
+                <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
               </div>
               <span className="text-xl font-bold">
                 Kupon<span className="text-[#6C4DFF]">4</span>UK
@@ -30,13 +30,13 @@ export default function Footer() {
               Лучший агрегатор промокодов и скидок в России. Экономьте с каждым разом.
             </p>
             <div className="flex gap-3">
-              {['📱', '💬', '📷'].map((emoji, i) => (
+              {[Smartphone, MessageCircle, Camera].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
                   className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#6C4DFF] flex items-center justify-center transition-all duration-300 text-lg"
                 >
-                  {emoji}
+                  <Icon className="w-5 h-5" aria-hidden="true" />
                 </a>
               ))}
             </div>

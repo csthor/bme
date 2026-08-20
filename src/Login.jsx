@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Admin.css';
+import { LockKeyhole } from 'lucide-react';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -38,7 +39,7 @@ function Login() {
     <div className="login-page">
       <div className="login-container">
         <div className="login-header">
-          <h1>🔐 Kupon4UK</h1>
+          <h1 className="flex items-center justify-center gap-2"><LockKeyhole className="w-6 h-6" aria-hidden="true" /> Kupon4UK</h1>
           <p>Вход в админ-панель</p>
         </div>
 

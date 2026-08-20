@@ -101,7 +101,7 @@ function recordLoginAttempt(ip, success) {
   // Exponential backoff: add delay based on attempt count
   if (attempt.count >= MAX_LOGIN_ATTEMPTS) {
     attempt.lockedUntil = Date.now() + LOCKOUT_DURATION;
-    console.warn(`🚫 IP ${ip} locked out after ${attempt.count} failed attempts`);
+    console.warn(`IP ${ip} locked out after ${attempt.count} failed attempts`);
   }
 }
 
@@ -199,7 +199,7 @@ app.use((req, res, next) => {
   // Check rate limiting
   const ip = getClientIP(req);
   if (isRateLimited(ip)) {
-    console.warn(`⚠️ Rate limit exceeded for IP: ${ip}`);
+    console.warn(`Rate limit exceeded for IP: ${ip}`);
     return res.status(429).json({ error: 'Too many requests' });
   }
   
@@ -226,7 +226,7 @@ const defaultSeo = {
   ogDescription: 'Тысячи проверенных промокодов и купонов. Актуальные акции каждый день!',
   ogImage: '/og-image.png',
   canonicalUrl: 'https://kupon4uk.ru',
-  h1: '🎁 Промокоды, Скидки и Купоны',
+  h1: 'Промокоды, Скидки и Купоны',
   h2: 'Лучшие Актуальные Предложения',
   seoContent: [
     {
@@ -495,7 +495,7 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log('='.repeat(50));
-  console.log('🔐 АДМИН-ПАНЕЛЬ АВТОРИЗАЦИЯ');
+  console.log('АДМИН-ПАНЕЛЬ: АВТОРИЗАЦИЯ');
   console.log('='.repeat(50));
   console.log(`Логин: ${ADMIN_USER}`);
   console.log(`Пароль: *** (из ADMIN_PASS)`);
