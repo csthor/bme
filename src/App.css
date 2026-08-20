@@ -46,6 +46,15 @@
   scroll-behavior: auto !important;
 }
 
+/* Framer Motion initial states must not hide content when motion is disabled. */
+[style*="opacity: 0"] {
+  opacity: 1 !important;
+}
+
+[style*="transform"] {
+  transform: none !important;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
