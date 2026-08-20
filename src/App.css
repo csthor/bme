@@ -56,6 +56,20 @@ body {
   min-height: 100vh;
 }
 
+/* Shared page container: keeps every section centered on wide screens. */
+main > section > .max-w-7xl,
+header .max-w-7xl,
+footer > .max-w-7xl {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+}
+
+main > section,
+footer {
+  width: 100%;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -175,7 +189,7 @@ h1, h2, h3, h4, h5, h6 {
    ===================== */
 @media (max-width: 1024px) {
   header .max-w-7xl {
-    padding: 0 1.5rem;
+    padding-inline: var(--page-padding-tablet);
   }
 }
 
