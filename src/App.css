@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ============================================
    Kupon4UK - Premium Coupon Aggregator
    Modern, minimal, premium design
