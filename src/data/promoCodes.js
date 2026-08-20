@@ -3,7 +3,7 @@ export const promoCodes = [
   {
     id: 1,
     store: 'Ozon',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/5363/5363998.png',
+    storeLogo: 'https://www.ozon.ru/favicon.ico',
     code: 'OZON2026X',
     discount: 15,
     description: 'Скидка 15% на первый заказ от 3000₽',
@@ -15,7 +15,7 @@ export const promoCodes = [
   {
     id: 2,
     store: 'DNS',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/2888/2888614.png',
+    storeLogo: 'https://www.dns-shop.ru/favicon.ico',
     code: 'DNS-TECH-20',
     discount: 20,
     description: 'Скидка 20% на компьютерные комплектующие',
@@ -27,7 +27,7 @@ export const promoCodes = [
   {
     id: 3,
     store: 'Ламод',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/2933/2933828.png',
+    storeLogo: 'https://www.lamoda.ru/favicon.ico',
     code: 'LAMODA-NEW',
     discount: 25,
     description: 'Скидка 25% на весеннюю коллекцию',
@@ -39,7 +39,7 @@ export const promoCodes = [
   {
     id: 4,
     store: 'М.Видео',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/2331/2331974.png',
+    storeLogo: 'https://www.mvideo.ru/favicon.ico',
     code: 'MV-TRAVEL',
     discount: 10,
     description: 'Скидка 10% на смартфоны и аксессуары',
@@ -51,7 +51,7 @@ export const promoCodes = [
   {
     id: 5,
     store: 'Золотое Яблоко',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/2947/2947948.png',
+    storeLogo: 'https://goldapple.ru/favicon.ico',
     code: 'ZLATO-GLOW',
     discount: 30,
     description: 'Скидка 30% на бренды косметики',
@@ -63,7 +63,7 @@ export const promoCodes = [
   {
     id: 6,
     store: 'Ситимобил',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/2975/2975972.png',
+    storeLogo: 'https://city-mobil.ru/favicon.ico',
     code: 'CITY-FRIDE',
     discount: 40,
     description: 'Скидка 40% на первые 5 поездок',
@@ -75,7 +75,7 @@ export const promoCodes = [
   {
     id: 7,
     store: 'Wildberries',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/3064/3064197.png',
+    storeLogo: 'https://www.wildberries.ru/favicon.ico',
     code: 'WB-PREMIUM',
     discount: 12,
     description: 'Скидка 12% на одежду больших размеров',
@@ -87,7 +87,7 @@ export const promoCodes = [
   {
     id: 8,
     store: 'Яндекс Маркет',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/6000/6000269.png',
+    storeLogo: 'https://market.yandex.ru/favicon.ico',
     code: 'YAM-PRIME',
     discount: 35,
     description: 'Скидка 35% на подписку Яндекс Плюс',
@@ -159,7 +159,7 @@ export const expiringToday = [
   {
     id: 1,
     store: 'Ozon',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/5363/5363998.png',
+    storeLogo: 'https://www.ozon.ru/favicon.ico',
     code: 'OZON-NIGHT',
     description: 'Ночная распродажа: -30% на всё',
     expiresAt: '23:59',
@@ -169,7 +169,7 @@ export const expiringToday = [
   {
     id: 2,
     store: 'Wildberries',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/3064/3064197.png',
+    storeLogo: 'https://www.wildberries.ru/favicon.ico',
     code: 'WB-LATE',
     description: 'Бесплатная доставка без минимума',
     expiresAt: '23:59',
@@ -179,7 +179,7 @@ export const expiringToday = [
   {
     id: 3,
     store: 'Ситимобил',
-    storeLogo: 'https://cdn-icons-png.flaticon.com/512/2975/2975972.png',
+    storeLogo: 'https://city-mobil.ru/favicon.ico',
     code: 'CITY-NIGHT',
     description: 'Скидка 50% на вечерние поездки',
     expiresAt: '23:00',
