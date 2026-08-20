@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { MotionConfig } from 'framer-motion';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import CategoryCarousel from './components/CategoryCarousel';
@@ -10,6 +10,7 @@ import './App.css';
 
 function App() {
   return (
+    <MotionConfig reducedMotion="always">
     <div className="min-h-screen bg-[#FAFAFC]">
       <Header />
       <main>
@@ -21,6 +22,7 @@ function App() {
       </main>
       <Footer />
     </div>
+    </MotionConfig>
   );
 }
 

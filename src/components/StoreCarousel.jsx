@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { stores } from '../data/stores';
 import { ExternalLink } from 'lucide-react';
 
@@ -9,10 +8,7 @@ export default function StoreCarousel() {
   return (
     <section id="stores" className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="flex items-center justify-between mb-8"
         >
           <div>
@@ -23,24 +19,14 @@ export default function StoreCarousel() {
             Все магазины
             <ExternalLink className="w-4 h-4" />
           </button>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+        <div
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
         >
-          {stores.map((store, i) => (
-            <motion.div
+          {stores.map((store) => (
+            <div
               key={store.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              whileHover={{ scale: 1.03, y: -4 }}
-              whileTap={{ scale: 0.97 }}
               onMouseEnter={() => setHoveredId(store.id)}
               onMouseLeave={() => setHoveredId(null)}
               className="relative bg-white rounded-2xl border border-[#ECECF3] p-5 cursor-pointer transition-all duration-300 hover:border-[#6C4DFF]/50 hover:shadow-xl hover:shadow-[#6C4DFF]/10 group"
@@ -50,7 +36,7 @@ export default function StoreCarousel() {
                   className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl transition-transform duration-300 group-hover:scale-110"
                   style={{ background: `${store.color}15` }}
                 >
-                  {store.name.charAt(0)}
+                  <img src={store.logo} alt={`${store.name} логотип`} className="w-9 h-9 object-contain" loading="lazy" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#111827] text-sm">{store.name}</h3>
@@ -60,9 +46,9 @@ export default function StoreCarousel() {
                   Перейти →
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <div className="sm:hidden mt-6 text-center">
           <button className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#6C4DFF] bg-[#6C4DFF]/5 rounded-xl">

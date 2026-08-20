@@ -38,6 +38,14 @@
   box-sizing: border-box;
 }
 
+/* Motion is intentionally disabled for a stable, low-cost interface. */
+*, *::before, *::after {
+  animation-duration: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0s !important;
+  scroll-behavior: auto !important;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
