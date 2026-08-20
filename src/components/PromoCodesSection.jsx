@@ -101,7 +101,7 @@ function HotDealCard({ deal }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ scale: 1.02 }}
-      className="relative rounded-2xl overflow-hidden cursor-pointer group h-full min-h-[180px]"
+      className="relative rounded-2xl overflow-hidden cursor-pointer group h-48"
     >
       <div className="absolute inset-0" style={{ background: deal.color }} />
       <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
@@ -235,7 +235,7 @@ export default function PromoCodesSection() {
           <p className="text-[#6B7280]">Скидки, которые работают прямо сейчас</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left - Best promo codes */}
           <div className="lg:col-span-6 space-y-4">
             <div className="flex items-center gap-2 mb-2">
@@ -248,7 +248,7 @@ export default function PromoCodesSection() {
           </div>
 
           {/* Center - Hot deals */}
-          <div className="lg:col-span-3 space-y-4">
+          <div className="lg:col-span-3 space-y-4 self-start">
             <div className="flex items-center gap-2 mb-2">
               <Flame className="w-5 h-5 text-[#FF7A00]" />
               <h3 className="text-lg font-bold text-[#111827]">Горячие</h3>
@@ -259,7 +259,7 @@ export default function PromoCodesSection() {
           </div>
 
           {/* Right - Expiring today */}
-          <div className="lg:col-span-3 space-y-4">
+          <div className="lg:col-span-3 space-y-4 self-start">
             <div className="flex items-center gap-2 mb-2">
               <Clock className="w-5 h-5 text-red-500" />
               <h3 className="text-lg font-bold text-[#111827]">Заканчиваются</h3>
