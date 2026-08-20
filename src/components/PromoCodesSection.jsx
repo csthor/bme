@@ -39,7 +39,9 @@ function PromoCodeCard({ code }) {
             className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold"
             style={{ background: `${colors[code.store] || '#6C4DFF'}15` }}
           >
-            {code.store.charAt(0)}
+            {code.storeLogo ? (
+              <img src={code.storeLogo} alt={`${code.store} логотип`} className="w-7 h-7 object-contain" loading="lazy" />
+            ) : code.store.charAt(0)}
           </div>
           <div>
             <h4 className="font-semibold text-[#111827] text-sm">{code.store}</h4>
@@ -142,9 +144,11 @@ function ExpiringCard({ item }) {
           Заканчивается сегодня
         </span>
       </div>
-      <div className="flex items-center gap-3 mb-3">
-        <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold bg-red-100 text-red-600">
-          {item.store.charAt(0)}
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold bg-red-100 text-red-600">
+          {item.storeLogo ? (
+            <img src={item.storeLogo} alt={`${item.store} логотип`} className="w-6 h-6 object-contain" loading="lazy" />
+          ) : item.store.charAt(0)}
         </div>
         <div>
           <h4 className="font-semibold text-[#111827] text-sm">{item.store}</h4>
