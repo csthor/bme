@@ -34,7 +34,7 @@ const benefits = [
 
 export default function BenefitsSection() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#FAFAFC] to-white">
+    <section id="how" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#FAFAFC] to-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

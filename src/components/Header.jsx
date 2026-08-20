@@ -72,9 +72,8 @@ export default function Header() {
   const navLinks = [
     { label: 'Магазины', href: '#stores' },
     { label: 'Категории', href: '#categories' },
-    { label: 'Блог', href: '#blog' },
+    { label: 'Промокоды', href: '#promo' },
     { label: 'Как работает', href: '#how' },
-    { label: 'Избранное', href: '#favorites' },
   ];
 
   return (
@@ -116,13 +115,13 @@ export default function Header() {
 
             {/* Auth buttons */}
             <div className="hidden xl:flex items-center gap-2">
-              <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#6B7280] hover:text-[#111827] transition-colors">
+              <a href="/login" className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#6B7280] hover:text-[#111827] transition-colors">
                 <Heart className="w-4 h-4" />
                 <span>Войти</span>
-              </button>
-              <button className="px-5 py-2.5 text-sm font-semibold bg-[#6C4DFF] text-white rounded-xl hover:bg-[#5B3FE6] shadow-lg shadow-[#6C4DFF]/25 hover:shadow-[#6C4DFF]/40 transition-all duration-300">
-                Регистрация
-              </button>
+              </a>
+              <a href="/login" className="px-5 py-2.5 text-sm font-semibold bg-[#6C4DFF] text-white rounded-xl hover:bg-[#5B3FE6] shadow-lg shadow-[#6C4DFF]/25 hover:shadow-[#6C4DFF]/40 transition-all duration-300">
+                Войти в кабинет
+              </a>
             </div>
 
             {/* Mobile menu button */}
@@ -152,12 +151,9 @@ export default function Header() {
                 </a>
               ))}
               <div className="flex flex-col gap-3 mt-6">
-                <button className="w-full py-3 text-base font-semibold border-2 border-[#ECECF3] rounded-xl">
+                <a href="/login" className="w-full py-3 text-base font-semibold border-2 border-[#ECECF3] rounded-xl text-center">
                   Войти
-                </button>
-                <button className="w-full py-3 text-base font-semibold bg-[#6C4DFF] text-white rounded-xl">
-                  Регистрация
-                </button>
+                </a>
               </div>
             </div>
           </div>
