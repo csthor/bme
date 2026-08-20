@@ -194,15 +194,8 @@ app.use((req, res, next) => {
 
 // --- Security Middleware ---
 
-// Check suspicious User-Agent before processing
+// Rate limiting protects the API without blocking legitimate search crawlers.
 app.use((req, res, next) => {
-  const ua = req.headers['user-agent'];
-  
-  if (isUserAgentSuspicious(ua)) {
-    console.log(`🔒 Blocked suspicious request from ${getClientIP(req)}: ${ua || 'none'}`);
-    return res.status(403).json({ error: 'Forbidden' });
-  }
-  
   // Check rate limiting
   const ip = getClientIP(req);
   if (isRateLimited(ip)) {
@@ -333,7 +326,7 @@ app.post('/api/auth/login', (req, res) => {
     const sessionId = createSession();
     res.cookie('sessionId', sessionId, {
       httpOnly: true,
-      secure: true, // enforce HTTPS
+      secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: 24 * 60 * 60 * 1000 // 24 hours
     });

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { promoCodes, hotDeals, expiringToday } from '../data/promoCodes';
 import { Copy, Check, Clock, Flame, Zap, TrendingUp } from 'lucide-react';
@@ -179,6 +179,45 @@ function ExpiringCard({ item }) {
 }
 
 export default function PromoCodesSection() {
+  const [livePromoCodes, setLivePromoCodes] = useState(promoCodes);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/seo')
+      .then(response => response.ok ? response.json() : Promise.reject(new Error('Promo API unavailable')))
+      .then(data => {
+        if (cancelled) return;
+        const managedCodes = [
+          data.promoCode && {
+            id: 'main-promo',
+            store: 'Kupon4UK',
+            code: data.promoCode,
+            discount: Number(data.promoDiscount) || 0,
+            description: data.promoDescription || 'Актуальное предложение Kupon4UK',
+            usedCount: 0,
+            expiresAt: data.promoExpiry,
+            type: 'promo'
+          },
+          ...(data.additionalPromoCodes || []).map((item, index) => ({
+            id: `managed-${index}`,
+            store: item.store || 'Kupon4UK',
+            code: item.code,
+            discount: Number(item.discount) || 0,
+            description: item.desc || 'Актуальное предложение',
+            usedCount: Number(item.usedCount) || 0,
+            expiresAt: item.expires,
+            type: 'promo'
+          }))
+        ].filter(item => item && item.code && (!item.expiresAt || new Date(item.expiresAt) >= new Date()));
+
+        if (managedCodes.length > 0) setLivePromoCodes(managedCodes);
+      })
+      .catch(() => {})
+      .finally(() => { cancelled = true; });
+
+    return () => { cancelled = true; };
+  }, []);
+
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -199,7 +238,7 @@ export default function PromoCodesSection() {
               <TrendingUp className="w-5 h-5 text-[#6C4DFF]" />
               <h3 className="text-lg font-bold text-[#111827]">Лучшие промокоды</h3>
             </div>
-            {promoCodes.map((code) => (
+            {livePromoCodes.map((code) => (
               <PromoCodeCard key={code.id} code={code} />
             ))}
           </div>

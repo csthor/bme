@@ -5,6 +5,10 @@
 
 /* CSS Variables */
 :root {
+  --container-max-width: 80rem;
+  --page-padding-desktop: 2rem;
+  --page-padding-tablet: 1.5rem;
+  --page-padding-mobile: 1rem;
   --primary: #6C4DFF;
   --primary-light: #8B5CF6;
   --primary-dark: #5B3FE6;
@@ -199,9 +203,10 @@ h1, h2, h3, h4, h5, h6 {
    Utility classes
    ===================== */
 .container {
-  max-width: 7rem;
+  width: 100%;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--page-padding-desktop);
 }
 
 .gap-responsive {
@@ -211,6 +216,12 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 768px) {
   .gap-responsive {
     gap: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding-inline: var(--page-padding-mobile);
   }
 }
 
