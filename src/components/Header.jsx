@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Search, Heart, ShoppingBag, User, ChevronDown,
-  Menu, X, Store, Sparkles, TrendingUp
+  Search, Heart, Menu, X, Store, Sparkles
 } from 'lucide-react';
 
 function SearchBar({ onSearch }) {
@@ -35,12 +33,9 @@ function SearchBar({ onSearch }) {
           className="w-full pl-14 pr-5 py-4 bg-white border-2 border-[#ECECF3] rounded-2xl text-base text-[#111827] placeholder-[#9CA3AF] outline-none transition-all duration-300 focus:border-[#6C4DFF] focus:shadow-xl focus:shadow-[#6C4DFF]/10"
         />
       </div>
-      <AnimatePresence>
+      <>
         {results.length > 0 && focused && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+          <div
             className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl shadow-black/10 border border-[#ECECF3] overflow-hidden z-50"
           >
             {results.map((store, i) => (
@@ -57,9 +52,9 @@ function SearchBar({ onSearch }) {
                 <span className="font-medium">{store}</span>
               </button>
             ))}
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      </>
     </div>
   );
 }
@@ -84,13 +79,11 @@ export default function Header() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      <header
+        className={`site-header fixed top-0 left-0 right-0 z-50 ${
           scrolled
-            ? 'bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-[#ECECF3]/50'
-            : 'bg-transparent'
+            ? 'backdrop-blur-xl'
+            : ''
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,7 +107,7 @@ export default function Header() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="px-4 py-2 text-sm font-medium text-[#6B7280] hover:text-[#111827] rounded-xl hover:bg-[#6C4DFF]/5 transition-all duration-200"
+                  className="site-nav-link px-4 py-2 text-sm font-medium"
                 >
                   {link.label}
                 </a>
@@ -141,23 +134,18 @@ export default function Header() {
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-white pt-24 px-6 xl:hidden"
-          >
+          <div className="site-menu-panel fixed inset-0 z-40 pt-24 px-6 xl:hidden">
             <div className="flex flex-col gap-2">
               {navLinks.map(link => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="px-4 py-4 text-lg font-medium text-[#111827] border-b border-[#ECECF3]"
+                  className="site-menu-link px-4 py-4 text-lg font-medium"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
@@ -172,9 +160,9 @@ export default function Header() {
                 </button>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      </>
     </>
   );
 }
