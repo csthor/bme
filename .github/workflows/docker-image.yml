@@ -35,7 +35,7 @@ jobs:
             ${{ env.IMAGE_NAME }}:${{ env.VERSION_PREFIX }}-${{ github.run_number }}
             ${{ env.IMAGE_NAME }}:latest
       - name: Deploy on remote
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSHUSERNAME }}
