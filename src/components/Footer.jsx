@@ -65,10 +65,10 @@ export default function Footer() {
             © 2026 Kupon4UK. Все права защищены.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-[#9CA3AF] hover:text-white transition-colors">
+            <a href="/privacy" className="text-sm text-[#9CA3AF] hover:text-white transition-colors">
               Политика конфиденциальности
             </a>
-            <a href="#" className="text-sm text-[#9CA3AF] hover:text-white transition-colors">
+            <a href="/terms" className="text-sm text-[#9CA3AF] hover:text-white transition-colors">
               Пользовательское соглашение
             </a>
           </div>
