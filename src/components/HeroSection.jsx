@@ -79,13 +79,13 @@ export default function HeroSection() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <button className="group px-8 py-4 bg-[#6C4DFF] text-white font-semibold rounded-2xl hover:bg-[#5B3FE6] shadow-xl shadow-[#6C4DFF]/30 hover:shadow-[#6C4DFF]/50 transition-all duration-300 flex items-center gap-2">
-                Смотреть промокоды
+              <a href="#stores" className="group px-8 py-4 bg-[#6C4DFF] text-white font-semibold rounded-2xl hover:bg-[#5B3FE6] shadow-xl shadow-[#6C4DFF]/30 hover:shadow-[#6C4DFF]/50 transition-all duration-300 flex items-center gap-2">
+                Перейти к магазинам
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 bg-white text-[#111827] font-semibold rounded-2xl border-2 border-[#ECECF3] hover:border-[#6C4DFF] hover:text-[#6C4DFF] transition-all duration-300">
-                Лучшие предложения
-              </button>
+              </a>
+              <a href="#how" className="px-8 py-4 bg-white text-[#111827] font-semibold rounded-2xl border-2 border-[#ECECF3] hover:border-[#6C4DFF] hover:text-[#6C4DFF] transition-all duration-300">
+                Как это работает
+              </a>
             </motion.div>
           </motion.div>
 
