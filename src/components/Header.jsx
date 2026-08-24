@@ -26,9 +26,14 @@ function SearchBar({ onSearch }) {
         <input
           type="search"
           name="store-search"
-          autoComplete="off"
+          autoComplete="new-password"
           autoCorrect="off"
           spellCheck="false"
+          inputMode="search"
+          role="searchbox"
+          aria-label="Поиск магазина или промокода"
+          data-lpignore="true"
+          data-1p-ignore="true"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setFocused(true)}
