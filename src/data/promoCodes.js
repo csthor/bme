@@ -1,4 +1,5 @@
-// Реалистичные промокоды и скидки
+// Промокоды из внутреннего каталога. Перед публикацией в продакшене
+// их нужно подтверждать через официальный источник магазина.
 export const promoCodes = [
   {
     id: 1,
@@ -106,7 +107,7 @@ export const hotDeals = [
     description: 'На всю электронику и гаджеты',
     discount: 70,
     color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    link: '#'
+    link: 'https://www.ozon.ru/'
   },
   {
     id: 2,
@@ -115,7 +116,7 @@ export const hotDeals = [
     description: 'Брендовая обувь со скидкой до 50%',
     discount: 50,
     color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-    link: '#'
+    link: 'https://www.lamoda.ru/'
   },
   {
     id: 3,
@@ -124,7 +125,7 @@ export const hotDeals = [
     description: 'Кухонная техника со скидкой до 30%',
     discount: 30,
     color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-    link: '#'
+    link: 'https://www.dns-shop.ru/'
   },
   {
     id: 4,
@@ -133,7 +134,7 @@ export const hotDeals = [
     description: 'Двойные бонусы на всю косметику',
     discount: 45,
     color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    link: '#'
+    link: 'https://goldapple.ru/'
   },
   {
     id: 5,
@@ -142,7 +143,7 @@ export const hotDeals = [
     description: 'На первый заказ от 500₽',
     discount: 100,
     color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-    link: '#'
+    link: 'https://kuper.ru/'
   },
   {
     id: 6,
@@ -151,7 +152,7 @@ export const hotDeals = [
     description: '0% на 24 месяца на iPhone и Samsung',
     discount: 0,
     color: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
-    link: '#'
+    link: 'https://www.mvideo.ru/'
   }
 ];
 

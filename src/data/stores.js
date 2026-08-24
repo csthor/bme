@@ -1,4 +1,4 @@
-// Реалистичные данные магазинов российского рынка
+// Магазины. Логотипы загружаются с официальных доменов магазинов.
 export const stores = [
   {
     id: 1,
@@ -82,11 +82,11 @@ export const stores = [
   },
   {
     id: 11,
-    name: 'СберМаркет',
+    name: 'Купер',
     logo: 'https://kuper.ru/favicon.ico',
     promoCount: 11,
     color: '#21A038',
-    description: 'Продукты за 15 минут'
+    description: 'Продукты с доставкой'
   },
   {
     id: 12,
@@ -95,5 +95,37 @@ export const stores = [
     promoCount: 14,
     color: '#FF1493',
     description: 'Красота и косметика'
+  },
+  {
+    id: 13,
+    name: 'AliExpress',
+    logo: 'https://aliexpress.ru/favicon.ico',
+    promoCount: 0,
+    color: '#FF4747',
+    description: 'Товары и электроника'
+  },
+  {
+    id: 14,
+    name: 'ВсеИнструменты.ру',
+    logo: 'https://www.vseinstrumenti.ru/favicon.ico',
+    promoCount: 0,
+    color: '#F58220',
+    description: 'Инструменты и товары для дома'
+  },
+  {
+    id: 15,
+    name: 'Fix Price',
+    logo: 'https://fix-price.ru/favicon.ico',
+    promoCount: 0,
+    color: '#E30613',
+    description: 'Товары для дома и повседневной жизни'
+  },
+  {
+    id: 16,
+    name: 'Kari',
+    logo: 'https://kari.com/favicon.ico',
+    promoCount: 0,
+    color: '#D71920',
+    description: 'Обувь, одежда и аксессуары'
   }
 ];
