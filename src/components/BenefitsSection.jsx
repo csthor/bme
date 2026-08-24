@@ -5,14 +5,14 @@ const benefits = [
   {
     icon: ShieldCheck,
     title: 'Экономьте больше',
-    description: 'Находите лучшие скидки и промокоды для экономии до 70% на каждой покупке',
+    description: 'Находите предложения магазинов и переходите к условиям на официальном сайте',
     gradient: 'linear-gradient(135deg, #6C4DFF, #8B5CF6)',
     color: '#6C4DFF'
   },
   {
     icon: Search,
     title: 'Проверенные купоны',
-    description: 'Каждый промокод проходит проверку перед публикацией. Работает или нет — вы узнаете сразу',
+    description: 'Публикуем только те промокоды, для которых найден официальный источник',
     gradient: 'linear-gradient(135deg, #FF7A00, #FF9500)',
     color: '#FF7A00'
   },
@@ -26,7 +26,7 @@ const benefits = [
   {
     icon: Gift,
     title: 'Ежедневные обновления',
-    description: 'Новые промокоды и скидки каждый день. Всегда актуальные предложения',
+    description: 'Каталог обновляется после проверки условий и срока действия',
     gradient: 'linear-gradient(135deg, #8B5CF6, #A855F7)',
     color: '#8B5CF6'
   }
@@ -44,7 +44,7 @@ export default function BenefitsSection() {
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-[#111827] mb-4">Почему выбирают нас</h2>
           <p className="text-[#6B7280] text-lg max-w-2xl mx-auto">
-            Мы собираем и проверяем промокоды каждый день, чтобы вы экономили время и деньги
+            Мы проверяем предложения перед публикацией, чтобы данные оставались достоверными
           </p>
         </motion.div>
 

@@ -171,7 +171,6 @@ button, [role="button"] {
 }
 
 button:focus-visible,
-input:focus-visible,
 a:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
@@ -299,4 +298,9 @@ h1, h2, h3, h4, h5, h6 {
   header, footer {
     display: none;
   }
+}
+[data-fallback]::after {
+  content: attr(data-fallback);
+  font-weight: 700;
+  color: #111827;
 }

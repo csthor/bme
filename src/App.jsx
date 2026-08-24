@@ -7,16 +7,18 @@ import PromoCodesSection from './components/PromoCodesSection';
 import BenefitsSection from './components/BenefitsSection';
 import Footer from './components/Footer';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState('all');
   return (
     <MotionConfig reducedMotion="always">
     <div className="min-h-screen bg-[#FAFAFC]">
       <Header />
       <main>
         <HeroSection />
-        <CategoryCarousel />
-        <StoreCarousel />
+        <CategoryCarousel onCategorySelect={setSelectedCategory} />
+        <StoreCarousel selectedCategory={selectedCategory} />
         <PromoCodesSection />
         <BenefitsSection />
       </main>

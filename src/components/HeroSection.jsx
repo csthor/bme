@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { Sparkles, CheckCircle, Clock, Star, ArrowRight, Gift, ShoppingCart } from 'lucide-react';
 
 const features = [
-  { icon: CheckCircle, text: 'Проверенные купоны', color: '#6C4DFF' },
-  { icon: Star, text: 'Более 10 000 предложений', color: '#FF7A00' },
-  { icon: Clock, text: 'Обновления каждый день', color: '#8B5CF6' },
+  { icon: CheckCircle, text: 'Официальные источники', color: '#6C4DFF' },
+  { icon: Star, text: 'Каталог магазинов', color: '#FF7A00' },
+  { icon: Clock, text: 'Проверка перед публикацией', color: '#8B5CF6' },
 ];
 
 export default function HeroSection() {
@@ -26,7 +26,7 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 px-4 py-2 bg-[#6C4DFF]/10 text-[#6C4DFF] rounded-full text-sm font-semibold mb-6"
             >
               <Sparkles className="w-4 h-4" />
-              <span>Более 12 000 активных промокодов</span>
+              <span>Промокоды только из подтверждённых источников</span>
             </motion.div>
 
             <motion.h1
@@ -51,8 +51,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg text-[#6B7280] mb-10 max-w-lg leading-relaxed"
             >
-              Тысячи актуальных промокодов от популярных магазинов. 
-              Экономьте до 70% на каждой покупке с проверенными купонами.
+              Мы проверяем предложения по официальным страницам магазинов и не публикуем неподтверждённые коды.
             </motion.p>
 
             {/* Features */}
@@ -80,13 +79,13 @@ export default function HeroSection() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <button className="group px-8 py-4 bg-[#6C4DFF] text-white font-semibold rounded-2xl hover:bg-[#5B3FE6] shadow-xl shadow-[#6C4DFF]/30 hover:shadow-[#6C4DFF]/50 transition-all duration-300 flex items-center gap-2">
-                Смотреть промокоды
+              <a href="#stores" className="group px-8 py-4 bg-[#6C4DFF] text-white font-semibold rounded-2xl hover:bg-[#5B3FE6] shadow-xl shadow-[#6C4DFF]/30 hover:shadow-[#6C4DFF]/50 transition-all duration-300 flex items-center gap-2">
+                Перейти к магазинам
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 bg-white text-[#111827] font-semibold rounded-2xl border-2 border-[#ECECF3] hover:border-[#6C4DFF] hover:text-[#6C4DFF] transition-all duration-300">
-                Лучшие предложения
-              </button>
+              </a>
+              <a href="#how" className="px-8 py-4 bg-white text-[#111827] font-semibold rounded-2xl border-2 border-[#ECECF3] hover:border-[#6C4DFF] hover:text-[#6C4DFF] transition-all duration-300">
+                Как это работает
+              </a>
             </motion.div>
           </motion.div>
 
@@ -164,15 +163,18 @@ export default function HeroSection() {
               </motion.div>
 
               {/* Sparkles */}
-              {[...Array(6)].map((_, i) => (
+              {[
+                { top: 22, left: 14 }, { top: 34, left: 72 }, { top: 48, left: 28 },
+                { top: 61, left: 82 }, { top: 74, left: 46 }, { top: 29, left: 55 }
+              ].map(({ top, left }, i) => (
                 <motion.div
                   key={i}
                   animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5] }}
                   transition={{ duration: 2, repeat: Infinity, delay: i * 0.4 }}
                   className="absolute text-lg"
                   style={{
-                    top: `${20 + Math.random() * 60}%`,
-                    left: `${10 + Math.random() * 80}%`,
+                    top: `${top}%`,
+                    left: `${left}%`,
                   }}
                 >
                   <Sparkles className="w-4 h-4 text-[#6C4DFF]" aria-hidden="true" />
