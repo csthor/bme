@@ -24,7 +24,11 @@ function SearchBar({ onSearch }) {
       <div className={`relative transition-all duration-300 ${focused ? 'scale-[1.01]' : ''}`}>
         <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9CA3AF]" />
         <input
-          type="text"
+          type="search"
+          name="store-search"
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck="false"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setFocused(true)}
