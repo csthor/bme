@@ -1,7 +1,7 @@
 // Промокоды из внутреннего каталога. Перед публикацией в продакшене
 // их нужно подтверждать через официальный источник магазина.
 export const promoCodes = [
-  {
+  /*
     id: 1,
     store: 'Ozon',
     storeLogo: 'https://www.ozon.ru/favicon.ico',
@@ -97,9 +97,11 @@ export const promoCodes = [
     expiresAt: '2026-08-31',
     type: 'promo'
   }
+  */
 ];
 
 export const hotDeals = [
+  /*
   {
     id: 1,
     store: 'Ozon',
@@ -154,10 +156,11 @@ export const hotDeals = [
     color: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
     link: 'https://www.mvideo.ru/'
   }
+  */
 ];
 
 export const expiringToday = [
-  {
+  /*
     id: 1,
     store: 'Ozon',
     storeLogo: 'https://www.ozon.ru/favicon.ico',
@@ -187,4 +190,5 @@ export const expiringToday = [
     timeLeft: '3ч 12мин',
     usedCount: 1247
   }
+  */
 ];
