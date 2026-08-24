@@ -10,6 +10,16 @@ const storeCategories = {
   19: ['beauty'], 20: ['home'], 21: ['home']
 };
 
+const storeUrls = {
+  1: 'https://www.ozon.ru/', 2: 'https://www.wildberries.ru/', 3: 'https://market.yandex.ru/',
+  4: 'https://www.dns-shop.ru/', 5: 'https://lenta.com/', 6: 'https://www.lamoda.ru/',
+  7: 'https://www.mvideo.ru/', 8: 'https://market.yandex.ru/', 9: 'https://city-mobil.ru/',
+  10: 'https://www.avito.ru/', 11: 'https://kuper.ru/', 12: 'https://goldapple.ru/',
+  13: 'https://aliexpress.ru/', 14: 'https://www.vseinstrumenti.ru/', 15: 'https://fix-price.ru/',
+  16: 'https://kari.com/', 17: 'https://www.sportmaster.ru/', 18: 'https://hoff.ru/',
+  19: 'https://rivegauche.ru/', 20: 'https://petrovich.ru/', 21: 'https://www.detmir.ru/'
+};
+
 export default function StoreCarousel({ selectedCategory = 'all' }) {
   const [hoveredId, setHoveredId] = useState(null);
   const visibleStores = selectedCategory === 'all'
@@ -57,9 +67,15 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
                   <h3 className="font-semibold text-[#111827] text-sm">{store.name}</h3>
                   <p className="text-xs text-[#6B7280] mt-0.5">{store.promoCount} промокодов</p>
                 </div>
-                <div className="flex items-center justify-center w-full py-1.5 bg-[#6C4DFF]/5 rounded-lg text-xs font-medium text-[#6C4DFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <a
+                  href={storeUrls[store.id]}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center w-full py-1.5 bg-[#6C4DFF]/5 rounded-lg text-xs font-medium text-[#6C4DFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  onClick={(event) => event.stopPropagation()}
+                >
                   Перейти →
-                </div>
+                </a>
               </div>
             </div>
           ))}
