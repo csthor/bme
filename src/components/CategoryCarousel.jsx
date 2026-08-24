@@ -12,7 +12,7 @@ export default function CategoryCarousel({ onCategorySelect }) {
   };
 
   return (
-    <section id="categories" className="py-12 px-4 sm:px-6 lg:px-8">
+    <section id="categories" className="py-12 px-4 sm:px-6 lg:px-8" aria-labelledby="categories-title">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,8 +20,8 @@ export default function CategoryCarousel({ onCategorySelect }) {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl font-bold text-[#111827] mb-2">Категории</h2>
-          <p className="text-[#6B7280]">Найдите скидки для любого случая</p>
+          <h2 id="categories-title" className="text-3xl font-bold text-[#111827] mb-2">Категории магазинов</h2>
+          <p className="text-[#6B7280]">Выберите направление — список магазинов отфильтруется ниже</p>
         </motion.div>
 
         <motion.div

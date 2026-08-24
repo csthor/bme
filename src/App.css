@@ -300,3 +300,8 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 }
+[data-fallback]::after {
+  content: attr(data-fallback);
+  font-weight: 700;
+  color: #111827;
+}
