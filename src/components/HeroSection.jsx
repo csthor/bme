@@ -164,15 +164,18 @@ export default function HeroSection() {
               </motion.div>
 
               {/* Sparkles */}
-              {[...Array(6)].map((_, i) => (
+              {[
+                { top: 22, left: 14 }, { top: 34, left: 72 }, { top: 48, left: 28 },
+                { top: 61, left: 82 }, { top: 74, left: 46 }, { top: 29, left: 55 }
+              ].map(({ top, left }, i) => (
                 <motion.div
                   key={i}
                   animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5] }}
                   transition={{ duration: 2, repeat: Infinity, delay: i * 0.4 }}
                   className="absolute text-lg"
                   style={{
-                    top: `${20 + Math.random() * 60}%`,
-                    left: `${10 + Math.random() * 80}%`,
+                    top: `${top}%`,
+                    left: `${left}%`,
                   }}
                 >
                   <Sparkles className="w-4 h-4 text-[#6C4DFF]" aria-hidden="true" />

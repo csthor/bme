@@ -1,13 +1,17 @@
-import { motion } from 'framer-motion';
 import {
-  Mail, MapPin, Phone,
-  Store, TrendingUp, HelpCircle, FileText, Heart, Sparkles, Smartphone, MessageCircle, Camera
+  Sparkles
 } from 'lucide-react';
 
 const footerLinks = {
   'Категории': ['Электроника', 'Одежда', 'Красота', 'Дом и сад', 'Путешествия', 'Спорт'],
   'Магазины': ['Ozon', 'Wildberries', 'DNS', 'М.Видео', 'Ламод', 'Яндекс Маркет'],
   'Полезное': ['Как работает', 'Блог', 'FAQ', 'Помощь', 'Партнёрам'],
+};
+
+const footerTargets = {
+  'Категории': '#categories',
+  'Магазины': '#stores',
+  'Полезное': '#how',
 };
 
 export default function Footer() {
@@ -29,17 +33,6 @@ export default function Footer() {
             <p className="text-[#9CA3AF] text-sm leading-relaxed mb-6">
               Лучший агрегатор промокодов и скидок в России. Экономьте с каждым разом.
             </p>
-            <div className="flex gap-3">
-              {[Smartphone, MessageCircle, Camera].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#6C4DFF] flex items-center justify-center transition-all duration-300 text-lg"
-                >
-                  <Icon className="w-5 h-5" aria-hidden="true" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Links */}
@@ -49,7 +42,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-sm text-[#9CA3AF] hover:text-white transition-colors">
+                    <a href={footerTargets[title]} className="text-sm text-[#9CA3AF] hover:text-white transition-colors">
                       {link}
                     </a>
                   </li>

@@ -5,6 +5,7 @@ import App from './App';
 import AdminPage from './AdminPage';
 import Login from './Login';
 import LegalPage from './LegalPage';
+import NotFound from './NotFound';
 
 function ProtectedRoute({ children }) {
   const [authenticated, setAuthenticated] = useState(null);
@@ -41,6 +42,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <AdminPage />
           </ProtectedRoute>
         } />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
