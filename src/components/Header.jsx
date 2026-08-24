@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
-  Search, Heart, Menu, X, Store, Sparkles
+  Search, Menu, X, Store, Sparkles
 } from 'lucide-react';
 
 function SearchBar({ onSearch }) {
@@ -20,7 +20,7 @@ function SearchBar({ onSearch }) {
   }, [query]);
 
   return (
-    <div className="relative w-full max-w-2xl">
+    <div className="relative w-full flex-1 min-w-0 max-w-2xl">
       <div className={`relative transition-all duration-300 ${focused ? 'scale-[1.01]' : ''}`}>
         <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9CA3AF]" />
         <input
@@ -101,12 +101,12 @@ export default function Header() {
             <SearchBar />
 
             {/* Desktop Nav */}
-            <nav className="hidden xl:flex items-center gap-1">
+            <nav className="hidden xl:flex items-center gap-1 flex-shrink-0">
               {navLinks.map(link => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="site-nav-link px-4 py-2 text-sm font-medium"
+                  className="site-nav-link px-3 py-2 text-sm font-medium whitespace-nowrap"
                 >
                   {link.label}
                 </a>
@@ -114,12 +114,8 @@ export default function Header() {
             </nav>
 
             {/* Auth buttons */}
-            <div className="hidden xl:flex items-center gap-2">
-              <a href="/login" className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#6B7280] hover:text-[#111827] transition-colors">
-                <Heart className="w-4 h-4" />
-                <span>Войти</span>
-              </a>
-              <a href="/login" className="px-5 py-2.5 text-sm font-semibold bg-[#6C4DFF] text-white rounded-xl hover:bg-[#5B3FE6] shadow-lg shadow-[#6C4DFF]/25 hover:shadow-[#6C4DFF]/40 transition-all duration-300">
+            <div className="hidden xl:flex items-center flex-shrink-0">
+              <a href="/login" className="px-5 py-2.5 text-sm font-semibold bg-[#6C4DFF] text-white rounded-xl hover:bg-[#5B3FE6] shadow-lg shadow-[#6C4DFF]/25 hover:shadow-[#6C4DFF]/40 transition-all duration-300 whitespace-nowrap">
                 Войти в кабинет
               </a>
             </div>
