@@ -6,7 +6,8 @@ const storeCategories = {
   1: ['electronics', 'home'], 2: ['fashion'], 3: ['electronics', 'groceries'], 4: ['electronics'],
   5: ['groceries'], 6: ['fashion'], 7: ['electronics', 'home'], 8: ['electronics'],
   9: ['transport'], 10: ['home'], 11: ['groceries'], 12: ['beauty'], 13: ['electronics'],
-  14: ['home'], 15: ['home'], 16: ['fashion']
+  14: ['home'], 15: ['home'], 16: ['fashion'], 17: ['sport'], 18: ['home'],
+  19: ['beauty'], 20: ['home'], 21: ['home']
 };
 
 export default function StoreCarousel({ selectedCategory = 'all' }) {

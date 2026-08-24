@@ -127,5 +127,45 @@ export const stores = [
     promoCount: 0,
     color: '#D71920',
     description: 'Обувь, одежда и аксессуары'
+  },
+  {
+    id: 17,
+    name: 'Спортмастер',
+    logo: 'https://www.sportmaster.ru/favicon.ico',
+    promoCount: 0,
+    color: '#00A651',
+    description: 'Спорт и активный отдых'
+  },
+  {
+    id: 18,
+    name: 'Hoff',
+    logo: 'https://hoff.ru/favicon.ico',
+    promoCount: 0,
+    color: '#E30613',
+    description: 'Мебель и товары для дома'
+  },
+  {
+    id: 19,
+    name: 'РИВ ГОШ',
+    logo: 'https://rivegauche.ru/favicon.ico',
+    promoCount: 0,
+    color: '#111111',
+    description: 'Косметика и парфюмерия'
+  },
+  {
+    id: 20,
+    name: 'Петрович',
+    logo: 'https://petrovich.ru/favicon.ico',
+    promoCount: 0,
+    color: '#F58220',
+    description: 'Строительство и ремонт'
+  },
+  {
+    id: 21,
+    name: 'Детский мир',
+    logo: 'https://www.detmir.ru/favicon.ico',
+    promoCount: 0,
+    color: '#0072CE',
+    description: 'Товары для детей и семьи'
   }
 ];
