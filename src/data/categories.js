@@ -1,20 +1,17 @@
 // Категории используют имена бесплатных Lucide-иконок.
 export const categories = [
-  { id: 'all', name: 'Все', icon: 'grid', count: 1247 },
-  { id: 'electronics', name: 'Электроника', icon: 'smartphone', count: 342 },
-  { id: 'fashion', name: 'Одежда', icon: 'shirt', count: 289 },
-  { id: 'beauty', name: 'Красота', icon: 'sparkles', count: 178 },
-  { id: 'home', name: 'Дом', icon: 'home', count: 156 },
-  { id: 'auto', name: 'Авто', icon: 'car', count: 89 },
-  { id: 'travel', name: 'Путешествия', icon: 'plane', count: 67 },
-  { id: 'sport', name: 'Спорт', icon: 'dumbbell', count: 54 },
-  { id: 'books', name: 'Книги', icon: 'book', count: 43 },
-  { id: 'pets', name: 'Зоотовары', icon: 'heart', count: 29 }
+  { id: 'all', name: 'Все магазины', icon: 'grid', count: 16 },
+  { id: 'electronics', name: 'Электроника', icon: 'smartphone', count: 5 },
+  { id: 'fashion', name: 'Одежда и обувь', icon: 'shirt', count: 3 },
+  { id: 'beauty', name: 'Красота', icon: 'sparkles', count: 1 },
+  { id: 'groceries', name: 'Продукты', icon: 'shopping-basket', count: 3 },
+  { id: 'home', name: 'Дом и ремонт', icon: 'home', count: 3 },
+  { id: 'transport', name: 'Транспорт', icon: 'car', count: 1 }
 ];
 
 const categoryIcons = {
   grid: 'Grid2X2', smartphone: 'Smartphone', shirt: 'Shirt', sparkles: 'Sparkles',
-  home: 'House', car: 'Car', plane: 'Plane', dumbbell: 'Dumbbell', book: 'BookOpen', heart: 'Heart'
+  'shopping-basket': 'ShoppingBasket', home: 'House', car: 'Car'
 };
 
 export { categoryIcons };
