@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { categories as catData, categoryIcons } from '../data/categories';
-import * as Icons from 'lucide-react';
+import { categories as catData } from '../data/categories';
 
 export default function CategoryCarousel({ onCategorySelect }) {
   const [selected, setSelected] = useState('all');
@@ -33,7 +32,6 @@ export default function CategoryCarousel({ onCategorySelect }) {
         >
           <div className="flex gap-3 min-w-max px-1">
             {catData.map((cat, i) => {
-              const Icon = Icons[categoryIcons[cat.icon]] || Icons.Tag;
               const isSelected = selected === cat.id;
               return (
                 <motion.button
@@ -51,7 +49,6 @@ export default function CategoryCarousel({ onCategorySelect }) {
                       : 'bg-white text-[#111827] border border-[#ECECF3] hover:border-[#6C4DFF]/50 hover:shadow-lg'
                   }`}
                 >
-                  <Icon className="w-7 h-7" aria-hidden="true" />
                   <span className="text-sm font-semibold whitespace-nowrap">{cat.name}</span>
                   <span className={`text-xs ${isSelected ? 'text-white/70' : 'text-[#9CA3AF]'}`}>
                     {cat.count}
