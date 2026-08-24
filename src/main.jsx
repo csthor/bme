@@ -6,6 +6,7 @@ import AdminPage from './AdminPage';
 import Login from './Login';
 import LegalPage from './LegalPage';
 import NotFound from './NotFound';
+import StorePromosPage from './StorePromosPage';
 
 function ProtectedRoute({ children }) {
   const [authenticated, setAuthenticated] = useState(null);
@@ -34,6 +35,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/stores/:storeSlug" element={<StorePromosPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/privacy" element={<LegalPage type="privacy" />} />
         <Route path="/terms" element={<LegalPage type="terms" />} />

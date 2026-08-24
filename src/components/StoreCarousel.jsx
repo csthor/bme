@@ -58,7 +58,7 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
                   <p className="text-xs text-[#6B7280] mt-0.5">{store.promoCount} промокодов</p>
                 </div>
                 <a
-                  href={`/?store=${encodeURIComponent(store.name)}#promo`}
+                  href={`/stores/${store.name.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '')}`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center w-full py-1.5 bg-[#6C4DFF]/5 rounded-lg text-xs font-medium text-[#6C4DFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
