@@ -23,8 +23,8 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
           className="flex items-center justify-between mb-8"
         >
           <div>
-            <h2 className="text-3xl font-bold text-[#111827] mb-2">Популярные магазины</h2>
-            <p className="text-[#6B7280]">Лучшие предложения от топовых брендов</p>
+            <h2 className="text-3xl font-bold text-[#111827] mb-2">Список магазинов</h2>
+            <p className="text-[#6B7280]">Магазины, доступные в каталоге Kupon4UK</p>
           </div>
           <button onClick={() => document.getElementById('stores')?.scrollIntoView({ behavior: 'smooth' })} className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#6C4DFF] hover:bg-[#6C4DFF]/5 rounded-xl transition-colors">
             Все магазины
