@@ -528,6 +528,28 @@ app.get('/api/admin/catalog', (req, res) => {
   res.json({ promos, stores, updatedAt: data.updatedAt });
 });
 
+app.put('/api/admin/promos/bulk', (req, res) => {
+  if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
+  const ids = Array.isArray(req.body?.ids) ? new Set(req.body.ids.filter(Boolean)) : null;
+  if (!ids || ids.size === 0) return res.status(400).json({ error: 'Promo ids are required' });
+  const allowed = ['status', 'verificationStatus'];
+  const patch = {};
+  for (const field of allowed) if (Object.prototype.hasOwnProperty.call(req.body, field)) patch[field] = req.body[field];
+  if (!Object.keys(patch).length) return res.status(400).json({ error: 'No allowed fields to update' });
+
+  const data = loadPromoData();
+  const updatedAt = new Date().toISOString();
+  let updated = 0;
+  data.promos.forEach((promo) => {
+    if (!ids.has(promo.id)) return;
+    Object.assign(promo, patch, { updatedAt });
+    updated += 1;
+  });
+  data.updatedAt = updatedAt;
+  savePromoData(data);
+  res.json({ success: true, updated });
+});
+
 app.put('/api/admin/promos/:id', (req, res) => {
   if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
   const data = loadPromoData();

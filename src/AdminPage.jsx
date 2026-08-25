@@ -10,6 +10,7 @@ function AdminPage() {
   const [catalog, setCatalog] = useState({ promos: [], stores: [], updatedAt: null });
   const [catalogLoading, setCatalogLoading] = useState(false);
   const [catalogFilter, setCatalogFilter] = useState('all');
+  const [bulkLoading, setBulkLoading] = useState(false);
 
   // SEO fields
   const [seo, setSeo] = useState({
@@ -67,6 +68,27 @@ function AdminPage() {
   const updatePromoState = async (id, patch) => {
     const response = await fetch(`/api/admin/promos/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(patch) });
     if (response.ok) await loadCatalog();
+  };
+
+  const publishPromos = async (promos) => {
+    if (!promos.length) return;
+    const confirmed = window.confirm(`Опубликовать промокоды: ${promos.length} шт.?`);
+    if (!confirmed) return;
+    setBulkLoading(true);
+    try {
+      const response = await fetch('/api/admin/promos/bulk', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ids: promos.map((promo) => promo.id),
+          status: 'approved',
+          verificationStatus: 'valid'
+        })
+      });
+      if (response.ok) await loadCatalog();
+    } finally {
+      setBulkLoading(false);
+    }
   };
 
   const handleLogout = async () => {
@@ -156,6 +178,9 @@ function AdminPage() {
 
   const score = getSeoScore();
   const scoreColor = score >= 80 ? '#4caf50' : score >= 50 ? '#ff9800' : '#f44336';
+  const isPublished = (promo) => promo.status === 'approved' && promo.verificationStatus === 'valid';
+  const filteredPromos = catalog.promos.filter((promo) => catalogFilter === 'all' || (catalogFilter === 'published' ? isPublished(promo) : !isPublished(promo)));
+  const publishablePromos = filteredPromos.filter((promo) => !isPublished(promo));
 
   return (
     <div className="admin-page">
@@ -362,10 +387,16 @@ function AdminPage() {
 
           {activeTab === 'catalog' && (
             <div className="tab-content catalog-content">
-              <div className="catalog-heading"><div><h2>Каталог сайта</h2><p className="hint">Здесь отображаются все загруженные промокоды, включая ожидающие проверки.</p></div><button className="btn-add" onClick={loadCatalog} disabled={catalogLoading}><RefreshCw className="w-4 h-4 inline mr-1" /> Обновить</button></div>
-              <div className="catalog-stats"><div><strong>{catalog.promos.length}</strong><span>Всего промокодов</span></div><div><strong>{catalog.promos.filter(p => p.status === 'approved' && p.verificationStatus === 'valid').length}</strong><span>Опубликовано</span></div><div><strong>{catalog.promos.filter(p => p.status !== 'approved' || p.verificationStatus !== 'valid').length}</strong><span>На проверке</span></div><div><strong>{catalog.stores.length}</strong><span>Магазинов</span></div></div>
+              <div className="catalog-heading">
+                <div><h2>Каталог сайта</h2><p className="hint">Здесь отображаются все загруженные промокоды, включая ожидающие проверки.</p></div>
+                <div className="catalog-actions">
+                  <button className="btn-add" onClick={() => publishPromos(publishablePromos)} disabled={bulkLoading || catalogLoading || publishablePromos.length === 0}><CheckCircle className="w-4 h-4 inline mr-1" /> {bulkLoading ? 'Публикую...' : `Опубликовать все (${publishablePromos.length})`}</button>
+                  <button className="btn-add" onClick={loadCatalog} disabled={catalogLoading}><RefreshCw className="w-4 h-4 inline mr-1" /> Обновить</button>
+                </div>
+              </div>
+              <div className="catalog-stats"><div><strong>{catalog.promos.length}</strong><span>Всего промокодов</span></div><div><strong>{catalog.promos.filter(isPublished).length}</strong><span>Опубликовано</span></div><div><strong>{catalog.promos.filter(p => !isPublished(p)).length}</strong><span>На проверке</span></div><div><strong>{catalog.stores.length}</strong><span>Магазинов</span></div></div>
               <div className="catalog-filters"><button className={catalogFilter === 'all' ? 'active' : ''} onClick={() => setCatalogFilter('all')}>Все</button><button className={catalogFilter === 'published' ? 'active' : ''} onClick={() => setCatalogFilter('published')}>Опубликованные</button><button className={catalogFilter === 'review' ? 'active' : ''} onClick={() => setCatalogFilter('review')}>На проверке</button></div>
-              <div className="admin-promo-list">{catalog.promos.filter(p => catalogFilter === 'all' || (catalogFilter === 'published' ? p.status === 'approved' && p.verificationStatus === 'valid' : p.status !== 'approved' || p.verificationStatus !== 'valid')).map(p => <div className="admin-promo-row" key={p.id}><div className="admin-promo-icon">{p.iconUrl ? <img src={p.iconUrl} alt="" /> : <Store className="w-5 h-5" />}</div><div className="admin-promo-main"><strong>{p.store}</strong><span>{p.title || 'Без названия'} {p.code && `· ${p.code}`}</span><small>{p.description}</small></div><div className="admin-promo-meta"><span className={p.status === 'approved' && p.verificationStatus === 'valid' ? 'state published' : 'state review'}>{p.status === 'approved' && p.verificationStatus === 'valid' ? <><CheckCircle className="w-3 h-3" /> Опубликован</> : <><Clock className="w-3 h-3" /> На проверке</>}</span><span>Раскрытий: {p.usedCount || 0}</span></div><div className="admin-promo-actions">{!(p.status === 'approved' && p.verificationStatus === 'valid') && <button onClick={() => updatePromoState(p.id, { status: 'approved', verificationStatus: 'valid' })}>Опубликовать</button>}{p.status === 'approved' && p.verificationStatus === 'valid' && <button className="danger" onClick={() => updatePromoState(p.id, { status: 'pending', verificationStatus: 'unverified' })}>Снять</button>}</div></div>)}</div>
+              <div className="admin-promo-list">{filteredPromos.map(p => <div className="admin-promo-row" key={p.id}><div className="admin-promo-icon">{p.iconUrl ? <img src={p.iconUrl} alt="" /> : <Store className="w-5 h-5" />}</div><div className="admin-promo-main"><strong>{p.store}</strong><span>{p.title || 'Без названия'} {p.code && `· ${p.code}`}</span><small>{p.description}</small></div><div className="admin-promo-meta"><span className={isPublished(p) ? 'state published' : 'state review'}>{isPublished(p) ? <><CheckCircle className="w-3 h-3" /> Опубликован</> : <><Clock className="w-3 h-3" /> На проверке</>}</span><span>Раскрытий: {p.usedCount || 0}</span></div><div className="admin-promo-actions">{!isPublished(p) && <button onClick={() => updatePromoState(p.id, { status: 'approved', verificationStatus: 'valid' })}>Опубликовать</button>}{isPublished(p) && <button className="danger" onClick={() => updatePromoState(p.id, { status: 'pending', verificationStatus: 'unverified' })}>Снять</button>}</div></div>)}</div>
               {!catalog.promos.length && <div className="empty-state"><XCircle className="w-6 h-6" /> Данные не загрузились или каталог пуст.</div>}
             </div>
           )}
