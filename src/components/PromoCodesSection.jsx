@@ -40,7 +40,7 @@ function PromoCodeCard({ code }) {
             style={{ background: `${colors[code.store] || '#6C4DFF'}15` }}
           >
             {code.storeLogo ? (
-              <img src={code.storeLogo} alt={`${code.store} логотип`} className="w-7 h-7 object-contain" loading="lazy" />
+                  <img src={code.storeLogo} alt={`${code.store} логотип`} className="w-7 h-7 object-contain" loading="lazy" onError={(event) => { event.currentTarget.style.display = 'none'; event.currentTarget.parentElement.dataset.fallback = code.store.charAt(0); }} />
             ) : code.store.charAt(0)}
           </div>
           <div>
@@ -200,6 +200,7 @@ export default function PromoCodesSection() {
         const catalogCodes = (catalog.promos || []).map((item) => ({
           id: item.id,
           store: item.store,
+          storeLogo: item.iconUrl || undefined,
           code: item.code,
           discount: Number(item.discount?.value || item.discount || 0),
           description: item.description || item.title,
