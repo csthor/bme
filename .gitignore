@@ -1,6 +1,7 @@
 node_modules/
 dist/
 ssl/
+promts/
 *.log
 .env
 .DS_Store
