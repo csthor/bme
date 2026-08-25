@@ -220,7 +220,7 @@ export default function PromoCodesSection() {
           store: item.store,
           storeLogo: item.iconUrl || undefined,
           code: item.code,
-          discount: Number(item.discount?.value || item.discount || 0),
+          discount: Number(typeof item.discount === 'object' ? item.discount?.value : item.discount) || 0,
           description: item.description || item.title,
           usedCount: Number(item.usedCount || 0),
           expiresAt: item.validUntil,
