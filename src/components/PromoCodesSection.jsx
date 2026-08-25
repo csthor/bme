@@ -187,10 +187,23 @@ export default function PromoCodesSection() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/api/seo')
-      .then(response => response.ok ? response.json() : Promise.reject(new Error('Promo API unavailable')))
-      .then(data => {
+    Promise.all([fetch('/api/seo'), fetch('/api/promos')])
+      .then(async ([seoResponse, promosResponse]) => {
+        if (!seoResponse.ok || !promosResponse.ok) throw new Error('Promo API unavailable');
+        return [await seoResponse.json(), await promosResponse.json()];
+      })
+      .then(([data, catalog]) => {
         if (cancelled) return;
+        const catalogCodes = (catalog.promos || []).map((item) => ({
+          id: item.id,
+          store: item.store,
+          code: item.code,
+          discount: Number(item.discount?.value || item.discount || 0),
+          description: item.description || item.title,
+          usedCount: Number(item.usedCount || 0),
+          expiresAt: item.validUntil,
+          type: 'promo'
+        }));
         const managedCodes = [
           data.promoCode && {
             id: 'main-promo',
@@ -214,7 +227,7 @@ export default function PromoCodesSection() {
           }))
         ].filter(item => item && item.code && (!item.expiresAt || new Date(item.expiresAt) >= new Date()));
 
-        if (managedCodes.length > 0) setLivePromoCodes(managedCodes);
+        if (catalogCodes.length > 0) setLivePromoCodes([...catalogCodes, ...managedCodes]);
       })
       .catch(() => {})
       .finally(() => { cancelled = true; });
