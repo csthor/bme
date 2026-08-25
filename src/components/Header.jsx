@@ -20,7 +20,7 @@ function SearchBar({ onSearch }) {
   }, [query]);
 
   return (
-    <div className="relative w-full flex-1 min-w-0 max-w-2xl">
+    <div className="relative w-full flex-1 min-w-0 max-w-lg">
       <div className={`relative transition-all duration-300 ${focused ? 'scale-[1.01]' : ''}`}>
         <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9CA3AF]" />
         <input
@@ -39,7 +39,7 @@ function SearchBar({ onSearch }) {
           onFocus={() => setFocused(true)}
           onBlur={() => setTimeout(() => setFocused(false), 200)}
           placeholder="Поиск магазина или промокода"
-          className="w-full pl-14 pr-5 py-4 bg-white border-2 border-[#ECECF3] rounded-2xl text-base text-[#111827] placeholder-[#9CA3AF] outline-none transition-all duration-300 focus:border-[#6C4DFF] focus:shadow-xl focus:shadow-[#6C4DFF]/10"
+          className="w-full pl-12 pr-5 py-3 bg-white border-2 border-[#ECECF3] rounded-xl text-sm text-[#111827] placeholder-[#9CA3AF] outline-none transition-all duration-300 focus:border-[#6C4DFF] focus:shadow-lg focus:shadow-[#6C4DFF]/10"
         />
       </div>
       <>
