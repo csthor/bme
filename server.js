@@ -15,6 +15,7 @@ const app = express();
 const PORT = 3000;
 const SEO_DATA_FILE = join(__dirname, 'seo-data.json');
 const PROMO_DATA_FILE = join(__dirname, 'promo-data.json');
+const USAGE_DATA_FILE = join(__dirname, 'usage-data.json');
 
 // --- Admin credentials (load from .env) ---
 const ADMIN_USER = process.env.ADMIN_USER;
@@ -288,6 +289,20 @@ function savePromoData(data) {
   writeFileSync(PROMO_DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
 }
 
+function loadUsageData() {
+  try { return JSON.parse(readFileSync(USAGE_DATA_FILE, 'utf8')); }
+  catch { return {}; }
+}
+
+function saveUsageData(data) {
+  writeFileSync(USAGE_DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
+}
+
+function withUsageCounts(promos) {
+  const usage = loadUsageData();
+  return promos.map((promo) => ({ ...promo, usedCount: Number(usage[promo.id] ?? promo.usedCount) || 0 }));
+}
+
 function normalizePromo(item) {
   const promo = {
     id: item.id || crypto.randomUUID(),
@@ -500,7 +515,7 @@ app.post('/api/import/promos', (req, res) => {
 
 app.get('/api/promos', (req, res) => {
   const data = loadPromoData();
-  const visible = data.promos.filter((promo) => promo.status === 'approved' && promo.verificationStatus === 'valid');
+  const visible = withUsageCounts(data.promos).filter((promo) => promo.status === 'approved' && promo.verificationStatus === 'valid');
   res.json({ promos: visible, updatedAt: data.updatedAt });
 });
 
@@ -508,7 +523,7 @@ app.get('/api/promos', (req, res) => {
 app.get('/api/admin/catalog', (req, res) => {
   if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
   const data = loadPromoData();
-  const promos = [...data.promos].sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt));
+  const promos = withUsageCounts(data.promos).sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt));
   const stores = [...new Set(promos.map((promo) => promo.store).filter(Boolean))].map((store) => {
     const items = promos.filter((promo) => promo.store === store);
     const first = items.find((promo) => promo.iconUrl) || {};
@@ -536,11 +551,10 @@ app.post('/api/promos/:id/use', (req, res) => {
   if (!promo || promo.status !== 'approved' || promo.verificationStatus !== 'valid') {
     return res.status(404).json({ error: 'Promo not found' });
   }
-  promo.usedCount = (Number(promo.usedCount) || 0) + 1;
-  promo.updatedAt = new Date().toISOString();
-  data.updatedAt = promo.updatedAt;
-  savePromoData(data);
-  res.json({ id: promo.id, usedCount: promo.usedCount });
+  const usage = loadUsageData();
+  usage[promo.id] = (Number(usage[promo.id] ?? promo.usedCount) || 0) + 1;
+  saveUsageData(usage);
+  res.json({ id: promo.id, usedCount: usage[promo.id] });
 });
 
 // SEO data endpoints

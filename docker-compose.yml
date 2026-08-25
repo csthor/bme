@@ -14,3 +14,4 @@ services:
       - ./ssl:/etc/nginx/ssl:ro
       - ./seo-data.json:/app/seo-data.json:rw
       - ./promo-data.json:/app/promo-data.json:rw
+      - ./usage-data.json:/app/usage-data.json:rw
