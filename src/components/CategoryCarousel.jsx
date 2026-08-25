@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { categories as catData, categoryIcons } from '../data/categories';
+import { categories as catData } from '../data/categories';
+import { categoryIcons } from '../data/categories';
 import * as Icons from 'lucide-react';
 
 export default function CategoryCarousel({ onCategorySelect }) {
@@ -51,7 +52,7 @@ export default function CategoryCarousel({ onCategorySelect }) {
                       : 'bg-white text-[#111827] border border-[#ECECF3] hover:border-[#6C4DFF]/50 hover:shadow-lg'
                   }`}
                 >
-                  <Icon className="w-7 h-7" aria-hidden="true" />
+                  <Icon className="w-7 h-7" strokeWidth={1.8} aria-hidden="true" />
                   <span className="text-sm font-semibold whitespace-nowrap">{cat.name}</span>
                   <span className={`text-xs ${isSelected ? 'text-white/70' : 'text-[#9CA3AF]'}`}>
                     {cat.count}
