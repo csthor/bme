@@ -184,9 +184,14 @@ function ExpiringCard({ item }) {
 
 export default function PromoCodesSection() {
   const [livePromoCodes, setLivePromoCodes] = useState(promoCodes);
-  const bestCodes = livePromoCodes.slice(0, 5);
-  const hotCodes = livePromoCodes.slice(5, 10);
-  const expiringCodes = livePromoCodes.slice(10, 15);
+  const bestCodes = [...livePromoCodes].sort((a, b) => b.usedCount - a.usedCount).slice(0, 5);
+  const bestIds = new Set(bestCodes.map((code) => code.id));
+  const hotCodes = [...livePromoCodes].filter((code) => !bestIds.has(code.id)).sort((a, b) => b.discount - a.discount).slice(0, 5);
+  const usedIds = new Set([...bestCodes, ...hotCodes].map((code) => code.id));
+  const expiringCodes = [...livePromoCodes].filter((code) => !usedIds.has(code.id))
+    .filter((code) => code.expiresAt)
+    .sort((a, b) => new Date(a.expiresAt) - new Date(b.expiresAt))
+    .slice(0, 5);
 
   useEffect(() => {
     let cancelled = false;
@@ -234,8 +239,8 @@ export default function PromoCodesSection() {
         if (catalogCodes.length > 0) {
           const byStore = new Map();
           catalogCodes.forEach((code) => { if (!byStore.has(code.store)) byStore.set(code.store, code); });
-          const popularCodes = [...byStore.values()].sort((a, b) => b.usedCount - a.usedCount);
-          setLivePromoCodes([...popularCodes, ...managedCodes]);
+          const catalogList = [...byStore.values()];
+          setLivePromoCodes([...catalogList, ...managedCodes]);
         }
       })
       .catch(() => {})

@@ -21,7 +21,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.wildberries.ru/",
       "fingerprint": "wildberries|328tzt6d|https://rukodi.com/ru/catalog/shops/wildberries/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 6
+      },
+      "landingUrl": "https://www.wildberries.ru/",
+      "discoveryNote": "Нажата кнопка открытия кода; полный код получен из popup/URL."
     },
     {
       "id": "promo-2",
@@ -44,7 +50,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://rostics.ru/",
       "fingerprint": "ростикс|del03nkk2|https://rukodi.com/ru/catalog/shops/rostic-s/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 15
+      },
+      "landingUrl": "https://rostics.ru/",
+      "discoveryNote": "Нажата кнопка; полный код найден в параметре utm_content URL."
     },
     {
       "id": "promo-3",
@@ -67,7 +79,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://rostics.ru/",
       "fingerprint": "ростикс|gb01fa5i|https://rukodi.com/ru/catalog/shops/rostic-s/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 25
+      },
+      "landingUrl": "https://rostics.ru/",
+      "discoveryNote": "Нажата кнопка; код извлечён из URL перехода."
     },
     {
       "id": "promo-4",
@@ -90,7 +108,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://rostics.ru/",
       "fingerprint": "ростикс|del012zd5|https://rukodi.com/ru/catalog/shops/rostic-s/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 20
+      },
+      "landingUrl": "https://rostics.ru/",
+      "discoveryNote": "Нажата кнопка; код извлечён из URL перехода."
     },
     {
       "id": "promo-5",
@@ -113,7 +137,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.ozon.ru/",
       "fingerprint": "ozon|pr#movi|https://www.promovi.ru/|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "up_to_percent",
+        "value": 50
+      },
+      "landingUrl": "https://www.ozon.ru/",
+      "discoveryNote": "Код взят из карточки агрегатора."
     },
     {
       "id": "promo-6",
@@ -136,7 +166,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://market.yandex.ru/",
       "fingerprint": "яндекс маркет|sgd4-af|https://promokod-marketa.ru/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 10
+      },
+      "landingUrl": "https://market.yandex.ru/",
+      "discoveryNote": "Код опубликован в карточке источника."
     },
     {
       "id": "promo-7",
@@ -159,7 +195,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://market.yandex.ru/",
       "fingerprint": "яндекс маркет|solt5a-af|https://promokod-marketa.ru/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 5
+      },
+      "landingUrl": "https://market.yandex.ru/",
+      "discoveryNote": "Код опубликован в карточке источника."
     },
     {
       "id": "promo-8",
@@ -182,7 +224,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://market.yandex.ru/",
       "fingerprint": "яндекс маркет|kitfort25|https://promokod-marketa.ru/|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 25
+      },
+      "landingUrl": "https://market.yandex.ru/",
+      "discoveryNote": "Код опубликован в карточке источника."
     },
     {
       "id": "promo-9",
@@ -205,7 +253,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://megamarket.ru/",
       "fingerprint": "мегамаркет|15one|https://berikod.ru/megamarket/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 15
+      },
+      "landingUrl": "https://megamarket.ru/",
+      "discoveryNote": "Код взят из карточки агрегатора."
     },
     {
       "id": "promo-10",
@@ -228,7 +282,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://megamarket.ru/",
       "fingerprint": "мегамаркет|one1|https://berikod.ru/megamarket/|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 15
+      },
+      "landingUrl": "https://megamarket.ru/",
+      "discoveryNote": "Код взят из карточки агрегатора."
     },
     {
       "id": "promo-11",
@@ -251,7 +311,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://megamarket.ru/",
       "fingerprint": "мегамаркет|ck15|https://berikod.ru/megamarket/|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "unknown",
+        "value": null
+      },
+      "landingUrl": "https://megamarket.ru/",
+      "discoveryNote": "Код взят из карточки агрегатора."
     },
     {
       "id": "promo-12",
@@ -274,7 +340,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.letu.ru/",
       "fingerprint": "л’этуаль|август|https://rukodi.com/ru/catalog/shops/letual/|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "tiered_percent",
+        "value": null
+      },
+      "landingUrl": "https://www.letu.ru/",
+      "discoveryNote": "Код указан в условиях карточки агрегатора."
     },
     {
       "id": "promo-13",
@@ -297,7 +369,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.komus.ru/",
       "fingerprint": "комус|jar2026|https://apay.komus.ru/promotions/akcii/?from=menu-g1-aktsiibrinbsppromokody|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "gift",
+        "value": null
+      },
+      "landingUrl": "https://www.komus.ru/",
+      "discoveryNote": "Найден на официальной странице акций Комус."
     },
     {
       "id": "promo-14",
@@ -320,7 +398,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.komus.ru/",
       "fingerprint": "комус|канц2026|https://apay.komus.ru/promotions/akcii/?from=menu-g1-aktsiibrinbsppromokody|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "gift",
+        "value": null
+      },
+      "landingUrl": "https://www.komus.ru/",
+      "discoveryNote": "Найден на официальной странице акций Комус."
     },
     {
       "id": "promo-15",
@@ -343,7 +427,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.komus.ru/",
       "fingerprint": "комус|упаковка|https://apay.komus.ru/promotions/akcii/?from=menu-g1-aktsiibrinbsppromokody|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "gift",
+        "value": null
+      },
+      "landingUrl": "https://www.komus.ru/",
+      "discoveryNote": "Найден на официальной странице акций Комус."
     },
     {
       "id": "promo-16",
@@ -366,7 +456,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.vseinstrumenti.ru/",
       "fingerprint": "всеинструменты.ру|drilldeal10|https://esmoll.ru/promokod-vseinstrumenti/|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 10
+      },
+      "landingUrl": "https://www.vseinstrumenti.ru/",
+      "discoveryNote": "Код опубликован в карточке источника."
     },
     {
       "id": "promo-17",
@@ -389,7 +485,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.petshop.ru/",
       "fingerprint": "petshop.ru|nownow5|https://promokod.com/coupon-store/petshop-ru|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 5
+      },
+      "landingUrl": "https://www.petshop.ru/",
+      "discoveryNote": "Код раскрыт в карточке агрегатора."
     },
     {
       "id": "promo-18",
@@ -412,7 +514,14 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.perekrestok.ru/",
       "fingerprint": "перекрёсток|55epic|https://promokod.epicris.ru/shops/perekrestok|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "fixed",
+        "value": 550,
+        "currency": "RUB"
+      },
+      "landingUrl": "https://www.perekrestok.ru/",
+      "discoveryNote": "Код опубликован в карточке источника."
     },
     {
       "id": "promo-19",
@@ -435,7 +544,14 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.perekrestok.ru/",
       "fingerprint": "перекрёсток|70epic|https://promokod.epicris.ru/shops/perekrestok|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "fixed",
+        "value": 450,
+        "currency": "RUB"
+      },
+      "landingUrl": "https://www.perekrestok.ru/",
+      "discoveryNote": "Код опубликован в карточке источника."
     },
     {
       "id": "promo-20",
@@ -458,7 +574,14 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://vkusvill.ru/",
       "fingerprint": "вкусвилл|szzzhx|https://promokod.vbr.ru/shops/vkysvill/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "fixed",
+        "value": 200,
+        "currency": "RUB"
+      },
+      "landingUrl": "https://vkusvill.ru/",
+      "discoveryNote": "Нажата кнопка выдачи кода на странице источника."
     },
     {
       "id": "promo-21",
@@ -481,7 +604,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://apteka.ru/",
       "fingerprint": "аптека.ру|action20|https://promotut.ru/catalog/b2c/health/apteka-ru/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 20
+      },
+      "landingUrl": "https://apteka.ru/",
+      "discoveryNote": "Код опубликован в карточке источника."
     },
     {
       "id": "promo-22",
@@ -504,7 +633,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://apteka.ru/",
       "fingerprint": "аптека.ру|daily15|https://promotut.ru/catalog/b2c/health/apteka-ru/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 15
+      },
+      "landingUrl": "https://apteka.ru/",
+      "discoveryNote": "Код опубликован в карточке источника."
     },
     {
       "id": "promo-23",
@@ -527,7 +662,15 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://lavka.yandex.ru/",
       "fingerprint": "яндекс лавка|lavkaperf58|https://yandex.ru/project/lavka/promocody|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent_capped",
+        "value": 58,
+        "max_value": 600,
+        "currency": "RUB"
+      },
+      "landingUrl": "https://lavka.yandex.ru/",
+      "discoveryNote": "Найден на официальной странице промокодов Яндекс Лавки."
     },
     {
       "id": "promo-24",
@@ -550,7 +693,14 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://lavka.yandex.ru/",
       "fingerprint": "яндекс лавка|lavkaperf500|https://yandex.ru/project/lavka/promocody|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "fixed",
+        "value": 500,
+        "currency": "RUB"
+      },
+      "landingUrl": "https://lavka.yandex.ru/",
+      "discoveryNote": "Найден на официальной странице промокодов Яндекс Лавки."
     },
     {
       "id": "promo-25",
@@ -573,7 +723,13 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://ostrovok.ru/",
       "fingerprint": "ostrovok|дэрэ|https://blog.ostrovok.ru/promokody-ostrovka/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 10
+      },
+      "landingUrl": "https://ostrovok.ru/",
+      "discoveryNote": "Найден в официальном блоге Ostrovok."
     },
     {
       "id": "promo-26",
@@ -596,7 +752,14 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://ostrovok.ru/",
       "fingerprint": "ostrovok|лето|https://blog.ostrovok.ru/promokody-ostrovka/|",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "fixed",
+        "value": 3000,
+        "currency": "RUB"
+      },
+      "landingUrl": "https://ostrovok.ru/",
+      "discoveryNote": "Найден в официальном блоге Ostrovok."
     },
     {
       "id": "promo-27",
@@ -619,8 +782,14 @@
       "iconFormat": "ico",
       "iconSourceUrl": "https://ostrovok.ru/",
       "fingerprint": "ostrovok|чиллмастер|https://blog.ostrovok.ru/promokody-ostrovka/|2026-08-31t23:59:59z",
-      "verifiedAt": "2026-08-25T15:01:22.356Z"
+      "verifiedAt": "2026-08-25T15:01:22.356Z",
+      "discount": {
+        "type": "percent",
+        "value": 10
+      },
+      "landingUrl": "https://ostrovok.ru/",
+      "discoveryNote": "Найден в официальном блоге Ostrovok."
     }
   ],
-  "updatedAt": "2026-08-25T15:01:22.356Z"
+  "updatedAt": "2026-08-25T15:05:12.386Z"
 }
