@@ -32,14 +32,14 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:${{ env.VERSION_PREFIX }}-${{ github.run_number }}
             ${{ env.IMAGE_NAME }}:latest
-      - name: Sync promo catalog
+      - name: Sync site data
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSHUSERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.SSHPORT }}
-          source: "promo-data.json"
+          source: "promo-data.json,seo-data.json"
           target: "/opt/kupon4UK"
       - name: Deploy on remote
         uses: appleboy/ssh-action@master

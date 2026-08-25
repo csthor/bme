@@ -244,15 +244,11 @@ const defaultSeo = {
       text: 'Каждую неделю мы публикуем специальные предложения с увеличенными скидками. Подпишитесь на рассылку, чтобы первыми узнавать о новых промокодах и купонах.'
     }
   ],
-  promoCode: 'KUPON4UK2026',
-  promoDiscount: 30,
-  promoExpiry: '2026-12-31',
-  promoDescription: 'Эксклюзивный промокод на скидку 30% от Kupon4UK — действующие акции и купоны',
-  additionalPromoCodes: [
-    { code: 'SUMMER26', discount: 20, desc: 'Летняя акция — скидка 20%', expires: '2026-09-01', active: true },
-    { code: 'FREEDEL', discount: 0, desc: 'Бесплатная доставка по всей России', expires: '2026-12-31', active: true },
-    { code: 'WELCOME26', discount: 15, desc: 'Приветственный купон для новых клиентов', expires: '2026-12-31', active: true }
-  ],
+  promoCode: '',
+  promoDiscount: 0,
+  promoExpiry: '',
+  promoDescription: '',
+  additionalPromoCodes: [],
   schemaJson: {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -561,7 +557,7 @@ app.post('/api/promos/:id/use', (req, res) => {
 app.get('/api/seo', (req, res) => {
   const data = loadSeoData();
   // Remove internal fields from response
-  const { schemaJson, ...publicData } = data;
+  const { schemaJson, promoCode, promoDiscount, promoExpiry, promoDescription, additionalPromoCodes, ...publicData } = data;
   res.json(publicData);
 });
 
@@ -578,7 +574,6 @@ app.get('/api/info', (req, res) => {
   const now = new Date();
   const randomNum = Math.floor(Math.random() * 10000);
   const ip = req.ip || req.connection.remoteAddress || '127.0.0.1';
-  const seoData = loadSeoData();
 
   res.json({
     date: now.toLocaleDateString('ru-RU', {
@@ -590,9 +585,7 @@ app.get('/api/info', (req, res) => {
     time: now.toLocaleTimeString('ru-RU'),
     randomNum,
     ip,
-    promoCode: seoData.promoCode,
-    promoDiscount: seoData.promoDiscount,
-    seoTitle: seoData.title,
+    seoTitle: loadSeoData().title,
   });
 });
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { promoCodes, hotDeals, expiringToday } from '../data/promoCodes';
 import { Copy, Check, Clock, Flame, Zap, TrendingUp } from 'lucide-react';
 
 function formatCount(num) {
@@ -12,6 +11,7 @@ function PromoCodeCard({ code }) {
   const [copied, setCopied] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [usedCount, setUsedCount] = useState(code.usedCount || 0);
+  const discount = Number(code.discount) || 0;
 
   const colors = {
     'Ozon': '#005BFF', 'DNS': '#F57C00', 'Ламод': '#111111',
@@ -64,9 +64,11 @@ function PromoCodeCard({ code }) {
             </div>
           </div>
         </div>
-        <span className="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 rounded-lg text-xs font-bold">
-          -{code.discount}%
-        </span>
+        {discount > 0 && (
+          <span className="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 rounded-lg text-xs font-bold">
+            -{discount}%
+          </span>
+        )}
       </div>
 
       <p className="text-sm text-[#6B7280] mb-2.5 leading-snug">{code.description}</p>
@@ -196,7 +198,7 @@ function ExpiringCard({ item }) {
 }
 
 export default function PromoCodesSection() {
-  const [livePromoCodes, setLivePromoCodes] = useState(promoCodes);
+  const [livePromoCodes, setLivePromoCodes] = useState([]);
   const bestCodes = [...livePromoCodes].sort((a, b) => b.usedCount - a.usedCount).slice(0, 5);
   const bestIds = new Set(bestCodes.map((code) => code.id));
   const hotCodes = [...livePromoCodes].filter((code) => !bestIds.has(code.id)).sort((a, b) => b.discount - a.discount).slice(0, 5);
@@ -208,12 +210,12 @@ export default function PromoCodesSection() {
 
   useEffect(() => {
     let cancelled = false;
-    Promise.all([fetch('/api/seo'), fetch('/api/promos')])
-      .then(async ([seoResponse, promosResponse]) => {
-        if (!seoResponse.ok || !promosResponse.ok) throw new Error('Promo API unavailable');
-        return [await seoResponse.json(), await promosResponse.json()];
+    fetch('/api/promos')
+      .then(async (promosResponse) => {
+        if (!promosResponse.ok) throw new Error('Promo API unavailable');
+        return promosResponse.json();
       })
-      .then(([data, catalog]) => {
+      .then((catalog) => {
         if (cancelled) return;
         const catalogCodes = (catalog.promos || []).map((item) => ({
           id: item.id,
@@ -225,35 +227,13 @@ export default function PromoCodesSection() {
           usedCount: Number(item.usedCount || 0),
           expiresAt: item.validUntil,
           type: 'promo'
-        }));
-        const managedCodes = [
-          data.promoCode && {
-            id: 'main-promo',
-            store: 'Kupon4UK',
-            code: data.promoCode,
-            discount: Number(data.promoDiscount) || 0,
-            description: data.promoDescription || 'Актуальное предложение Kupon4UK',
-            usedCount: 0,
-            expiresAt: data.promoExpiry,
-            type: 'promo'
-          },
-          ...(data.additionalPromoCodes || []).map((item, index) => ({
-            id: `managed-${index}`,
-            store: item.store || 'Kupon4UK',
-            code: item.code,
-            discount: Number(item.discount) || 0,
-            description: item.desc || 'Актуальное предложение',
-            usedCount: Number(item.usedCount) || 0,
-            expiresAt: item.expires,
-            type: 'promo'
-          }))
-        ].filter(item => item && item.code && (!item.expiresAt || new Date(item.expiresAt) >= new Date()));
+        })).filter((item) => item.store && item.store.toLowerCase() !== 'kupon4uk');
 
         if (catalogCodes.length > 0) {
           const byStore = new Map();
           catalogCodes.forEach((code) => { if (!byStore.has(code.store)) byStore.set(code.store, code); });
           const catalogList = [...byStore.values()];
-          setLivePromoCodes([...catalogList, ...managedCodes]);
+          setLivePromoCodes(catalogList);
         }
       })
       .catch(() => {})
