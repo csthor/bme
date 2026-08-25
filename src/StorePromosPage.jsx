@@ -3,6 +3,23 @@ import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { stores } from './data/stores';
+import { Clock, Copy, Check } from 'lucide-react';
+
+function PromoCard({ promo }) {
+  const [revealed, setRevealed] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const copy = async () => { await navigator.clipboard.writeText(promo.code); setCopied(true); setTimeout(() => setCopied(false), 1500); };
+  return <article className="bg-white rounded-2xl border border-[#ECECF3] p-4 flex flex-col min-h-[210px]">
+    <div className="flex items-start justify-between gap-3">
+      <div><h2 className="font-semibold text-[#111827]">{promo.code}</h2><div className="flex items-center gap-1 mt-1 text-xs text-emerald-500"><Clock className="w-3 h-3" />Проверено</div></div>
+      <span className="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 text-xs font-bold">Промокод</span>
+    </div>
+    <p className="mt-3 text-sm text-[#6B7280] leading-snug">{promo.description}</p>
+    <div className="mt-auto pt-4 flex gap-2">
+      {revealed ? <><code className="flex-1 px-3 py-2 rounded-xl bg-[#6C4DFF]/10 text-[#6C4DFF] font-semibold text-sm truncate">{promo.code}</code><button onClick={copy} className="px-3 rounded-xl bg-[#6C4DFF]/10 text-[#6C4DFF]">{copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}</button></> : <button onClick={() => setRevealed(true)} className="w-full px-4 py-2 rounded-xl bg-[#6C4DFF] text-white text-sm font-semibold">Показать код</button>}
+    </div>
+  </article>;
+}
 
 const slugify = (value) => value.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '');
 
@@ -32,7 +49,7 @@ export default function StorePromosPage() {
           <div><h1 className="text-4xl font-bold text-[#111827]">Промокоды {store.name}</h1><p className="mt-2 text-[#6B7280]">Все предложения магазина в одном месте</p></div>
         </div>
         <section className="mt-10">
-          {codes.length ? codes.map((code) => <article key={code.id} className="bg-white rounded-2xl border border-[#ECECF3] p-6 mb-4"><b>{code.code}</b><p className="mt-2 text-[#6B7280]">{code.description}</p></article>) : (
+          {codes.length ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">{codes.map((code) => <PromoCard key={code.id} promo={code} />)}</div> : (
             <div className="bg-white rounded-2xl border border-dashed border-[#D9D9E5] p-10 text-center">
               <h2 className="text-xl font-semibold text-[#111827]">Проверенных промокодов пока нет</h2>
               <p className="mt-2 text-[#6B7280]">Мы добавим сюда код после проверки условий на официальном сайте магазина.</p>
