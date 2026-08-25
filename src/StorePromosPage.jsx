@@ -8,15 +8,17 @@ import { Clock, Copy, Check } from 'lucide-react';
 function PromoCard({ promo }) {
   const [revealed, setRevealed] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [usedCount, setUsedCount] = useState(promo.usedCount || 0);
+  const reveal = async () => { setRevealed(true); try { const response = await fetch(`/api/promos/${promo.id}/use`, { method: 'POST' }); if (response.ok) setUsedCount((await response.json()).usedCount); } catch {} };
   const copy = async () => { await navigator.clipboard.writeText(promo.code); setCopied(true); setTimeout(() => setCopied(false), 1500); };
   return <article className="bg-white rounded-2xl border border-[#ECECF3] p-4 flex flex-col min-h-[210px]">
     <div className="flex items-start justify-between gap-3">
       <div><h2 className="font-semibold text-[#111827]">{promo.title || 'Специальное предложение'}</h2><div className="flex items-center gap-1 mt-1 text-xs text-emerald-500"><Clock className="w-3 h-3" />Проверено</div></div>
       <span className="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 text-xs font-bold">Скидка</span>
     </div>
-    <p className="mt-3 text-sm text-[#6B7280] leading-snug">Условия: {promo.description}</p>
+      <p className="mt-3 text-sm text-[#6B7280] leading-snug">Условия: {promo.description}</p><p className="mt-2 text-xs text-[#9CA3AF]">{usedCount} раз открывали код</p>
     <div className="mt-auto pt-4 flex gap-2">
-      {revealed ? <><code className="flex-1 px-3 py-2 rounded-xl bg-[#6C4DFF]/10 text-[#6C4DFF] font-semibold text-sm truncate">{promo.code}</code><button onClick={copy} className="px-3 rounded-xl bg-[#6C4DFF]/10 text-[#6C4DFF]">{copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}</button></> : <button onClick={() => setRevealed(true)} className="w-full px-4 py-2 rounded-xl bg-[#6C4DFF] text-white text-sm font-semibold">Показать код</button>}
+      {revealed ? <><code className="flex-1 px-3 py-2 rounded-xl bg-[#6C4DFF]/10 text-[#6C4DFF] font-semibold text-sm truncate">{promo.code}</code><button onClick={copy} className="px-3 rounded-xl bg-[#6C4DFF]/10 text-[#6C4DFF]">{copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}</button></> : <button onClick={reveal} className="w-full px-4 py-2 rounded-xl bg-[#6C4DFF] text-white text-sm font-semibold">Показать код</button>}
     </div>
   </article>;
 }

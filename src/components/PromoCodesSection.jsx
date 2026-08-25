@@ -11,6 +11,7 @@ function formatCount(num) {
 function PromoCodeCard({ code }) {
   const [copied, setCopied] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const [usedCount, setUsedCount] = useState(code.usedCount || 0);
 
   const colors = {
     'Ozon': '#005BFF', 'DNS': '#F57C00', 'Ламод': '#111111',
@@ -23,6 +24,18 @@ function PromoCodeCard({ code }) {
     navigator.clipboard.writeText(code.code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleReveal = async () => {
+    if (revealed) return;
+    setRevealed(true);
+    try {
+      const response = await fetch(`/api/promos/${code.id}/use`, { method: 'POST' });
+      if (response.ok) {
+        const result = await response.json();
+        setUsedCount(result.usedCount);
+      }
+    } catch {}
   };
 
   return (
@@ -61,12 +74,12 @@ function PromoCodeCard({ code }) {
       <div className="mt-auto flex items-center justify-between">
         <div className="flex items-center gap-1 text-xs text-[#9CA3AF]">
           <TrendingUp className="w-3.5 h-3.5" />
-          <span>{formatCount(code.usedCount)} использовали</span>
+          <span>{formatCount(usedCount)} использовали</span>
         </div>
         <div className="flex items-center gap-2">
           {!revealed ? (
             <button
-              onClick={() => setRevealed(true)}
+              onClick={handleReveal}
               className="px-4 py-2 bg-[#6C4DFF] text-white text-sm font-semibold rounded-xl hover:bg-[#5B3FE6] transition-colors"
             >
               Показать код

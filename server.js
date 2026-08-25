@@ -304,6 +304,7 @@ function normalizePromo(item) {
     validUntil: item.validUntil || null,
     status: item.status || 'pending',
     verificationStatus: item.verificationStatus || 'unverified',
+    usedCount: Number(item.usedCount) || 0,
     createdAt: item.createdAt || new Date().toISOString(),
     updatedAt: new Date().toISOString()
   };
@@ -497,6 +498,19 @@ app.get('/api/promos', (req, res) => {
   const data = loadPromoData();
   const visible = data.promos.filter((promo) => promo.status === 'approved' && promo.verificationStatus === 'valid');
   res.json({ promos: visible, updatedAt: data.updatedAt });
+});
+
+app.post('/api/promos/:id/use', (req, res) => {
+  const data = loadPromoData();
+  const promo = data.promos.find((item) => item.id === req.params.id);
+  if (!promo || promo.status !== 'approved' || promo.verificationStatus !== 'valid') {
+    return res.status(404).json({ error: 'Promo not found' });
+  }
+  promo.usedCount = (Number(promo.usedCount) || 0) + 1;
+  promo.updatedAt = new Date().toISOString();
+  data.updatedAt = promo.updatedAt;
+  savePromoData(data);
+  res.json({ id: promo.id, usedCount: promo.usedCount });
 });
 
 // SEO data endpoints
