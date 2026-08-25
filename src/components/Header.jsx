@@ -122,13 +122,6 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* Auth buttons */}
-            <div className="hidden xl:flex items-center flex-shrink-0">
-              <a href="/login" className="px-5 py-2.5 text-sm font-semibold bg-[#6C4DFF] text-white rounded-xl hover:bg-[#5B3FE6] shadow-lg shadow-[#6C4DFF]/25 hover:shadow-[#6C4DFF]/40 transition-all duration-300 whitespace-nowrap">
-                Войти в кабинет
-              </a>
-            </div>
-
             {/* Mobile menu button */}
             <button
               className="xl:hidden p-2 rounded-xl hover:bg-black/5 transition-colors"
@@ -155,11 +148,6 @@ export default function Header() {
                   {link.label}
                 </a>
               ))}
-              <div className="flex flex-col gap-3 mt-6">
-                <a href="/login" className="w-full py-3 text-base font-semibold border-2 border-[#ECECF3] rounded-xl text-center">
-                  Войти
-                </a>
-              </div>
             </div>
           </div>
         )}
