@@ -13,11 +13,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "м.видео|mobile|https://www.mvideo.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "м.видео|mobile|https://www.mvideo.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.595Z"
     },
     {
       "id": "import-2",
@@ -32,11 +33,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "м.видео|mobilemv|https://www.mvideo.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "м.видео|mobilemv|https://www.mvideo.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-3",
@@ -51,11 +53,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "м.видео|today|https://www.mvideo.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "м.видео|today|https://www.mvideo.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-4",
@@ -70,11 +73,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "м.видео|cool|https://www.mvideo.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "м.видео|cool|https://www.mvideo.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-5",
@@ -89,11 +93,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "м.видео|mvms499|https://www.mvideo.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "м.видео|mvms499|https://www.mvideo.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-6",
@@ -108,11 +113,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "м.видео|wow10|https://www.mvideo.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "м.видео|wow10|https://www.mvideo.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-7",
@@ -127,11 +133,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "эльдорадо|лето1000|https://www.eldorado.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "эльдорадо|лето1000|https://www.eldorado.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-8",
@@ -146,11 +153,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "эльдорадо|лето3000|https://www.eldorado.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "эльдорадо|лето3000|https://www.eldorado.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-9",
@@ -165,11 +173,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "эльдорадо|лето5000|https://www.eldorado.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "эльдорадо|лето5000|https://www.eldorado.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-10",
@@ -184,11 +193,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "эльдорадо|dom20|https://www.eldorado.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "эльдорадо|dom20|https://www.eldorado.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-11",
@@ -203,11 +213,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "эльдорадо|красота20|https://www.eldorado.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "эльдорадо|красота20|https://www.eldorado.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-12",
@@ -222,11 +233,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "эльдорадо|кибер15|https://www.eldorado.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "эльдорадо|кибер15|https://www.eldorado.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-13",
@@ -241,11 +253,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "эльдорадо|кибер20|https://www.eldorado.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "эльдорадо|кибер20|https://www.eldorado.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-14",
@@ -260,11 +273,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "эльдорадо|кибер25|https://www.eldorado.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "эльдорадо|кибер25|https://www.eldorado.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-15",
@@ -279,11 +293,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "эльдорадо|климат4000|https://www.eldorado.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "эльдорадо|климат4000|https://www.eldorado.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-16",
@@ -298,11 +313,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс.маркет|sgd4-af|https://market.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс.маркет|sgd4-af|https://market.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-17",
@@ -317,11 +333,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс.маркет|solt5a-af|https://market.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс.маркет|solt5a-af|https://market.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-18",
@@ -336,11 +353,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс.маркет|kitfort25|https://market.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс.маркет|kitfort25|https://market.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-19",
@@ -355,11 +373,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс.маркет|cemvm10|https://market.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс.маркет|cemvm10|https://market.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-20",
@@ -374,11 +393,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс.маркет|hamvm15|https://market.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс.маркет|hamvm15|https://market.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-21",
@@ -393,11 +413,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "мегамаркет|15one|https://megamarket.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "мегамаркет|15one|https://megamarket.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-22",
@@ -412,11 +433,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "мегамаркет|one1|https://megamarket.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "мегамаркет|one1|https://megamarket.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-23",
@@ -431,11 +453,12 @@
       "category": "Электроника",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "мегамаркет|ck15|https://megamarket.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "мегамаркет|ck15|https://megamarket.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-24",
@@ -450,11 +473,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "самокат|r6sl5rq|https://samokat.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "самокат|r6sl5rq|https://samokat.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-25",
@@ -469,11 +493,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "самокат|n9ua8bm|https://samokat.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "самокат|n9ua8bm|https://samokat.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-26",
@@ -488,11 +513,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "самокат|elq7zcx|https://samokat.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "самокат|elq7zcx|https://samokat.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-27",
@@ -507,11 +533,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "самокат|kvrvdgg|https://samokat.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "самокат|kvrvdgg|https://samokat.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-28",
@@ -526,11 +553,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "самокат|ncpgmmh|https://samokat.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "самокат|ncpgmmh|https://samokat.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-29",
@@ -545,11 +573,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "вкусвилл|szzzhx|https://vkusvill.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "вкусвилл|szzzhx|https://vkusvill.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-30",
@@ -564,11 +593,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс.еда|rc93an|https://eda.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс.еда|rc93an|https://eda.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-31",
@@ -583,11 +613,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс.еда|ap300|https://eda.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс.еда|ap300|https://eda.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-32",
@@ -602,11 +633,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс.еда|ph20|https://eda.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс.еда|ph20|https://eda.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-33",
@@ -621,11 +653,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "пятёрочка|vbru05|https://5ka.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "пятёрочка|vbru05|https://5ka.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-34",
@@ -640,11 +673,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "лента|lenta300|https://lenta.com/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "лента|lenta300|https://lenta.com/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-35",
@@ -659,11 +693,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "лента|гипер500|https://lenta.com/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "лента|гипер500|https://lenta.com/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-36",
@@ -678,11 +713,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "лента|этопервый|https://lenta.com/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "лента|этопервый|https://lenta.com/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-37",
@@ -697,11 +733,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "лента|лето|https://lenta.com/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "лента|лето|https://lenta.com/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-38",
@@ -716,11 +753,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "лента|лента|https://lenta.com/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "лента|лента|https://lenta.com/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-39",
@@ -735,11 +773,12 @@
       "category": "Доставка еды",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "деливери|sale20|https://market-delivery.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "деливери|sale20|https://market-delivery.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-40",
@@ -754,11 +793,12 @@
       "category": "Доставка еды",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "деливери|nice500|https://market-delivery.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "деливери|nice500|https://market-delivery.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-41",
@@ -773,11 +813,12 @@
       "category": "Доставка еды",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "деливери|prk200|https://market-delivery.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "деливери|prk200|https://market-delivery.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-42",
@@ -792,11 +833,12 @@
       "category": "Доставка еды",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "деливери|dixy|https://market-delivery.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "деливери|dixy|https://market-delivery.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-43",
@@ -811,11 +853,12 @@
       "category": "Доставка еды",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "деливери|dx200|https://market-delivery.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "деливери|dx200|https://market-delivery.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-44",
@@ -830,11 +873,12 @@
       "category": "Каршеринг",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "belkacar|kvtx7119|https://belkacar.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "belkacar|kvtx7119|https://belkacar.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-45",
@@ -849,11 +893,12 @@
       "category": "Подписки",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс плюс|plus45|https://plus.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс плюс|plus45|https://plus.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-46",
@@ -868,11 +913,12 @@
       "category": "Подписки",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс плюс|plus30|https://plus.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс плюс|plus30|https://plus.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-47",
@@ -887,11 +933,12 @@
       "category": "Подписки",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "okko|06|https://okko.tv/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "okko|06|https://okko.tv/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-48",
@@ -906,11 +953,12 @@
       "category": "Подписки",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "иви|ilm35|https://www.ivi.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "иви|ilm35|https://www.ivi.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-49",
@@ -925,11 +973,12 @@
       "category": "Подписки",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "иви|vinm0jtusm6|https://www.ivi.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "иви|vinm0jtusm6|https://www.ivi.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-50",
@@ -944,11 +993,12 @@
       "category": "Подписки",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "иви|film35|https://www.ivi.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "иви|film35|https://www.ivi.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-51",
@@ -963,11 +1013,12 @@
       "category": "Подписки",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "vk музыка|get90428qtcvr|https://vk.com/music|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "vk музыка|get90428qtcvr|https://vk.com/music|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-52",
@@ -982,11 +1033,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|super10|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|super10|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-53",
@@ -1001,11 +1053,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|happy23|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|happy23|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-54",
@@ -1020,11 +1073,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|rogov|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|rogov|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-55",
@@ -1039,11 +1093,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|visaoffer|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|visaoffer|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-56",
@@ -1058,11 +1113,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|letsgo|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|letsgo|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-57",
@@ -1077,11 +1133,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|sentybr33|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|sentybr33|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-58",
@@ -1096,11 +1153,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|epn26|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|epn26|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-59",
@@ -1115,11 +1173,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|angel15|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|angel15|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-60",
@@ -1134,11 +1193,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|offernow|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|offernow|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-61",
@@ -1153,11 +1213,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "lamoda|lamodastart|https://www.lamoda.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "lamoda|lamodastart|https://www.lamoda.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-62",
@@ -1172,11 +1233,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "wildberries|328tzt6d|https://www.wildberries.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "wildberries|328tzt6d|https://www.wildberries.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-63",
@@ -1191,11 +1253,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "gloria jeans|ttigj|https://www.gloria-jeans.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "gloria jeans|ttigj|https://www.gloria-jeans.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-64",
@@ -1210,11 +1273,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "gloria jeans|acake|https://www.gloria-jeans.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "gloria jeans|acake|https://www.gloria-jeans.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-65",
@@ -1229,11 +1293,12 @@
       "category": "Одежда",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "gloria jeans|wow25|https://www.gloria-jeans.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "gloria jeans|wow25|https://www.gloria-jeans.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-66",
@@ -1248,11 +1313,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс путешествия|gb-premiumpro-lmsw8|https://travel.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс путешествия|gb-premiumpro-lmsw8|https://travel.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-67",
@@ -1267,11 +1333,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс путешествия|pf-alliooo-jffi2|https://travel.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс путешествия|pf-alliooo-jffi2|https://travel.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-68",
@@ -1286,11 +1353,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс путешествия|pf-i2br7vn|https://travel.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс путешествия|pf-i2br7vn|https://travel.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-69",
@@ -1305,11 +1373,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс путешествия|netsil|https://travel.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс путешествия|netsil|https://travel.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-70",
@@ -1324,11 +1393,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс путешествия|kanikuly|https://travel.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс путешествия|kanikuly|https://travel.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-71",
@@ -1343,11 +1413,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс путешествия|2stolicy|https://travel.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс путешествия|2stolicy|https://travel.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-72",
@@ -1362,11 +1433,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "яндекс путешествия|turkey5k|https://travel.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс путешествия|turkey5k|https://travel.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-73",
@@ -1381,11 +1453,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "ostrovok|дэрэ|https://ostrovok.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "ostrovok|дэрэ|https://ostrovok.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-74",
@@ -1400,11 +1473,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "ostrovok|лето|https://ostrovok.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "ostrovok|лето|https://ostrovok.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-75",
@@ -1419,11 +1493,12 @@
       "category": "Путешествия",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.263Z",
-      "updatedAt": "2026-08-25T11:41:18.263Z",
-      "fingerprint": "ostrovok|чиллмастер|https://ostrovok.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "ostrovok|чиллмастер|https://ostrovok.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-76",
@@ -1438,11 +1513,12 @@
       "category": "Красота",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "л’этуаль|август|https://www.letu.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "л’этуаль|август|https://www.letu.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-77",
@@ -1457,11 +1533,12 @@
       "category": "Офис",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "комус|jar2026|https://www.komus.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "комус|jar2026|https://www.komus.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-78",
@@ -1476,11 +1553,12 @@
       "category": "Офис",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "комус|канц2026|https://www.komus.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "комус|канц2026|https://www.komus.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-79",
@@ -1495,11 +1573,12 @@
       "category": "Офис",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "комус|упаковка|https://www.komus.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "комус|упаковка|https://www.komus.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-80",
@@ -1514,11 +1593,12 @@
       "category": "Дом и ремонт",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "всеинструменты.ру|drilldeal10|https://www.vseinstrumenti.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "всеинструменты.ру|drilldeal10|https://www.vseinstrumenti.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-81",
@@ -1533,11 +1613,12 @@
       "category": "Зоотовары",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "petshop.ru|nownow5|https://www.petshop.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "petshop.ru|nownow5|https://www.petshop.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-82",
@@ -1552,11 +1633,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "перекрёсток|55epic|https://www.perekrestok.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "перекрёсток|55epic|https://www.perekrestok.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-83",
@@ -1571,11 +1653,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "перекрёсток|70epic|https://www.perekrestok.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "перекрёсток|70epic|https://www.perekrestok.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-84",
@@ -1590,11 +1673,12 @@
       "category": "Здоровье",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "аптека.ру|action20|https://apteka.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "аптека.ру|action20|https://apteka.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-85",
@@ -1609,11 +1693,12 @@
       "category": "Здоровье",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "аптека.ру|daily15|https://apteka.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "аптека.ру|daily15|https://apteka.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-86",
@@ -1628,11 +1713,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "яндекс лавка|lavkaperf58|https://lavka.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс лавка|lavkaperf58|https://lavka.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-87",
@@ -1647,11 +1733,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "яндекс лавка|lavkaperf500|https://lavka.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс лавка|lavkaperf500|https://lavka.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-88",
@@ -1666,11 +1753,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "яндекс лавка|lavkaperf55|https://lavka.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс лавка|lavkaperf55|https://lavka.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-89",
@@ -1685,11 +1773,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "яндекс лавка|lavkaperf51|https://lavka.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс лавка|lavkaperf51|https://lavka.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-90",
@@ -1704,11 +1793,12 @@
       "category": "Продукты",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "яндекс лавка|lavkaperf300|https://lavka.yandex.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "яндекс лавка|lavkaperf300|https://lavka.yandex.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-91",
@@ -1723,11 +1813,12 @@
       "category": "Доставка еды",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "ростикс|del03nkk2|https://rostics.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "ростикс|del03nkk2|https://rostics.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-92",
@@ -1742,11 +1833,12 @@
       "category": "Доставка еды",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "ростикс|gb01fa5i|https://rostics.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "ростикс|gb01fa5i|https://rostics.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     },
     {
       "id": "import-93",
@@ -1761,12 +1853,13 @@
       "category": "Доставка еды",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T11:41:18.264Z",
-      "updatedAt": "2026-08-25T11:41:18.264Z",
-      "fingerprint": "ростикс|del012zd5|https://rostics.ru/|"
+      "updatedAt": "2026-08-25T11:47:36.598Z",
+      "fingerprint": "ростикс|del012zd5|https://rostics.ru/|",
+      "verifiedAt": "2026-08-25T11:47:36.598Z"
     }
   ],
-  "updatedAt": "2026-08-25T11:41:18.264Z"
+  "updatedAt": "2026-08-25T11:47:36.598Z"
 }
