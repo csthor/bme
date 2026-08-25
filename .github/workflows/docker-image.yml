@@ -34,11 +34,17 @@ jobs:
             ${{ env.IMAGE_NAME }}:latest
       - name: Deploy on remote
         uses: appleboy/ssh-action@master
+        env:
+          ADMIN_USER: ${{ secrets.ADMIN_USER }}
+          ADMIN_PASS: ${{ secrets.ADMIN_PASS }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSHUSERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.SSHPORT }}
+          envs: ADMIN_USER,ADMIN_PASS
           script: |
+            umask 077
+            printf 'ADMIN_USER=%s\nADMIN_PASS=%s\n' "$ADMIN_USER" "$ADMIN_PASS" > /opt/kupon4UK/.env
             sed -i "s|^\s*image:.*|    image: ${{ env.IMAGE_NAME }}:${{ env.VERSION_PREFIX }}-${{ github.run_number }}|" /opt/kupon4UK/docker-compose.yml
             cd /opt/kupon4UK/ && docker compose pull && docker compose up -d --force-recreate
