@@ -31,7 +31,7 @@ function PromoCodeCard({ code }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -2 }}
-      className="bg-white rounded-2xl border border-[#ECECF3] p-5 hover:shadow-xl hover:shadow-[#6C4DFF]/5 hover:border-[#6C4DFF]/30 transition-all duration-300"
+      className="h-full bg-white rounded-2xl border border-[#ECECF3] p-5 flex flex-col hover:shadow-xl hover:shadow-[#6C4DFF]/5 hover:border-[#6C4DFF]/30 transition-all duration-300"
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
@@ -58,7 +58,7 @@ function PromoCodeCard({ code }) {
 
       <p className="text-sm text-[#6B7280] mb-4 leading-relaxed">{code.description}</p>
 
-      <div className="flex items-center justify-between">
+      <div className="mt-auto flex items-center justify-between">
         <div className="flex items-center gap-1 text-xs text-[#9CA3AF]">
           <TrendingUp className="w-3.5 h-3.5" />
           <span>{formatCount(code.usedCount)} использовали</span>
@@ -256,9 +256,9 @@ export default function PromoCodesSection() {
           <p className="text-[#6B7280]">Скидки, которые работают прямо сейчас</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {/* Left - Best promo codes */}
-          <div className="lg:col-span-6 space-y-4">
+          <div className="lg:col-span-1 space-y-4">
             <div className="flex items-center gap-2 mb-2">
               <TrendingUp className="w-5 h-5 text-[#6C4DFF]" />
               <h3 className="text-lg font-bold text-[#111827]">Лучшие промокоды</h3>
@@ -269,7 +269,7 @@ export default function PromoCodesSection() {
           </div>
 
           {/* Center - Hot deals */}
-          <div className="lg:col-span-3 space-y-4 self-start">
+          <div className="lg:col-span-1 space-y-4">
             <div className="flex items-center gap-2 mb-2">
               <Flame className="w-5 h-5 text-[#FF7A00]" />
               <h3 className="text-lg font-bold text-[#111827]">Горячие</h3>
@@ -280,7 +280,7 @@ export default function PromoCodesSection() {
           </div>
 
           {/* Right - Expiring today */}
-          <div className="lg:col-span-3 space-y-4 self-start">
+          <div className="lg:col-span-1 space-y-4">
             <div className="flex items-center gap-2 mb-2">
               <Clock className="w-5 h-5 text-red-500" />
               <h3 className="text-lg font-bold text-[#111827]">Заканчиваются</h3>
