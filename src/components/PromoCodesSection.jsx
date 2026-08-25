@@ -184,6 +184,9 @@ function ExpiringCard({ item }) {
 
 export default function PromoCodesSection() {
   const [livePromoCodes, setLivePromoCodes] = useState(promoCodes);
+  const bestCodes = livePromoCodes.slice(0, 5);
+  const hotCodes = livePromoCodes.slice(5, 10);
+  const expiringCodes = livePromoCodes.slice(10, 15);
 
   useEffect(() => {
     let cancelled = false;
@@ -230,7 +233,8 @@ export default function PromoCodesSection() {
         if (catalogCodes.length > 0) {
           const byStore = new Map();
           catalogCodes.forEach((code) => { if (!byStore.has(code.store)) byStore.set(code.store, code); });
-          setLivePromoCodes([...byStore.values(), ...managedCodes].slice(0, 12));
+          const popularCodes = [...byStore.values()].sort((a, b) => b.usedCount - a.usedCount);
+          setLivePromoCodes([...popularCodes, ...managedCodes]);
         }
       })
       .catch(() => {})
@@ -259,7 +263,7 @@ export default function PromoCodesSection() {
               <TrendingUp className="w-5 h-5 text-[#6C4DFF]" />
               <h3 className="text-lg font-bold text-[#111827]">Лучшие промокоды</h3>
             </div>
-            {livePromoCodes.map((code) => (
+            {bestCodes.map((code) => (
               <PromoCodeCard key={code.id} code={code} />
             ))}
           </div>
@@ -270,8 +274,8 @@ export default function PromoCodesSection() {
               <Flame className="w-5 h-5 text-[#FF7A00]" />
               <h3 className="text-lg font-bold text-[#111827]">Горячие</h3>
             </div>
-            {hotDeals.slice(0, 3).map((deal) => (
-              <HotDealCard key={deal.id} deal={deal} />
+            {hotCodes.map((code) => (
+              <PromoCodeCard key={code.id} code={code} />
             ))}
           </div>
 
@@ -281,8 +285,8 @@ export default function PromoCodesSection() {
               <Clock className="w-5 h-5 text-red-500" />
               <h3 className="text-lg font-bold text-[#111827]">Заканчиваются</h3>
             </div>
-            {expiringToday.map((item) => (
-              <ExpiringCard key={item.id} item={item} />
+            {expiringCodes.map((code) => (
+              <PromoCodeCard key={code.id} code={code} />
             ))}
           </div>
         </div>
