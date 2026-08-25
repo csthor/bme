@@ -2,26 +2,37 @@ import { useEffect, useState } from 'react';
 import { stores } from '../data/stores';
 import { ExternalLink } from 'lucide-react';
 
-const storeCategories = {
-  1: ['electronics', 'home'], 2: ['fashion'], 3: ['electronics', 'groceries'], 4: ['electronics'],
-  5: ['groceries'], 6: ['fashion'], 7: ['electronics', 'home'], 8: ['electronics'],
-  9: ['transport'], 10: ['home'], 11: ['groceries'], 12: ['beauty'], 13: ['electronics'],
-  14: ['home'], 15: ['home'], 16: ['fashion'], 17: ['sport'], 18: ['home'],
-  19: ['beauty'], 20: ['home'], 21: ['home']
-};
-
 export default function StoreCarousel({ selectedCategory = 'all' }) {
   const [hoveredId, setHoveredId] = useState(null);
-  const [promoCounts, setPromoCounts] = useState({});
+  const [storeCatalog, setStoreCatalog] = useState([]);
   useEffect(() => {
     fetch('/api/promos').then((response) => response.ok ? response.json() : Promise.reject())
-      .then((data) => setPromoCounts((data.promos || []).reduce((counts, promo) => ({ ...counts, [promo.store]: (counts[promo.store] || 0) + 1 }), {})))
+      .then((data) => {
+        const byStore = new Map();
+        (data.promos || []).forEach((promo) => {
+          if (!promo.store) return;
+          const staticStore = stores.find((store) => store.name === promo.store);
+          const current = byStore.get(promo.store) || {
+            id: staticStore?.id || promo.store,
+            name: promo.store,
+            logo: promo.iconUrl || staticStore?.logo || '',
+            color: staticStore?.color || '#6C4DFF',
+            categories: new Set(),
+            promoCount: 0
+          };
+          if (promo.category) current.categories.add(promo.category);
+          if (!current.logo && promo.iconUrl) current.logo = promo.iconUrl;
+          current.promoCount += 1;
+          byStore.set(promo.store, current);
+        });
+        setStoreCatalog([...byStore.values()].map((store) => ({ ...store, categories: [...store.categories] })));
+      })
       .catch(() => {});
   }, []);
   const visibleStores = (selectedCategory === 'all'
-    ? [...stores]
-    : stores.filter((store) => storeCategories[store.id]?.includes(selectedCategory)))
-    .sort((a, b) => (promoCounts[b.name] || 0) - (promoCounts[a.name] || 0));
+    ? [...storeCatalog]
+    : storeCatalog.filter((store) => store.categories.includes(selectedCategory)))
+    .sort((a, b) => b.promoCount - a.promoCount || a.name.localeCompare(b.name, 'ru'));
 
   return (
     <section id="stores" className="py-12 px-4 sm:px-6 lg:px-8">
@@ -62,11 +73,11 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
                   className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl transition-transform duration-300 group-hover:scale-110"
                   style={{ background: `${store.color}15` }}
                 >
-                  <img src={store.logo} alt={`${store.name} логотип`} className="w-9 h-9 object-contain" loading="lazy" onError={(event) => { event.currentTarget.style.display = 'none'; event.currentTarget.parentElement.dataset.fallback = store.name[0]; }} />
+                  {store.logo ? <img src={store.logo} alt={`${store.name} логотип`} className="w-9 h-9 object-contain" loading="lazy" onError={(event) => { event.currentTarget.style.display = 'none'; event.currentTarget.parentElement.dataset.fallback = store.name[0]; }} /> : store.name[0]}
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#111827] text-sm">{store.name}</h3>
-                  <p className="text-xs text-[#6B7280] mt-0.5">{promoCounts[store.name] || 0} промокодов</p>
+                  <p className="text-xs text-[#6B7280] mt-0.5">{store.promoCount} промокодов</p>
                 </div>
                 <a
                   href={`/stores/${store.name.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '')}`}

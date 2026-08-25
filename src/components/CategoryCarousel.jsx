@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { categories as catData } from '../data/categories';
 import { categoryIcons } from '../data/categories';
@@ -6,6 +6,40 @@ import * as Icons from 'lucide-react';
 
 export default function CategoryCarousel({ onCategorySelect }) {
   const [selected, setSelected] = useState('all');
+  const [categoryCounts, setCategoryCounts] = useState({ all: 0 });
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/promos')
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((data) => {
+        if (cancelled) return;
+        const storesByCategory = {};
+        const allStores = new Set();
+        (data.promos || []).forEach((promo) => {
+          if (!promo.store || !promo.category) return;
+          allStores.add(promo.store);
+          storesByCategory[promo.category] ||= new Set();
+          storesByCategory[promo.category].add(promo.store);
+        });
+        const counts = { all: allStores.size };
+        Object.entries(storesByCategory).forEach(([category, stores]) => { counts[category] = stores.size; });
+        setCategoryCounts(counts);
+      })
+      .catch(() => setCategoryCounts({ all: 0 }));
+    return () => { cancelled = true; };
+  }, []);
+
+  const visibleCategories = useMemo(() => catData
+    .map((cat) => ({ ...cat, count: categoryCounts[cat.id] || 0 }))
+    .filter((cat) => cat.count > 0), [categoryCounts]);
+
+  useEffect(() => {
+    if (selected !== 'all' && !visibleCategories.some((cat) => cat.id === selected)) {
+      setSelected('all');
+      onCategorySelect?.('all');
+    }
+  }, [selected, visibleCategories, onCategorySelect]);
 
   const handleSelect = (id) => {
     setSelected(id);
@@ -33,7 +67,7 @@ export default function CategoryCarousel({ onCategorySelect }) {
           className="overflow-x-auto pb-4 scrollbar-hide"
         >
           <div className="flex gap-3 min-w-max px-1">
-            {catData.map((cat, i) => {
+            {visibleCategories.map((cat, i) => {
               const Icon = Icons[categoryIcons[cat.icon]] || Icons.Tag;
               const isSelected = selected === cat.id;
               return (
