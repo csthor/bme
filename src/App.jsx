@@ -8,12 +8,14 @@ import BenefitsSection from './components/BenefitsSection';
 import Footer from './components/Footer';
 import './App.css';
 import { useState } from 'react';
+import Seo from './Seo';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   return (
     <MotionConfig reducedMotion="always">
     <div className="min-h-screen bg-[#FAFAFC]">
+      <Seo title="Промокоды и скидки магазинов — Kupon4UK" description="Проверенные промокоды, скидки и предложения популярных магазинов России." />
       <Header />
       <main>
         <HeroSection />

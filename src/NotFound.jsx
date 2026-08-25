@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, SearchX } from 'lucide-react';
+import Seo from './Seo';
 
 export default function NotFound() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#FAFAFC] px-6 text-center">
+      <Seo title="Страница не найдена — Kupon4UK" description="Запрошенная страница не найдена." noindex />
       <div className="max-w-md">
         <SearchX className="mx-auto mb-5 h-12 w-12 text-[#6C4DFF]" aria-hidden="true" />
         <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-[#6C4DFF]">404</p>

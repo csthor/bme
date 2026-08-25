@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Admin.css';
 import { LockKeyhole } from 'lucide-react';
+import Seo from './Seo';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -37,6 +38,7 @@ function Login() {
 
   return (
     <div className="login-page">
+      <Seo title="Вход в админ-панель — Kupon4UK" description="Авторизация администратора Kupon4UK." path="/login" noindex />
       <div className="login-container">
         <div className="login-header">
           <h1 className="flex items-center justify-center gap-2"><LockKeyhole className="w-6 h-6" aria-hidden="true" /> Kupon4UK</h1>

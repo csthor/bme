@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, FileText, ShieldCheck } from 'lucide-react';
 import './App.css';
+import Seo from './Seo';
 
 const legalContent = {
   privacy: {
@@ -35,6 +36,7 @@ export default function LegalPage({ type }) {
 
   return (
     <main className="min-h-screen bg-[#FAFAFC] px-4 py-12 sm:px-6 lg:px-8">
+      <Seo title={`${content.title} — Kupon4UK`} description={content.intro} path={`/${type}`} noindex />
       <article className="mx-auto max-w-3xl rounded-3xl border border-[#ECECF3] bg-white p-6 shadow-sm sm:p-10">
         <Link to="/" className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-[#6C4DFF]">
           <ArrowLeft className="h-4 w-4" aria-hidden="true" /> На главную

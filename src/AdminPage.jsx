@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Admin.css';
 import { Settings, Save, LogOut, FileText, Ticket, Eye, Lightbulb } from 'lucide-react';
+import Seo from './Seo';
 
 function AdminPage() {
   const [activeTab, setActiveTab] = useState('seo');
@@ -140,6 +141,7 @@ function AdminPage() {
 
   return (
     <div className="admin-page">
+      <Seo title="Админ-панель — Kupon4UK" description="Управление каталогом Kupon4UK." path="/admin" noindex />
       <div className="admin-header">
         <h1 className="flex items-center gap-2"><Settings className="w-5 h-5" aria-hidden="true" /> Админ-панель SEO</h1>
         <div className="admin-header-actions">

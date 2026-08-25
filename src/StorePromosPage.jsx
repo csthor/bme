@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { stores } from './data/stores';
 import { Clock, Copy, Check } from 'lucide-react';
+import Seo from './Seo';
 
 function PromoCard({ promo }) {
   const [revealed, setRevealed] = useState(false);
@@ -42,6 +43,7 @@ export default function StorePromosPage() {
 
   return (
     <div className="min-h-screen bg-[#FAFAFC]"><Header />
+      <Seo title={`Промокоды ${store.name} — Kupon4UK`} description={`Актуальные промокоды и скидки ${store.name} с условиями и сроками действия.`} path={`/stores/${storeSlug}`} type="website" />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
         <Link to="/#stores" className="text-sm text-[#6C4DFF]">← Вернуться к списку магазинов</Link>
         <div className="mt-8 flex items-center gap-5">
