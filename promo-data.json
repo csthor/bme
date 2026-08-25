@@ -13,14 +13,15 @@
       "category": "marketplaces",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.828Z",
-      "updatedAt": "2026-08-25T15:00:26.828Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.wildberries.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.wildberries.ru/",
-      "fingerprint": "wildberries|328tzt6d|https://rukodi.com/ru/catalog/shops/wildberries/|2026-08-31t23:59:59z"
+      "fingerprint": "wildberries|328tzt6d|https://rukodi.com/ru/catalog/shops/wildberries/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-2",
@@ -35,14 +36,15 @@
       "category": "restaurants",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://rostics.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://rostics.ru/",
-      "fingerprint": "ростикс|del03nkk2|https://rukodi.com/ru/catalog/shops/rostic-s/|2026-08-31t23:59:59z"
+      "fingerprint": "ростикс|del03nkk2|https://rukodi.com/ru/catalog/shops/rostic-s/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-3",
@@ -57,14 +59,15 @@
       "category": "restaurants",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://rostics.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://rostics.ru/",
-      "fingerprint": "ростикс|gb01fa5i|https://rukodi.com/ru/catalog/shops/rostic-s/|2026-08-31t23:59:59z"
+      "fingerprint": "ростикс|gb01fa5i|https://rukodi.com/ru/catalog/shops/rostic-s/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-4",
@@ -79,14 +82,15 @@
       "category": "restaurants",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "manual_review",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://rostics.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://rostics.ru/",
-      "fingerprint": "ростикс|del012zd5|https://rukodi.com/ru/catalog/shops/rostic-s/|2026-08-31t23:59:59z"
+      "fingerprint": "ростикс|del012zd5|https://rukodi.com/ru/catalog/shops/rostic-s/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-5",
@@ -101,14 +105,15 @@
       "category": "marketplaces",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.ozon.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.ozon.ru/",
-      "fingerprint": "ozon|pr#movi|https://www.promovi.ru/|"
+      "fingerprint": "ozon|pr#movi|https://www.promovi.ru/|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-6",
@@ -123,14 +128,15 @@
       "category": "marketplaces",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://market.yandex.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://market.yandex.ru/",
-      "fingerprint": "яндекс маркет|sgd4-af|https://promokod-marketa.ru/|2026-08-31t23:59:59z"
+      "fingerprint": "яндекс маркет|sgd4-af|https://promokod-marketa.ru/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-7",
@@ -145,14 +151,15 @@
       "category": "marketplaces",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://market.yandex.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://market.yandex.ru/",
-      "fingerprint": "яндекс маркет|solt5a-af|https://promokod-marketa.ru/|2026-08-31t23:59:59z"
+      "fingerprint": "яндекс маркет|solt5a-af|https://promokod-marketa.ru/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-8",
@@ -167,14 +174,15 @@
       "category": "marketplaces",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://market.yandex.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://market.yandex.ru/",
-      "fingerprint": "яндекс маркет|kitfort25|https://promokod-marketa.ru/|"
+      "fingerprint": "яндекс маркет|kitfort25|https://promokod-marketa.ru/|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-9",
@@ -189,14 +197,15 @@
       "category": "marketplaces",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://megamarket.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://megamarket.ru/",
-      "fingerprint": "мегамаркет|15one|https://berikod.ru/megamarket/|2026-08-31t23:59:59z"
+      "fingerprint": "мегамаркет|15one|https://berikod.ru/megamarket/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-10",
@@ -211,14 +220,15 @@
       "category": "marketplaces",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://megamarket.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://megamarket.ru/",
-      "fingerprint": "мегамаркет|one1|https://berikod.ru/megamarket/|"
+      "fingerprint": "мегамаркет|one1|https://berikod.ru/megamarket/|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-11",
@@ -233,14 +243,15 @@
       "category": "marketplaces",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://megamarket.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://megamarket.ru/",
-      "fingerprint": "мегамаркет|ck15|https://berikod.ru/megamarket/|"
+      "fingerprint": "мегамаркет|ck15|https://berikod.ru/megamarket/|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-12",
@@ -255,14 +266,15 @@
       "category": "beauty",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.832Z",
-      "updatedAt": "2026-08-25T15:00:26.832Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.letu.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.letu.ru/",
-      "fingerprint": "л’этуаль|август|https://rukodi.com/ru/catalog/shops/letual/|"
+      "fingerprint": "л’этуаль|август|https://rukodi.com/ru/catalog/shops/letual/|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-13",
@@ -277,14 +289,15 @@
       "category": "office",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.komus.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.komus.ru/",
-      "fingerprint": "комус|jar2026|https://apay.komus.ru/promotions/akcii/?from=menu-g1-aktsiibrinbsppromokody|"
+      "fingerprint": "комус|jar2026|https://apay.komus.ru/promotions/akcii/?from=menu-g1-aktsiibrinbsppromokody|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-14",
@@ -299,14 +312,15 @@
       "category": "office",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.komus.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.komus.ru/",
-      "fingerprint": "комус|канц2026|https://apay.komus.ru/promotions/akcii/?from=menu-g1-aktsiibrinbsppromokody|"
+      "fingerprint": "комус|канц2026|https://apay.komus.ru/promotions/akcii/?from=menu-g1-aktsiibrinbsppromokody|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-15",
@@ -321,14 +335,15 @@
       "category": "office",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.komus.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.komus.ru/",
-      "fingerprint": "комус|упаковка|https://apay.komus.ru/promotions/akcii/?from=menu-g1-aktsiibrinbsppromokody|"
+      "fingerprint": "комус|упаковка|https://apay.komus.ru/promotions/akcii/?from=menu-g1-aktsiibrinbsppromokody|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-16",
@@ -343,14 +358,15 @@
       "category": "tools",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.vseinstrumenti.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.vseinstrumenti.ru/",
-      "fingerprint": "всеинструменты.ру|drilldeal10|https://esmoll.ru/promokod-vseinstrumenti/|"
+      "fingerprint": "всеинструменты.ру|drilldeal10|https://esmoll.ru/promokod-vseinstrumenti/|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-17",
@@ -365,14 +381,15 @@
       "category": "pets",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.petshop.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.petshop.ru/",
-      "fingerprint": "petshop.ru|nownow5|https://promokod.com/coupon-store/petshop-ru|"
+      "fingerprint": "petshop.ru|nownow5|https://promokod.com/coupon-store/petshop-ru|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-18",
@@ -387,14 +404,15 @@
       "category": "groceries",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.perekrestok.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.perekrestok.ru/",
-      "fingerprint": "перекрёсток|55epic|https://promokod.epicris.ru/shops/perekrestok|2026-08-31t23:59:59z"
+      "fingerprint": "перекрёсток|55epic|https://promokod.epicris.ru/shops/perekrestok|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-19",
@@ -409,14 +427,15 @@
       "category": "groceries",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://www.perekrestok.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://www.perekrestok.ru/",
-      "fingerprint": "перекрёсток|70epic|https://promokod.epicris.ru/shops/perekrestok|2026-08-31t23:59:59z"
+      "fingerprint": "перекрёсток|70epic|https://promokod.epicris.ru/shops/perekrestok|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-20",
@@ -431,14 +450,15 @@
       "category": "groceries",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://vkusvill.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://vkusvill.ru/",
-      "fingerprint": "вкусвилл|szzzhx|https://promokod.vbr.ru/shops/vkysvill/|2026-08-31t23:59:59z"
+      "fingerprint": "вкусвилл|szzzhx|https://promokod.vbr.ru/shops/vkysvill/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-21",
@@ -453,14 +473,15 @@
       "category": "health",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://apteka.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://apteka.ru/",
-      "fingerprint": "аптека.ру|action20|https://promotut.ru/catalog/b2c/health/apteka-ru/|2026-08-31t23:59:59z"
+      "fingerprint": "аптека.ру|action20|https://promotut.ru/catalog/b2c/health/apteka-ru/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-22",
@@ -475,14 +496,15 @@
       "category": "health",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://apteka.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://apteka.ru/",
-      "fingerprint": "аптека.ру|daily15|https://promotut.ru/catalog/b2c/health/apteka-ru/|2026-08-31t23:59:59z"
+      "fingerprint": "аптека.ру|daily15|https://promotut.ru/catalog/b2c/health/apteka-ru/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-23",
@@ -497,14 +519,15 @@
       "category": "groceries",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://lavka.yandex.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://lavka.yandex.ru/",
-      "fingerprint": "яндекс лавка|lavkaperf58|https://yandex.ru/project/lavka/promocody|"
+      "fingerprint": "яндекс лавка|lavkaperf58|https://yandex.ru/project/lavka/promocody|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-24",
@@ -519,14 +542,15 @@
       "category": "groceries",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://lavka.yandex.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://lavka.yandex.ru/",
-      "fingerprint": "яндекс лавка|lavkaperf500|https://yandex.ru/project/lavka/promocody|"
+      "fingerprint": "яндекс лавка|lavkaperf500|https://yandex.ru/project/lavka/promocody|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-25",
@@ -541,14 +565,15 @@
       "category": "travel",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://ostrovok.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://ostrovok.ru/",
-      "fingerprint": "ostrovok|дэрэ|https://blog.ostrovok.ru/promokody-ostrovka/|2026-08-31t23:59:59z"
+      "fingerprint": "ostrovok|дэрэ|https://blog.ostrovok.ru/promokody-ostrovka/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-26",
@@ -563,14 +588,15 @@
       "category": "travel",
       "validFrom": null,
       "validUntil": null,
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://ostrovok.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://ostrovok.ru/",
-      "fingerprint": "ostrovok|лето|https://blog.ostrovok.ru/promokody-ostrovka/|"
+      "fingerprint": "ostrovok|лето|https://blog.ostrovok.ru/promokody-ostrovka/|",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     },
     {
       "id": "promo-27",
@@ -585,15 +611,16 @@
       "category": "travel",
       "validFrom": null,
       "validUntil": "2026-08-31T23:59:59Z",
-      "status": "pending",
-      "verificationStatus": "unverified",
+      "status": "approved",
+      "verificationStatus": "valid",
       "createdAt": "2026-08-25T15:00:26.833Z",
-      "updatedAt": "2026-08-25T15:00:26.833Z",
+      "updatedAt": "2026-08-25T15:01:22.356Z",
       "iconUrl": "https://ostrovok.ru/favicon.ico",
       "iconFormat": "ico",
       "iconSourceUrl": "https://ostrovok.ru/",
-      "fingerprint": "ostrovok|чиллмастер|https://blog.ostrovok.ru/promokody-ostrovka/|2026-08-31t23:59:59z"
+      "fingerprint": "ostrovok|чиллмастер|https://blog.ostrovok.ru/promokody-ostrovka/|2026-08-31t23:59:59z",
+      "verifiedAt": "2026-08-25T15:01:22.356Z"
     }
   ],
-  "updatedAt": "2026-08-25T15:00:26.833Z"
+  "updatedAt": "2026-08-25T15:01:22.356Z"
 }
