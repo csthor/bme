@@ -31,7 +31,7 @@ function PromoCodeCard({ code }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -2 }}
-      className="h-full bg-white rounded-2xl border border-[#ECECF3] p-5 flex flex-col hover:shadow-xl hover:shadow-[#6C4DFF]/5 hover:border-[#6C4DFF]/30 transition-all duration-300"
+      className="min-h-[220px] bg-white rounded-2xl border border-[#ECECF3] p-5 flex flex-col hover:shadow-xl hover:shadow-[#6C4DFF]/5 hover:border-[#6C4DFF]/30 transition-all duration-300"
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
@@ -256,7 +256,7 @@ export default function PromoCodesSection() {
           <p className="text-[#6B7280]">Скидки, которые работают прямо сейчас</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
           {/* Left - Best promo codes */}
           <div className="lg:col-span-1 space-y-4">
             <div className="flex items-center gap-2 mb-2">
