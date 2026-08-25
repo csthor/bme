@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { stores } from '../data/stores';
 import { ExternalLink } from 'lucide-react';
 
@@ -12,9 +12,16 @@ const storeCategories = {
 
 export default function StoreCarousel({ selectedCategory = 'all' }) {
   const [hoveredId, setHoveredId] = useState(null);
-  const visibleStores = selectedCategory === 'all'
-    ? stores
-    : stores.filter((store) => storeCategories[store.id]?.includes(selectedCategory));
+  const [promoCounts, setPromoCounts] = useState({});
+  useEffect(() => {
+    fetch('/api/promos').then((response) => response.ok ? response.json() : Promise.reject())
+      .then((data) => setPromoCounts((data.promos || []).reduce((counts, promo) => ({ ...counts, [promo.store]: (counts[promo.store] || 0) + 1 }), {})))
+      .catch(() => {});
+  }, []);
+  const visibleStores = (selectedCategory === 'all'
+    ? [...stores]
+    : stores.filter((store) => storeCategories[store.id]?.includes(selectedCategory)))
+    .sort((a, b) => (promoCounts[b.name] || 0) - (promoCounts[a.name] || 0));
 
   return (
     <section id="stores" className="py-12 px-4 sm:px-6 lg:px-8">
@@ -55,7 +62,7 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#111827] text-sm">{store.name}</h3>
-                  <p className="text-xs text-[#6B7280] mt-0.5">Промокоды и предложения</p>
+                  <p className="text-xs text-[#6B7280] mt-0.5">{promoCounts[store.name] || 0} промокодов</p>
                 </div>
                 <a
                   href={`/stores/${store.name.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '')}`}

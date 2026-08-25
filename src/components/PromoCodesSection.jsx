@@ -227,7 +227,11 @@ export default function PromoCodesSection() {
           }))
         ].filter(item => item && item.code && (!item.expiresAt || new Date(item.expiresAt) >= new Date()));
 
-        if (catalogCodes.length > 0) setLivePromoCodes([...catalogCodes, ...managedCodes]);
+        if (catalogCodes.length > 0) {
+          const byStore = new Map();
+          catalogCodes.forEach((code) => { if (!byStore.has(code.store)) byStore.set(code.store, code); });
+          setLivePromoCodes([...byStore.values(), ...managedCodes].slice(0, 12));
+        }
       })
       .catch(() => {})
       .finally(() => { cancelled = true; });
