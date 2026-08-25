@@ -31,9 +31,9 @@ function PromoCodeCard({ code }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -2 }}
-      className="min-h-[220px] bg-white rounded-2xl border border-[#ECECF3] p-5 flex flex-col hover:shadow-xl hover:shadow-[#6C4DFF]/5 hover:border-[#6C4DFF]/30 transition-all duration-300"
+      className="bg-white rounded-2xl border border-[#ECECF3] p-4 flex flex-col hover:shadow-xl hover:shadow-[#6C4DFF]/5 hover:border-[#6C4DFF]/30 transition-all duration-300"
     >
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-2.5">
         <div className="flex items-center gap-3">
           <div
             className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold"
@@ -56,7 +56,7 @@ function PromoCodeCard({ code }) {
         </span>
       </div>
 
-      <p className="text-sm text-[#6B7280] mb-4 leading-relaxed">{code.description}</p>
+      <p className="text-sm text-[#6B7280] mb-2.5 leading-snug">{code.description}</p>
 
       <div className="mt-auto flex items-center justify-between">
         <div className="flex items-center gap-1 text-xs text-[#9CA3AF]">
