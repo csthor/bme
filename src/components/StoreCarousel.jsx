@@ -55,7 +55,7 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#111827] text-sm">{store.name}</h3>
-                  <p className="text-xs text-[#6B7280] mt-0.5">{store.promoCount} промокодов</p>
+                  <p className="text-xs text-[#6B7280] mt-0.5">Промокоды и предложения</p>
                 </div>
                 <a
                   href={`/stores/${store.name.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '')}`}

@@ -1,15 +1,23 @@
 import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { stores } from './data/stores';
-import { promoCodes } from './data/promoCodes';
 
 const slugify = (value) => value.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '');
 
 export default function StorePromosPage() {
   const { storeSlug } = useParams();
   const store = stores.find((item) => slugify(item.name) === storeSlug);
-  const codes = store ? promoCodes.filter((item) => item.store === store.name) : [];
+  const [codes, setCodes] = useState([]);
+
+  useEffect(() => {
+    if (!store) return;
+    fetch('/api/promos')
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error('Promo API unavailable')))
+      .then((data) => setCodes((data.promos || []).filter((item) => item.store === store.name)))
+      .catch(() => setCodes([]));
+  }, [store]);
 
   if (!store) return <div className="min-h-screen p-10">Магазин не найден</div>;
 
