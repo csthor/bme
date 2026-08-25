@@ -106,6 +106,24 @@
   margin-bottom: 20px;
 }
 
+.catalog-heading { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+.catalog-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:20px 0; }
+.catalog-stats > div { padding:16px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:10px; }
+.catalog-stats strong { display:block; font-size:1.5rem; color:#fff; }
+.catalog-stats span { color:#8899aa; font-size:.8rem; }
+.catalog-filters { display:flex; gap:8px; margin-bottom:14px; }
+.catalog-filters button, .admin-promo-actions button { border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); color:#b8c5d2; border-radius:7px; padding:8px 12px; cursor:pointer; }
+.catalog-filters button.active, .admin-promo-actions button { background:#2196f3; color:#fff; border-color:#2196f3; }
+.admin-promo-row { display:grid; grid-template-columns:44px minmax(0,1fr) auto auto; align-items:center; gap:14px; padding:14px; margin-bottom:8px; border:1px solid rgba(255,255,255,.08); border-radius:10px; background:rgba(255,255,255,.03); }
+.admin-promo-icon { width:40px; height:40px; display:grid; place-items:center; border-radius:9px; background:#eef2ff; color:#607dff; overflow:hidden; }
+.admin-promo-icon img { width:100%; height:100%; object-fit:contain; }
+.admin-promo-main { min-width:0; display:flex; flex-direction:column; gap:3px; }
+.admin-promo-main strong { color:#fff; }.admin-promo-main span { color:#c1ccda; }.admin-promo-main small { color:#8493a3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.admin-promo-meta { display:flex; flex-direction:column; align-items:flex-end; gap:5px; color:#8d9bac; font-size:.78rem; white-space:nowrap; }
+.state { display:flex; align-items:center; gap:4px; }.state.published { color:#4caf88; }.state.review { color:#ffb74d; }
+.admin-promo-actions .danger { background:#642f3b; border-color:#8e4052; }.empty-state { padding:28px; text-align:center; color:#8899aa; display:flex; justify-content:center; gap:8px; }
+@media (max-width: 900px) { .catalog-stats { grid-template-columns:repeat(2,1fr); }.admin-promo-row { grid-template-columns:40px 1fr; }.admin-promo-meta,.admin-promo-actions { grid-column:2; align-items:flex-start; }.catalog-heading { flex-direction:column; } }
+
 /* SEO Score */
 .seo-score {
   display: flex;

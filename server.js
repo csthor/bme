@@ -300,6 +300,10 @@ function normalizePromo(item) {
     sourceType: String(item.sourceType || '').trim(),
     discoveryMethod: String(item.discoveryMethod || '').trim(),
     category: String(item.category || '').trim(),
+    iconUrl: String(item.iconUrl || '').trim(),
+    iconFormat: String(item.iconFormat || '').trim(),
+    iconSourceUrl: String(item.iconSourceUrl || '').trim(),
+    iconStatus: String(item.iconStatus || (item.iconUrl ? 'checked' : 'missing')).trim(),
     validFrom: item.validFrom || null,
     validUntil: item.validUntil || null,
     status: item.status || 'pending',
@@ -498,6 +502,32 @@ app.get('/api/promos', (req, res) => {
   const data = loadPromoData();
   const visible = data.promos.filter((promo) => promo.status === 'approved' && promo.verificationStatus === 'valid');
   res.json({ promos: visible, updatedAt: data.updatedAt });
+});
+
+// Full catalog for the admin panel, including moderation state and usage metrics.
+app.get('/api/admin/catalog', (req, res) => {
+  if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
+  const data = loadPromoData();
+  const promos = [...data.promos].sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt));
+  const stores = [...new Set(promos.map((promo) => promo.store).filter(Boolean))].map((store) => {
+    const items = promos.filter((promo) => promo.store === store);
+    const first = items.find((promo) => promo.iconUrl) || {};
+    return { store, total: items.length, visible: items.filter((promo) => promo.status === 'approved' && promo.verificationStatus === 'valid').length, iconUrl: first.iconUrl || '', iconFormat: first.iconFormat || '', iconStatus: first.iconStatus || 'missing' };
+  }).sort((a, b) => b.visible - a.visible || a.store.localeCompare(b.store, 'ru'));
+  res.json({ promos, stores, updatedAt: data.updatedAt });
+});
+
+app.put('/api/admin/promos/:id', (req, res) => {
+  if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
+  const data = loadPromoData();
+  const promo = data.promos.find((item) => item.id === req.params.id);
+  if (!promo) return res.status(404).json({ error: 'Promo not found' });
+  const allowed = ['status', 'verificationStatus', 'validUntil', 'description', 'conditions'];
+  for (const field of allowed) if (Object.prototype.hasOwnProperty.call(req.body, field)) promo[field] = req.body[field];
+  promo.updatedAt = new Date().toISOString();
+  data.updatedAt = promo.updatedAt;
+  savePromoData(data);
+  res.json({ success: true, promo });
 });
 
 app.post('/api/promos/:id/use', (req, res) => {

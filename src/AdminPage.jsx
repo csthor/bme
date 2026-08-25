@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import './Admin.css';
-import { Settings, Save, LogOut, FileText, Ticket, Eye, Lightbulb } from 'lucide-react';
+import { Settings, Save, LogOut, FileText, Ticket, Eye, Lightbulb, Store, RefreshCw, CheckCircle, XCircle, Clock } from 'lucide-react';
 import Seo from './Seo';
 
 function AdminPage() {
   const [activeTab, setActiveTab] = useState('seo');
   const [loading, setLoading] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [catalog, setCatalog] = useState({ promos: [], stores: [], updatedAt: null });
+  const [catalogLoading, setCatalogLoading] = useState(false);
+  const [catalogFilter, setCatalogFilter] = useState('all');
 
   // SEO fields
   const [seo, setSeo] = useState({
@@ -50,6 +53,21 @@ function AdminPage() {
       })
       .catch(err => console.error('Error loading SEO data:', err));
   }, []);
+
+  const loadCatalog = async () => {
+    setCatalogLoading(true);
+    try {
+      const response = await fetch('/api/admin/catalog');
+      if (response.ok) setCatalog(await response.json());
+    } finally { setCatalogLoading(false); }
+  };
+
+  useEffect(() => { if (activeTab === 'catalog') loadCatalog(); }, [activeTab]);
+
+  const updatePromoState = async (id, patch) => {
+    const response = await fetch(`/api/admin/promos/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(patch) });
+    if (response.ok) await loadCatalog();
+  };
 
   const handleLogout = async () => {
     try {
@@ -169,6 +187,9 @@ function AdminPage() {
             onClick={() => setActiveTab('promo')}
           >
             <Ticket className="w-4 h-4 inline mr-1" aria-hidden="true" /> Промокоды
+          </button>
+          <button className={`tab ${activeTab === 'catalog' ? 'active' : ''}`} onClick={() => setActiveTab('catalog')}>
+            <Store className="w-4 h-4 inline mr-1" aria-hidden="true" /> Каталог сайта
           </button>
           <button
             className={`tab ${activeTab === 'content' ? 'active' : ''}`}
@@ -336,6 +357,16 @@ function AdminPage() {
                 </div>
               ))}
               <button className="btn-add" onClick={addPromoCode}>+ Добавить промокод</button>
+            </div>
+          )}
+
+          {activeTab === 'catalog' && (
+            <div className="tab-content catalog-content">
+              <div className="catalog-heading"><div><h2>Каталог сайта</h2><p className="hint">Здесь отображаются все загруженные промокоды, включая ожидающие проверки.</p></div><button className="btn-add" onClick={loadCatalog} disabled={catalogLoading}><RefreshCw className="w-4 h-4 inline mr-1" /> Обновить</button></div>
+              <div className="catalog-stats"><div><strong>{catalog.promos.length}</strong><span>Всего промокодов</span></div><div><strong>{catalog.promos.filter(p => p.status === 'approved' && p.verificationStatus === 'valid').length}</strong><span>Опубликовано</span></div><div><strong>{catalog.promos.filter(p => p.status !== 'approved' || p.verificationStatus !== 'valid').length}</strong><span>На проверке</span></div><div><strong>{catalog.stores.length}</strong><span>Магазинов</span></div></div>
+              <div className="catalog-filters"><button className={catalogFilter === 'all' ? 'active' : ''} onClick={() => setCatalogFilter('all')}>Все</button><button className={catalogFilter === 'published' ? 'active' : ''} onClick={() => setCatalogFilter('published')}>Опубликованные</button><button className={catalogFilter === 'review' ? 'active' : ''} onClick={() => setCatalogFilter('review')}>На проверке</button></div>
+              <div className="admin-promo-list">{catalog.promos.filter(p => catalogFilter === 'all' || (catalogFilter === 'published' ? p.status === 'approved' && p.verificationStatus === 'valid' : p.status !== 'approved' || p.verificationStatus !== 'valid')).map(p => <div className="admin-promo-row" key={p.id}><div className="admin-promo-icon">{p.iconUrl ? <img src={p.iconUrl} alt="" /> : <Store className="w-5 h-5" />}</div><div className="admin-promo-main"><strong>{p.store}</strong><span>{p.title || 'Без названия'} {p.code && `· ${p.code}`}</span><small>{p.description}</small></div><div className="admin-promo-meta"><span className={p.status === 'approved' && p.verificationStatus === 'valid' ? 'state published' : 'state review'}>{p.status === 'approved' && p.verificationStatus === 'valid' ? <><CheckCircle className="w-3 h-3" /> Опубликован</> : <><Clock className="w-3 h-3" /> На проверке</>}</span><span>Раскрытий: {p.usedCount || 0}</span></div><div className="admin-promo-actions">{!(p.status === 'approved' && p.verificationStatus === 'valid') && <button onClick={() => updatePromoState(p.id, { status: 'approved', verificationStatus: 'valid' })}>Опубликовать</button>}{p.status === 'approved' && p.verificationStatus === 'valid' && <button className="danger" onClick={() => updatePromoState(p.id, { status: 'pending', verificationStatus: 'unverified' })}>Снять</button>}</div></div>)}</div>
+              {!catalog.promos.length && <div className="empty-state"><XCircle className="w-6 h-6" /> Данные не загрузились или каталог пуст.</div>}
             </div>
           )}
 
