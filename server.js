@@ -14,6 +14,7 @@ const __dirname = join(__filename, '..');
 const app = express();
 const PORT = 3000;
 const SEO_DATA_FILE = join(__dirname, 'seo-data.json');
+const PROMO_DATA_FILE = join(__dirname, 'promo-data.json');
 
 // --- Admin credentials (load from .env) ---
 const ADMIN_USER = process.env.ADMIN_USER;
@@ -278,6 +279,45 @@ function saveSeoData(data) {
   writeFileSync(SEO_DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
 }
 
+function loadPromoData() {
+  try { return JSON.parse(readFileSync(PROMO_DATA_FILE, 'utf8')); }
+  catch { return { promos: [], updatedAt: null }; }
+}
+
+function savePromoData(data) {
+  writeFileSync(PROMO_DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
+}
+
+function normalizePromo(item) {
+  const promo = {
+    id: item.id || crypto.randomUUID(),
+    store: String(item.store || '').trim(),
+    code: String(item.code || '').trim().toUpperCase(),
+    title: String(item.title || '').trim(),
+    description: String(item.description || '').trim(),
+    conditions: String(item.conditions || '').trim(),
+    sourceUrl: String(item.sourceUrl || '').trim(),
+    sourceType: String(item.sourceType || '').trim(),
+    discoveryMethod: String(item.discoveryMethod || '').trim(),
+    category: String(item.category || '').trim(),
+    validFrom: item.validFrom || null,
+    validUntil: item.validUntil || null,
+    status: item.status || 'pending',
+    verificationStatus: item.verificationStatus || 'unverified',
+    createdAt: item.createdAt || new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+  return promo;
+}
+
+function validatePromo(promo) {
+  const required = ['store', 'title', 'description', 'sourceUrl', 'sourceType', 'discoveryMethod', 'category'];
+  const missing = required.filter((field) => !promo[field]);
+  try { new URL(promo.sourceUrl); } catch { missing.push('sourceUrl'); }
+  if (!['official_api', 'official_site', 'official_app', 'telegram', 'aggregator', 'affiliate_feed', 'manual'].includes(promo.sourceType)) missing.push('sourceType');
+  return [...new Set(missing)];
+}
+
 // --- CPU usage monitoring via /proc/stat ---
 let prevCpu = null;
 
@@ -430,6 +470,34 @@ app.put('/api/seo/promo-codes/:index', (req, res) => {
 });
 
 // --- Public API Routes ---
+
+// Promo ingestion API. New records always enter moderation as pending.
+app.post('/api/import/promos', (req, res) => {
+  if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
+  const items = Array.isArray(req.body?.items) ? req.body.items : [req.body];
+  const data = loadPromoData();
+  const errors = [];
+  let imported = 0;
+  for (const item of items) {
+    const promo = normalizePromo(item || {});
+    const missing = validatePromo(promo);
+    if (missing.length) { errors.push({ item: item?.code || item?.title || null, missing }); continue; }
+    const fingerprint = [promo.store, promo.code, promo.sourceUrl, promo.validUntil || ''].join('|').toLowerCase();
+    const duplicate = data.promos.find((entry) => entry.fingerprint === fingerprint);
+    if (duplicate) { duplicate.updatedAt = promo.updatedAt; continue; }
+    data.promos.push({ ...promo, fingerprint });
+    imported += 1;
+  }
+  data.updatedAt = new Date().toISOString();
+  savePromoData(data);
+  res.status(errors.length ? 422 : 201).json({ imported, total: data.promos.length, errors });
+});
+
+app.get('/api/promos', (req, res) => {
+  const data = loadPromoData();
+  const visible = data.promos.filter((promo) => promo.status === 'approved' && promo.verificationStatus === 'valid');
+  res.json({ promos: visible, updatedAt: data.updatedAt });
+});
 
 // SEO data endpoints
 app.get('/api/seo', (req, res) => {
