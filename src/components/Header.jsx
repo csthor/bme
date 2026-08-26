@@ -7,17 +7,41 @@ function SearchBar({ onSearch }) {
   const [query, setQuery] = useState('');
   const [focused, setFocused] = useState(false);
   const [results, setResults] = useState([]);
+  const [searchItems, setSearchItems] = useState([]);
+
+  const slugify = (value) => value.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '');
+
+  useEffect(() => {
+    fetch('/api/promos')
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((data) => {
+        const promos = data.promos || [];
+        const stores = [...new Set(promos.map((promo) => promo.store).filter(Boolean))]
+          .map((store) => ({
+            label: store,
+            type: 'Магазин',
+            href: `/stores/${slugify(store)}`
+          }));
+        const codes = promos
+          .filter((promo) => promo.code && promo.store)
+          .map((promo) => ({
+            label: promo.code,
+            type: promo.store,
+            href: `/stores/${slugify(promo.store)}`
+          }));
+        setSearchItems([...stores, ...codes]);
+      })
+      .catch(() => setSearchItems([]));
+  }, []);
 
   useEffect(() => {
     if (query.length < 2) {
       setResults([]);
       return;
     }
-    // Mock search results
-    const stores = ['Ozon', 'Wildberries', 'DNS', 'Ламод', 'М.Видео'];
-    const filtered = stores.filter(s => s.toLowerCase().includes(query.toLowerCase()));
-    setResults(filtered);
-  }, [query]);
+    const normalized = query.toLowerCase();
+    setResults(searchItems.filter((item) => `${item.label} ${item.type}`.toLowerCase().includes(normalized)).slice(0, 8));
+  }, [query, searchItems]);
 
   return (
     <div className="relative w-full flex-1 min-w-0 max-w-lg">
@@ -47,19 +71,21 @@ function SearchBar({ onSearch }) {
           <div
             className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl shadow-black/10 border border-[#ECECF3] overflow-hidden z-50"
           >
-            {results.map((store, i) => (
-              <button
+            {results.map((item, i) => (
+              <a
                 key={i}
+                href={item.href}
                 className="w-full px-5 py-3 text-left text-[#111827] hover:bg-[#6C4DFF]/5 transition-colors flex items-center gap-3"
                 onClick={() => {
-                  onSearch?.(store);
-                  setQuery(store);
+                  onSearch?.(item.label);
+                  setQuery(item.label);
                   setResults([]);
                 }}
               >
                 <Store className="w-4 h-4 text-[#6C4DFF]" />
-                <span className="font-medium">{store}</span>
-              </button>
+                <span className="font-medium">{item.label}</span>
+                <span className="ml-auto text-xs text-[#9CA3AF]">{item.type}</span>
+              </a>
             ))}
           </div>
         )}

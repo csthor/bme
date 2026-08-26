@@ -1,20 +1,36 @@
+import { useEffect, useState } from 'react';
 import {
   Sparkles
 } from 'lucide-react';
+import { categories } from '../data/categories';
 
-const footerLinks = {
-  'Категории': ['Электроника', 'Одежда и обувь', 'Красота', 'Продукты', 'Дом и ремонт', 'Транспорт', 'Спорт'],
-  'Магазины': ['Ozon', 'Wildberries', 'DNS', 'М.Видео', 'Ламод', 'Яндекс Маркет'],
-  'Полезное': ['Как работает', 'Блог', 'FAQ', 'Помощь', 'Партнёрам'],
-};
+const categoryNames = Object.fromEntries(categories.map((category) => [category.id, category.name]));
 
-const footerTargets = {
-  'Категории': '#categories',
-  'Магазины': '#stores',
-  'Полезное': '#how',
-};
+const slugify = (value) => value.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '');
 
 export default function Footer() {
+  const [footerLinks, setFooterLinks] = useState({
+    'Категории': [],
+    'Магазины': [],
+    'Полезное': [{ label: 'Как работает', href: '/#how' }, { label: 'Промокоды', href: '/#promo' }]
+  });
+
+  useEffect(() => {
+    fetch('/api/promos')
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((data) => {
+        const promos = data.promos || [];
+        const categoryIds = [...new Set(promos.map((promo) => promo.category).filter(Boolean))];
+        const storeNames = [...new Set(promos.map((promo) => promo.store).filter(Boolean))];
+        setFooterLinks((current) => ({
+          ...current,
+          'Категории': categoryIds.map((id) => ({ label: categoryNames[id] || id, href: '/#categories' })),
+          'Магазины': storeNames.map((store) => ({ label: store, href: `/stores/${slugify(store)}` }))
+        }));
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <footer className="bg-[#111827] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,14 +52,14 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          {Object.entries(footerLinks).map(([title, links]) => (
+          {Object.entries(footerLinks).filter(([, links]) => links.length > 0).map(([title, links]) => (
             <div key={title}>
               <h4 className="font-semibold text-sm text-white mb-4">{title}</h4>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a href={footerTargets[title]} className="text-sm text-[#9CA3AF] hover:text-white transition-colors">
-                      {link}
+                  <li key={link.label}>
+                    <a href={link.href} className="text-sm text-[#9CA3AF] hover:text-white transition-colors">
+                      {link.label}
                     </a>
                   </li>
                 ))}
