@@ -6,16 +6,25 @@ import { stores } from './data/stores';
 import { Clock, Copy, Check } from 'lucide-react';
 import Seo from './Seo';
 
+function formatPromoWord(count) {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  if (mod10 === 1 && mod100 !== 11) return 'промокод';
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'промокода';
+  return 'промокодов';
+}
+
 function PromoCard({ promo }) {
   const [revealed, setRevealed] = useState(false);
   const [copied, setCopied] = useState(false);
   const [usedCount, setUsedCount] = useState(promo.usedCount || 0);
+  const discount = Number(typeof promo.discount === 'object' ? promo.discount?.value : promo.discount) || 0;
   const reveal = async () => { setRevealed(true); try { const response = await fetch(`/api/promos/${promo.id}/use`, { method: 'POST' }); if (response.ok) setUsedCount((await response.json()).usedCount); } catch {} };
   const copy = async () => { await navigator.clipboard.writeText(promo.code); setCopied(true); setTimeout(() => setCopied(false), 1500); };
   return <article className="bg-white rounded-2xl border border-[#ECECF3] p-4 flex flex-col min-h-[210px]">
     <div className="flex items-start justify-between gap-3">
       <div><h2 className="font-semibold text-[#111827]">{promo.title || 'Специальное предложение'}</h2><div className="flex items-center gap-1 mt-1 text-xs text-emerald-500"><Clock className="w-3 h-3" />Проверено</div></div>
-      <span className="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 text-xs font-bold">Скидка</span>
+      {discount > 0 && <span className="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 text-xs font-bold">-{discount}%</span>}
     </div>
       <p className="mt-3 text-sm text-[#6B7280] leading-snug">Условия: {promo.description}</p><p className="mt-2 text-xs text-[#9CA3AF]">{usedCount} раз открывали код</p>
     <div className="mt-auto pt-4 flex gap-2">
@@ -28,17 +37,35 @@ const slugify = (value) => value.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-')
 
 export default function StorePromosPage() {
   const { storeSlug } = useParams();
-  const store = stores.find((item) => slugify(item.name) === storeSlug);
+  const [store, setStore] = useState(null);
   const [codes, setCodes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!store) return;
+    setLoading(true);
     fetch('/api/promos')
       .then((response) => response.ok ? response.json() : Promise.reject(new Error('Promo API unavailable')))
-      .then((data) => setCodes((data.promos || []).filter((item) => item.store === store.name)))
-      .catch(() => setCodes([]));
-  }, [store]);
+      .then((data) => {
+        const promos = data.promos || [];
+        const staticStore = stores.find((item) => slugify(item.name) === storeSlug);
+        const matchedCodes = promos.filter((item) => slugify(item.store) === storeSlug);
+        const promoStore = matchedCodes[0];
+        setStore(staticStore || (promoStore ? {
+          name: promoStore.store,
+          logo: promoStore.iconUrl || '',
+          color: '#6C4DFF',
+          description: 'Проверенные промокоды магазина'
+        } : null));
+        setCodes(matchedCodes);
+      })
+      .catch(() => {
+        setStore(stores.find((item) => slugify(item.name) === storeSlug) || null);
+        setCodes([]);
+      })
+      .finally(() => setLoading(false));
+  }, [storeSlug]);
 
+  if (loading) return <div className="min-h-screen bg-[#FAFAFC] p-10 text-[#6B7280]">Загрузка...</div>;
   if (!store) return <div className="min-h-screen p-10">Магазин не найден</div>;
 
   return (
@@ -48,9 +75,9 @@ export default function StorePromosPage() {
         <Link to="/#stores" className="text-sm text-[#6C4DFF]">← Вернуться к списку магазинов</Link>
         <div className="mt-8 flex items-center gap-5">
           <div className="w-20 h-20 rounded-2xl bg-white border border-[#ECECF3] flex items-center justify-center">
-            <img src={store.logo} alt={`${store.name} логотип`} className="w-12 h-12 object-contain" />
+            {store.logo ? <img src={store.logo} alt={`${store.name} логотип`} className="w-12 h-12 object-contain" /> : <span className="text-2xl font-bold text-[#6C4DFF]">{store.name[0]}</span>}
           </div>
-          <div><h1 className="text-4xl font-bold text-[#111827]">Промокоды {store.name}</h1><p className="mt-2 text-[#6B7280]">Все предложения магазина в одном месте</p></div>
+          <div><h1 className="text-4xl font-bold text-[#111827]">Промокоды {store.name}</h1><p className="mt-2 text-[#6B7280]">{codes.length} {formatPromoWord(codes.length)} в одном месте</p></div>
         </div>
         <section className="mt-10">
           {codes.length ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">{codes.map((code) => <PromoCard key={code.id} promo={code} />)}</div> : (

@@ -2,6 +2,14 @@ import { useEffect, useState } from 'react';
 import { stores } from '../data/stores';
 import { ExternalLink } from 'lucide-react';
 
+function formatPromoWord(count) {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  if (mod10 === 1 && mod100 !== 11) return 'промокод';
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'промокода';
+  return 'промокодов';
+}
+
 export default function StoreCarousel({ selectedCategory = 'all' }) {
   const [hoveredId, setHoveredId] = useState(null);
   const [storeCatalog, setStoreCatalog] = useState([]);
@@ -77,7 +85,7 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#111827] text-sm">{store.name}</h3>
-                  <p className="text-xs text-[#6B7280] mt-0.5">{store.promoCount} промокодов</p>
+                  <p className="text-xs text-[#6B7280] mt-0.5">{store.promoCount} {formatPromoWord(store.promoCount)}</p>
                 </div>
                 <a
                   href={`/stores/${store.name.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '')}`}
