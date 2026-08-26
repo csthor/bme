@@ -2,14 +2,13 @@ import { useState, useEffect } from 'react';
 import {
   Search, Menu, X, Store, Sparkles
 } from 'lucide-react';
+import { storePath } from '../utils/catalog';
 
 function SearchBar({ onSearch }) {
   const [query, setQuery] = useState('');
   const [focused, setFocused] = useState(false);
   const [results, setResults] = useState([]);
   const [searchItems, setSearchItems] = useState([]);
-
-  const slugify = (value) => value.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '');
 
   useEffect(() => {
     fetch('/api/promos')
@@ -20,14 +19,14 @@ function SearchBar({ onSearch }) {
           .map((store) => ({
             label: store,
             type: 'Магазин',
-            href: `/stores/${slugify(store)}`
+            href: storePath(store)
           }));
         const codes = promos
           .filter((promo) => promo.code && promo.store)
           .map((promo) => ({
             label: promo.code,
             type: promo.store,
-            href: `/stores/${slugify(promo.store)}`
+            href: storePath(promo.store)
           }));
         setSearchItems([...stores, ...codes]);
       })

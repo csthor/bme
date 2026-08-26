@@ -5,14 +5,7 @@ import Footer from './components/Footer';
 import { stores } from './data/stores';
 import { Clock, Copy, Check } from 'lucide-react';
 import Seo from './Seo';
-
-function formatPromoWord(count) {
-  const mod10 = count % 10;
-  const mod100 = count % 100;
-  if (mod10 === 1 && mod100 !== 11) return 'промокод';
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'промокода';
-  return 'промокодов';
-}
+import { formatPromoWord, matchesStoreSlug } from './utils/catalog';
 
 function PromoCard({ promo }) {
   const [revealed, setRevealed] = useState(false);
@@ -33,8 +26,6 @@ function PromoCard({ promo }) {
   </article>;
 }
 
-const slugify = (value) => value.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '');
-
 export default function StorePromosPage() {
   const { storeSlug } = useParams();
   const [store, setStore] = useState(null);
@@ -47,8 +38,8 @@ export default function StorePromosPage() {
       .then((response) => response.ok ? response.json() : Promise.reject(new Error('Promo API unavailable')))
       .then((data) => {
         const promos = data.promos || [];
-        const staticStore = stores.find((item) => slugify(item.name) === storeSlug);
-        const matchedCodes = promos.filter((item) => slugify(item.store) === storeSlug);
+        const staticStore = stores.find((item) => matchesStoreSlug(item.name, storeSlug));
+        const matchedCodes = promos.filter((item) => matchesStoreSlug(item.store, storeSlug));
         const promoStore = matchedCodes[0];
         setStore(staticStore || (promoStore ? {
           name: promoStore.store,
@@ -59,7 +50,7 @@ export default function StorePromosPage() {
         setCodes(matchedCodes);
       })
       .catch(() => {
-        setStore(stores.find((item) => slugify(item.name) === storeSlug) || null);
+        setStore(stores.find((item) => matchesStoreSlug(item.name, storeSlug)) || null);
         setCodes([]);
       })
       .finally(() => setLoading(false));

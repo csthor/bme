@@ -3,10 +3,9 @@ import {
   Sparkles
 } from 'lucide-react';
 import { categories } from '../data/categories';
+import { storePath } from '../utils/catalog';
 
 const categoryNames = Object.fromEntries(categories.map((category) => [category.id, category.name]));
-
-const slugify = (value) => value.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '');
 
 export default function Footer() {
   const [footerLinks, setFooterLinks] = useState({
@@ -25,7 +24,7 @@ export default function Footer() {
         setFooterLinks((current) => ({
           ...current,
           'Категории': categoryIds.map((id) => ({ label: categoryNames[id] || id, href: '/#categories' })),
-          'Магазины': storeNames.map((store) => ({ label: store, href: `/stores/${slugify(store)}` }))
+          'Магазины': storeNames.map((store) => ({ label: store, href: storePath(store) }))
         }));
       })
       .catch(() => {});

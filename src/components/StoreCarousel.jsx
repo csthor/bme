@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react';
 import { stores } from '../data/stores';
 import { ExternalLink } from 'lucide-react';
-
-function formatPromoWord(count) {
-  const mod10 = count % 10;
-  const mod100 = count % 100;
-  if (mod10 === 1 && mod100 !== 11) return 'промокод';
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'промокода';
-  return 'промокодов';
-}
+import { formatPromoWord, storePath } from '../utils/catalog';
 
 export default function StoreCarousel({ selectedCategory = 'all' }) {
   const [hoveredId, setHoveredId] = useState(null);
@@ -65,15 +58,14 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
             <p className="col-span-full rounded-2xl border border-dashed border-[#D9D9E5] bg-white p-8 text-center text-[#6B7280]">
               В этой категории пока нет магазинов.
             </p>
-          ) : visibleStores.map((store) => (
-            <div
+          ) : visibleStores.map((store) => {
+            const href = storePath(store.name);
+            return (
+            <a
               key={store.id}
+              href={href}
               onMouseEnter={() => setHoveredId(store.id)}
               onMouseLeave={() => setHoveredId(null)}
-              onClick={() => { window.location.href = `/stores/${store.name.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '')}`; }}
-              role="link"
-              tabIndex={0}
-              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') event.currentTarget.click(); }}
               className="relative bg-white rounded-2xl border border-[#ECECF3] p-5 cursor-pointer transition-all duration-300 hover:border-[#6C4DFF]/50 hover:shadow-xl hover:shadow-[#6C4DFF]/10 group"
             >
               <div className="flex flex-col items-center text-center gap-3">
@@ -87,18 +79,14 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
                   <h3 className="font-semibold text-[#111827] text-sm">{store.name}</h3>
                   <p className="text-xs text-[#6B7280] mt-0.5">{store.promoCount} {formatPromoWord(store.promoCount)}</p>
                 </div>
-                <a
-                  href={`/stores/${store.name.toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '')}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(event) => event.stopPropagation()}
+                <span
                   className="flex items-center justify-center w-full py-1.5 bg-[#6C4DFF]/5 rounded-lg text-xs font-medium text-[#6C4DFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 >
                   Смотреть промокоды →
-                </a>
+                </span>
               </div>
-            </div>
-          ))}
+            </a>
+          );})}
         </div>
 
         <div className="sm:hidden mt-6 text-center">
