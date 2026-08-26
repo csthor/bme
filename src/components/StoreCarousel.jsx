@@ -64,6 +64,8 @@ export default function StoreCarousel({ selectedCategory = 'all' }) {
             <a
               key={store.id}
               href={href}
+              target="_blank"
+              rel="noreferrer"
               onMouseEnter={() => setHoveredId(store.id)}
               onMouseLeave={() => setHoveredId(null)}
               className="relative bg-white rounded-2xl border border-[#ECECF3] p-5 cursor-pointer transition-all duration-300 hover:border-[#6C4DFF]/50 hover:shadow-xl hover:shadow-[#6C4DFF]/10 group"
