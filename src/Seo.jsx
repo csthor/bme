@@ -15,7 +15,11 @@ export default function Seo({ title, description, path = '/', noindex = false, t
     let canonical = document.head.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
     canonical.href = `https://kupon4uk.ru${path}`;
-    return () => {};
+    
+    // Yandex.Metrika pageview tracking on route change
+    if (typeof window !== 'undefined' && window.ym) {
+      window.ym(112142650, 'hit', document.location.href);
+    }
   }, [title, description, path, noindex, type]);
   return null;
 }
