@@ -289,19 +289,37 @@ function savePromoData(data) {
 function loadPromoStateData() {
   try {
     const data = JSON.parse(readFileSync(PROMO_STATE_DATA_FILE, 'utf8'));
-    return { promos: data.promos || {}, updatedAt: data.updatedAt || null };
+    return { promos: data.promos || {}, promosByFingerprint: data.promosByFingerprint || {}, updatedAt: data.updatedAt || null };
   } catch {
-    return { promos: {}, updatedAt: null };
+    return { promos: {}, promosByFingerprint: {}, updatedAt: null };
   }
 }
 
 function savePromoStateData(data) {
-  writeFileSync(PROMO_STATE_DATA_FILE, JSON.stringify({ promos: data.promos || {}, updatedAt: data.updatedAt || new Date().toISOString() }, null, 2), 'utf8');
+  writeFileSync(PROMO_STATE_DATA_FILE, JSON.stringify({
+    promos: data.promos || {},
+    promosByFingerprint: data.promosByFingerprint || {},
+    updatedAt: data.updatedAt || new Date().toISOString()
+  }, null, 2), 'utf8');
+}
+
+function getPromoStateOverride(state, promo) {
+  return {
+    ...(promo.fingerprint ? state.promosByFingerprint[promo.fingerprint] || {} : {}),
+    ...(state.promos[promo.id] || {})
+  };
+}
+
+function setPromoStateOverride(state, promo, patch) {
+  state.promos[promo.id] = { ...(state.promos[promo.id] || {}), ...patch };
+  if (promo.fingerprint) {
+    state.promosByFingerprint[promo.fingerprint] = { ...(state.promosByFingerprint[promo.fingerprint] || {}), ...patch };
+  }
 }
 
 function withPromoState(promos) {
   const state = loadPromoStateData();
-  return promos.map((promo) => ({ ...promo, ...(state.promos[promo.id] || {}) }));
+  return promos.map((promo) => ({ ...promo, ...getPromoStateOverride(state, promo) }));
 }
 
 function loadUsageData() {
@@ -562,7 +580,7 @@ app.put('/api/admin/promos/bulk', (req, res) => {
   let updated = 0;
   data.promos.forEach((promo) => {
     if (!ids.has(promo.id)) return;
-    state.promos[promo.id] = { ...(state.promos[promo.id] || {}), ...patch, updatedAt };
+    setPromoStateOverride(state, promo, { ...patch, updatedAt });
     updated += 1;
   });
   state.updatedAt = updatedAt;
@@ -580,10 +598,10 @@ app.put('/api/admin/promos/:id', (req, res) => {
   for (const field of allowed) if (Object.prototype.hasOwnProperty.call(req.body, field)) patch[field] = req.body[field];
   const state = loadPromoStateData();
   const updatedAt = new Date().toISOString();
-  state.promos[promo.id] = { ...(state.promos[promo.id] || {}), ...patch, updatedAt };
+  setPromoStateOverride(state, promo, { ...patch, updatedAt });
   state.updatedAt = updatedAt;
   savePromoStateData(state);
-  res.json({ success: true, promo: { ...promo, ...state.promos[promo.id] } });
+  res.json({ success: true, promo: { ...promo, ...getPromoStateOverride(state, promo) } });
 });
 
 app.post('/api/promos/:id/use', (req, res) => {

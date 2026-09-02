@@ -56,7 +56,7 @@ jobs:
             umask 077
             printf 'ADMIN_USER=%s\nADMIN_PASS=%s\n' "$ADMIN_USER" "$ADMIN_PASS" > /opt/kupon4UK/.env
             if [ ! -f /opt/kupon4UK/usage-data.json ]; then printf '{}\n' > /opt/kupon4UK/usage-data.json; fi
-            if [ ! -f /opt/kupon4UK/promo-state.json ]; then printf '{\"promos\":{},\"updatedAt\":null}\n' > /opt/kupon4UK/promo-state.json; fi
+            if [ ! -f /opt/kupon4UK/promo-state.json ]; then printf '{\"promos\":{},\"promosByFingerprint\":{},\"updatedAt\":null}\n' > /opt/kupon4UK/promo-state.json; fi
             sed -i "s|^\s*image:.*|    image: ${{ env.IMAGE_NAME }}:${{ env.VERSION_PREFIX }}-${{ github.run_number }}|" /opt/kupon4UK/docker-compose.yml
             docker image prune -af
             cd /opt/kupon4UK/ && docker compose pull && docker compose up -d --force-recreate
