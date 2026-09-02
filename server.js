@@ -323,17 +323,39 @@ function withPromoState(promos) {
 }
 
 function loadUsageData() {
-  try { return JSON.parse(readFileSync(USAGE_DATA_FILE, 'utf8')); }
-  catch { return {}; }
+  try {
+    const data = JSON.parse(readFileSync(USAGE_DATA_FILE, 'utf8'));
+    return { ...data, promos: data.promos || {}, promosByFingerprint: data.promosByFingerprint || {} };
+  } catch {
+    return { promos: {}, promosByFingerprint: {} };
+  }
 }
 
 function saveUsageData(data) {
-  writeFileSync(USAGE_DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
+  writeFileSync(USAGE_DATA_FILE, JSON.stringify({
+    ...data,
+    promos: data.promos || {},
+    promosByFingerprint: data.promosByFingerprint || {}
+  }, null, 2), 'utf8');
+}
+
+function getPromoUsageCount(usage, promo) {
+  return Math.max(
+    Number(usage.promos?.[promo.id]) || 0,
+    Number(promo.fingerprint ? usage.promosByFingerprint?.[promo.fingerprint] : 0) || 0,
+    Number(usage[promo.id]) || 0,
+    Number(promo.usedCount) || 0
+  );
+}
+
+function setPromoUsageCount(usage, promo, count) {
+  usage.promos[promo.id] = count;
+  if (promo.fingerprint) usage.promosByFingerprint[promo.fingerprint] = count;
 }
 
 function withUsageCounts(promos) {
   const usage = loadUsageData();
-  return promos.map((promo) => ({ ...promo, usedCount: Number(usage[promo.id] ?? promo.usedCount) || 0 }));
+  return promos.map((promo) => ({ ...promo, usedCount: getPromoUsageCount(usage, promo) }));
 }
 
 function normalizePromo(item) {
@@ -611,9 +633,10 @@ app.post('/api/promos/:id/use', (req, res) => {
     return res.status(404).json({ error: 'Promo not found' });
   }
   const usage = loadUsageData();
-  usage[promo.id] = (Number(usage[promo.id] ?? promo.usedCount) || 0) + 1;
+  const usedCount = getPromoUsageCount(usage, promo) + 1;
+  setPromoUsageCount(usage, promo, usedCount);
   saveUsageData(usage);
-  res.json({ id: promo.id, usedCount: usage[promo.id] });
+  res.json({ id: promo.id, usedCount });
 });
 
 // SEO data endpoints
