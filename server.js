@@ -15,6 +15,7 @@ const app = express();
 const PORT = 3000;
 const SEO_DATA_FILE = join(__dirname, 'seo-data.json');
 const PROMO_DATA_FILE = join(__dirname, 'promo-data.json');
+const PROMO_STATE_DATA_FILE = join(__dirname, 'promo-state.json');
 const USAGE_DATA_FILE = join(__dirname, 'usage-data.json');
 
 // --- Admin credentials (load from .env) ---
@@ -285,6 +286,24 @@ function savePromoData(data) {
   writeFileSync(PROMO_DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
 }
 
+function loadPromoStateData() {
+  try {
+    const data = JSON.parse(readFileSync(PROMO_STATE_DATA_FILE, 'utf8'));
+    return { promos: data.promos || {}, updatedAt: data.updatedAt || null };
+  } catch {
+    return { promos: {}, updatedAt: null };
+  }
+}
+
+function savePromoStateData(data) {
+  writeFileSync(PROMO_STATE_DATA_FILE, JSON.stringify({ promos: data.promos || {}, updatedAt: data.updatedAt || new Date().toISOString() }, null, 2), 'utf8');
+}
+
+function withPromoState(promos) {
+  const state = loadPromoStateData();
+  return promos.map((promo) => ({ ...promo, ...(state.promos[promo.id] || {}) }));
+}
+
 function loadUsageData() {
   try { return JSON.parse(readFileSync(USAGE_DATA_FILE, 'utf8')); }
   catch { return {}; }
@@ -511,7 +530,7 @@ app.post('/api/import/promos', (req, res) => {
 
 app.get('/api/promos', (req, res) => {
   const data = loadPromoData();
-  const visible = withUsageCounts(data.promos).filter((promo) => promo.status === 'approved' && promo.verificationStatus === 'valid');
+  const visible = withUsageCounts(withPromoState(data.promos)).filter((promo) => promo.status === 'approved' && promo.verificationStatus === 'valid');
   res.json({ promos: visible, updatedAt: data.updatedAt });
 });
 
@@ -519,7 +538,7 @@ app.get('/api/promos', (req, res) => {
 app.get('/api/admin/catalog', (req, res) => {
   if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
   const data = loadPromoData();
-  const promos = withUsageCounts(data.promos).sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt));
+  const promos = withUsageCounts(withPromoState(data.promos)).sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt));
   const stores = [...new Set(promos.map((promo) => promo.store).filter(Boolean))].map((store) => {
     const items = promos.filter((promo) => promo.store === store);
     const first = items.find((promo) => promo.iconUrl) || {};
@@ -538,34 +557,38 @@ app.put('/api/admin/promos/bulk', (req, res) => {
   if (!Object.keys(patch).length) return res.status(400).json({ error: 'No allowed fields to update' });
 
   const data = loadPromoData();
+  const state = loadPromoStateData();
   const updatedAt = new Date().toISOString();
   let updated = 0;
   data.promos.forEach((promo) => {
     if (!ids.has(promo.id)) return;
-    Object.assign(promo, patch, { updatedAt });
+    state.promos[promo.id] = { ...(state.promos[promo.id] || {}), ...patch, updatedAt };
     updated += 1;
   });
-  data.updatedAt = updatedAt;
-  savePromoData(data);
+  state.updatedAt = updatedAt;
+  savePromoStateData(state);
   res.json({ success: true, updated });
 });
 
 app.put('/api/admin/promos/:id', (req, res) => {
   if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
   const data = loadPromoData();
-  const promo = data.promos.find((item) => item.id === req.params.id);
+  const promo = withPromoState(data.promos).find((item) => item.id === req.params.id);
   if (!promo) return res.status(404).json({ error: 'Promo not found' });
   const allowed = ['status', 'verificationStatus', 'validUntil', 'description', 'conditions'];
-  for (const field of allowed) if (Object.prototype.hasOwnProperty.call(req.body, field)) promo[field] = req.body[field];
-  promo.updatedAt = new Date().toISOString();
-  data.updatedAt = promo.updatedAt;
-  savePromoData(data);
-  res.json({ success: true, promo });
+  const patch = {};
+  for (const field of allowed) if (Object.prototype.hasOwnProperty.call(req.body, field)) patch[field] = req.body[field];
+  const state = loadPromoStateData();
+  const updatedAt = new Date().toISOString();
+  state.promos[promo.id] = { ...(state.promos[promo.id] || {}), ...patch, updatedAt };
+  state.updatedAt = updatedAt;
+  savePromoStateData(state);
+  res.json({ success: true, promo: { ...promo, ...state.promos[promo.id] } });
 });
 
 app.post('/api/promos/:id/use', (req, res) => {
   const data = loadPromoData();
-  const promo = data.promos.find((item) => item.id === req.params.id);
+  const promo = withPromoState(data.promos).find((item) => item.id === req.params.id);
   if (!promo || promo.status !== 'approved' || promo.verificationStatus !== 'valid') {
     return res.status(404).json({ error: 'Promo not found' });
   }

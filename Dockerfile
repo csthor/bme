@@ -27,6 +27,7 @@ RUN npm ci --omit=dev --legacy-peer-deps \
 COPY server.js ./
 COPY seo-data.json ./
 COPY promo-data.json ./
+COPY promo-state.json ./
 COPY --from=builder /app/dist ./dist
 
 EXPOSE 80 443 5433

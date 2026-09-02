@@ -3,14 +3,12 @@ import {
   Sparkles
 } from 'lucide-react';
 import { categories } from '../data/categories';
-import { storePath } from '../utils/catalog';
 
 const categoryNames = Object.fromEntries(categories.map((category) => [category.id, category.name]));
 
 export default function Footer() {
   const [footerLinks, setFooterLinks] = useState({
     'Категории': [],
-    'Магазины': [],
     'Полезное': [{ label: 'Как работает', href: '/#how' }, { label: 'Промокоды', href: '/#promo' }]
   });
 
@@ -20,11 +18,9 @@ export default function Footer() {
       .then((data) => {
         const promos = data.promos || [];
         const categoryIds = [...new Set(promos.map((promo) => promo.category).filter(Boolean))];
-        const storeNames = [...new Set(promos.map((promo) => promo.store).filter(Boolean))];
         setFooterLinks((current) => ({
           ...current,
-          'Категории': categoryIds.map((id) => ({ label: categoryNames[id] || id, href: '/#categories' })),
-          'Магазины': storeNames.map((store) => ({ label: store, href: storePath(store) }))
+          'Категории': categoryIds.map((id) => ({ label: categoryNames[id] || id, href: '/#categories' }))
         }));
       })
       .catch(() => {});
