@@ -11,6 +11,7 @@ function AdminPage() {
   const [catalogLoading, setCatalogLoading] = useState(false);
   const [catalogFilter, setCatalogFilter] = useState('all');
   const [bulkLoading, setBulkLoading] = useState(false);
+  const [importLoading, setImportLoading] = useState(false);
 
   // SEO fields
   const [seo, setSeo] = useState({
@@ -89,6 +90,29 @@ function AdminPage() {
     } finally {
       setBulkLoading(false);
     }
+  };
+
+  const exportPromos = () => {
+    window.location.href = '/api/admin/promos/export';
+  };
+
+  const importPromos = async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file) return;
+    setImportLoading(true);
+    try {
+      const payload = JSON.parse(await file.text());
+      const items = Array.isArray(payload) ? payload : payload.items;
+      if (!Array.isArray(items) || !items.length) throw new Error('В файле нет items');
+      const response = await fetch('/api/import/promos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items }) });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.errors?.length ? `Ошибок: ${result.errors.length}` : result.error || 'Импорт не выполнен');
+      await loadCatalog();
+      window.alert(`Импортировано: ${result.imported}. Всего в базе: ${result.total}.`);
+    } catch (error) {
+      window.alert(`Ошибка импорта: ${error.message}`);
+    } finally { setImportLoading(false); }
   };
 
   const handleLogout = async () => {
@@ -390,6 +414,8 @@ function AdminPage() {
               <div className="catalog-heading">
                 <div><h2>Каталог сайта</h2><p className="hint">Здесь отображаются все загруженные промокоды, включая ожидающие проверки.</p></div>
                 <div className="catalog-actions">
+                  <button className="btn-add" onClick={exportPromos}><FileText className="w-4 h-4 inline mr-1" /> Выгрузить JSON</button>
+                  <label className="btn-add" style={{ cursor: importLoading ? 'wait' : 'pointer' }}><input type="file" accept="application/json,.json" onChange={importPromos} disabled={importLoading} style={{ display: 'none' }} />{importLoading ? 'Загрузка...' : 'Загрузить JSON'}</label>
                   <button className="btn-add" onClick={() => publishPromos(publishablePromos)} disabled={bulkLoading || catalogLoading || publishablePromos.length === 0}><CheckCircle className="w-4 h-4 inline mr-1" /> {bulkLoading ? 'Публикую...' : `Опубликовать все (${publishablePromos.length})`}</button>
                   <button className="btn-add" onClick={loadCatalog} disabled={catalogLoading}><RefreshCw className="w-4 h-4 inline mr-1" /> Обновить</button>
                 </div>

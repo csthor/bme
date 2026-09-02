@@ -568,6 +568,13 @@ app.post('/api/import/promos', (req, res) => {
   res.status(errors.length ? 422 : 201).json({ imported, total: data.promos.length, errors });
 });
 
+app.get('/api/admin/promos/export', (req, res) => {
+  if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
+  const data = loadPromoData();
+  res.setHeader('Content-Disposition', 'attachment; filename="promo-data-export.json"');
+  res.json({ schema_version: 'kupon4uk-promo-import-v1', exportedAt: new Date().toISOString(), items: data.promos.map((promo) => ({ store: { name: promo.store, category: promo.category, icon: { url: promo.iconUrl, format: promo.iconFormat, source_url: promo.iconSourceUrl } }, promo })) }));
+});
+
 app.get('/api/promos', (req, res) => {
   const data = loadPromoData();
   const visible = withUsageCounts(withPromoState(data.promos)).filter((promo) => promo.status === 'approved' && promo.verificationStatus === 'valid');
