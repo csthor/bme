@@ -372,8 +372,15 @@ function normalizePromo(item) {
     category: String(item.category || '').trim(),
     iconUrl: String(item.iconUrl || '').trim(),
     iconFormat: String(item.iconFormat || '').trim(),
+    iconWidth: Number(item.iconWidth) || null,
+    iconHeight: Number(item.iconHeight) || null,
     iconSourceUrl: String(item.iconSourceUrl || '').trim(),
     iconStatus: String(item.iconStatus || (item.iconUrl ? 'checked' : 'missing')).trim(),
+    landingUrl: String(item.landingUrl || '').trim(),
+    discoveryNote: String(item.discoveryNote || '').trim(),
+    discoveryDifficulty: String(item.discoveryDifficulty || '').trim(),
+    checkedAt: item.checkedAt || null,
+    additionalSources: Array.isArray(item.additionalSources) ? item.additionalSources.filter(Boolean) : [],
     validFrom: item.validFrom || null,
     validUntil: item.validUntil || null,
     status: item.status || 'pending',
@@ -383,6 +390,41 @@ function normalizePromo(item) {
     updatedAt: new Date().toISOString()
   };
   return promo;
+}
+
+function normalizeImportItem(item) {
+  if (!item?.promo) return item || {};
+
+  const store = item.store || {};
+  const promo = item.promo || {};
+  const icon = store.icon || {};
+  const conditions = typeof promo.conditions === 'string'
+    ? promo.conditions
+    : JSON.stringify(promo.conditions || {});
+
+  return {
+    ...promo,
+    store: store.name || promo.store,
+    category: store.category || promo.category,
+    conditions,
+    sourceUrl: promo.sourceUrl || promo.source_url,
+    sourceType: promo.sourceType || promo.source_type,
+    landingUrl: promo.landingUrl || promo.landing_url,
+    discoveryMethod: promo.discoveryMethod || promo.discovery_method,
+    discoveryNote: promo.discoveryNote || promo.discovery_note,
+    discoveryDifficulty: promo.discoveryDifficulty || promo.discovery_difficulty,
+    verificationStatus: promo.verificationStatus || promo.verification_status || 'unverified',
+    validFrom: promo.validFrom || promo.valid_from || null,
+    validUntil: promo.validUntil || promo.valid_until || null,
+    iconUrl: promo.iconUrl || icon.url,
+    iconFormat: promo.iconFormat || icon.format,
+    iconWidth: promo.iconWidth || icon.width,
+    iconHeight: promo.iconHeight || icon.height,
+    iconSourceUrl: promo.iconSourceUrl || icon.source_url,
+    iconStatus: promo.iconStatus || icon.status || 'unverified',
+    checkedAt: promo.checkedAt || promo.checked_at || null,
+    additionalSources: promo.additionalSources || promo.additional_sources || []
+  };
 }
 
 function validatePromo(promo) {
@@ -554,7 +596,7 @@ app.post('/api/import/promos', (req, res) => {
   const errors = [];
   let imported = 0;
   for (const item of items) {
-    const promo = normalizePromo(item || {});
+    const promo = normalizePromo(normalizeImportItem(item));
     const missing = validatePromo(promo);
     if (missing.length) { errors.push({ item: item?.code || item?.title || null, missing }); continue; }
     const fingerprint = [promo.store, promo.code, promo.sourceUrl, promo.validUntil || ''].join('|').toLowerCase();
@@ -566,6 +608,31 @@ app.post('/api/import/promos', (req, res) => {
   data.updatedAt = new Date().toISOString();
   savePromoData(data);
   res.status(errors.length ? 422 : 201).json({ imported, total: data.promos.length, errors });
+});
+
+app.get('/api/admin/promos/export', (req, res) => {
+  if (!isAuthenticated(req)) return res.status(401).json({ error: 'Unauthorized' });
+  const data = loadPromoData();
+  res.setHeader('Content-Disposition', 'attachment; filename="promo-data-export.json"');
+  res.json({
+    schema_version: 'kupon4uk-promo-import-v1',
+    exportedAt: new Date().toISOString(),
+    items: data.promos.map((promo) => ({
+      store: {
+        name: promo.store,
+        category: promo.category,
+        icon: {
+          url: promo.iconUrl,
+          format: promo.iconFormat,
+          width: promo.iconWidth,
+          height: promo.iconHeight,
+          source_url: promo.iconSourceUrl,
+          status: promo.iconStatus
+        }
+      },
+      promo
+    }))
+  });
 });
 
 app.get('/api/promos', (req, res) => {
