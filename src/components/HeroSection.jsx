@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, CheckCircle, Clock, Star, ArrowRight, Gift, ShoppingCart } from 'lucide-react';
+import { CheckCircle, Clock, Star, ArrowRight, Gift, ShoppingCart } from 'lucide-react';
 
 const features = [
   { icon: CheckCircle, text: 'Официальные источники', color: '#6C4DFF' },
@@ -19,16 +19,6 @@ export default function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#6C4DFF]/10 text-[#6C4DFF] rounded-full text-sm font-semibold mb-6"
-            >
-              <Sparkles className="w-4 h-4" />
-              <span>Промокоды только из подтверждённых источников</span>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

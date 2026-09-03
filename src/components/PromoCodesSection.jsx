@@ -207,6 +207,11 @@ export default function PromoCodesSection() {
     .filter((code) => code.expiresAt)
     .sort((a, b) => new Date(a.expiresAt) - new Date(b.expiresAt))
     .slice(0, 5);
+  const promoColumns = [
+    { title: 'Лучшие промокоды', icon: TrendingUp, color: '#6C4DFF', codes: bestCodes },
+    { title: 'Горячие', icon: Flame, color: '#FF7A00', codes: hotCodes },
+    { title: 'Заканчиваются', icon: Clock, color: '#EF4444', codes: expiringCodes },
+  ].filter((column) => column.codes.length > 0);
 
   useEffect(() => {
     let cancelled = false;
@@ -255,39 +260,18 @@ export default function PromoCodesSection() {
           <p className="text-[#6B7280]">Скидки, которые работают прямо сейчас</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-          {/* Left - Best promo codes */}
-          <div className="lg:col-span-1 space-y-4">
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className="w-5 h-5 text-[#6C4DFF]" />
-              <h3 className="text-lg font-bold text-[#111827]">Лучшие промокоды</h3>
+        <div className={`grid grid-cols-1 ${promoColumns.length > 1 ? 'lg:grid-cols-2' : ''} ${promoColumns.length > 2 ? 'xl:grid-cols-3' : ''} gap-6 items-start`}>
+          {promoColumns.map(({ title, icon: Icon, color, codes }) => (
+            <div key={title} className="space-y-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Icon className="w-5 h-5" style={{ color }} />
+                <h3 className="text-lg font-bold text-[#111827]">{title}</h3>
+              </div>
+              {codes.map((code) => (
+                <PromoCodeCard key={code.id} code={code} />
+              ))}
             </div>
-            {bestCodes.map((code) => (
-              <PromoCodeCard key={code.id} code={code} />
-            ))}
-          </div>
-
-          {/* Center - Hot deals */}
-          <div className="lg:col-span-1 space-y-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Flame className="w-5 h-5 text-[#FF7A00]" />
-              <h3 className="text-lg font-bold text-[#111827]">Горячие</h3>
-            </div>
-            {hotCodes.map((code) => (
-              <PromoCodeCard key={code.id} code={code} />
-            ))}
-          </div>
-
-          {/* Right - Expiring today */}
-          <div className="lg:col-span-1 space-y-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Clock className="w-5 h-5 text-red-500" />
-              <h3 className="text-lg font-bold text-[#111827]">Заканчиваются</h3>
-            </div>
-            {expiringCodes.map((code) => (
-              <PromoCodeCard key={code.id} code={code} />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>
